@@ -1,0 +1,31 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="Theme.Calculator" parent="android:Theme.Holo.NoActionBar">
+
+    </style>
+    
+    <!-- Button Style -->
+    <style name="Theme.Calculator.ButtonSytle">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:fontFamily">sans-serif-thin</item>
+        <item name="android:layout_marginLeft">0dp</item>
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <!-- Display Style -->
+    <style name="Theme.Calculator.Display">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center_vertical|right</item>
+        <item name="android:fontFamily">sans-serif-thin</item>
+        <item name="android:textSize">@dimen/font_size</item>
+        <item name="android:textColor">@color/text_color</item>
+    </style>
+</resources>
