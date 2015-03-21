@@ -1,0 +1,169 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="40"
+    android:background="#ffffff">
+
+    <!-- Layout for Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <!-- 7 Button -->
+            <Button
+                android:id="@+id/sevenbtn"
+                style="@style/Theme.Calculator.ButtonStyle"
+                android:onClick="btnClick"
+                android:text="@string/seven" />
+
+            <!-- 8 Button -->
+            <Button
+                android:id="@+id/eightbtn"
+                style="@style/Theme.Calculator.ButtonStyle"
+                android:onClick="btnClick"
+                android:text="@string/eight" />
+
+            <!-- 9 Button -->
+            <Button
+                android:id="@+id/ninebtn"
+                style="@style/Theme.Calculator.ButtonStyle"
+                android:onClick="btnClick"
+                android:text="@string/nine" />
+
+            <!-- Delete Button -->
+            <Button
+                android:id="@+id/delbtn"
+                style="@style/Theme.Calculator.ButtonStyle"
+                android:longClickable="true"
+                android:onClick="btnClick"
+                android:text="@string/delete" />
+
+            <!-- Clear Button -->
+            <Button
+                android:id="@+id/clearbtn"
+                style="@style/Theme.Calculator.ButtonStyle"
+                android:onClick="btnClick"
+                android:text="@string/clear" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <!-- 4 Button -->
+            <Button
+                android:id="@+id/fourbtn"
+                style="@style/Theme.Calculator.ButtonStyle"
+                android:onClick="btnClick"
+                android:text="@string/four" />
+            <!-- 5 Button -->
+            <Button
+                android:id="@+id/fivebtn"
+                style="@style/Theme.Calculator.ButtonStyle"
+                android:onClick="btnClick"
+                android:text="@string/five" />
+            <!-- 6 Button -->
+            <Button
+                android:id="@+id/sixbtn"
+                style="@style/Theme.Calculator.ButtonStyle"
+                android:onClick="btnClick"
+                android:text="@string/six" />
+            <!-- Minus Button -->
+            <Button
+                android:id="@+id/minusbtn"
+                style="@style/Theme.Calculator.ButtonStyle"
+                android:onClick="btnClick"
+                android:text="@string/minus" />
+
+            <!-- Plus Button -->
+            <Button
+                android:id="@+id/plusbtn"
+                style="@style/Theme.Calculator.ButtonStyle"
+                android:onClick="btnClick"
+                android:text="@string/plus" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <!-- 1 Button -->
+            <Button
+                android:id="@+id/onebtn"
+                style="@style/Theme.Calculator.ButtonStyle"
+                android:onClick="btnClick"
+                android:text="@string/one" />
+            <!-- 2 Button -->
+            <Button
+                android:id="@+id/twobtn"
+                style="@style/Theme.Calculator.ButtonStyle"
+                android:onClick="btnClick"
+                android:text="@string/two" />
+            <!-- 3 Button -->
+            <Button
+                android:id="@+id/threebtn"
+                style="@style/Theme.Calculator.ButtonStyle"
+                android:onClick="btnClick"
+                android:text="@string/three" />
+            <!-- Multiply Button -->
+            <Button
+                android:id="@+id/multiplybtn"
+                style="@style/Theme.Calculator.ButtonStyle"
+                android:onClick="btnClick"
+                android:text="@string/asterisk" />
+            <!-- Divide Button -->
+            <Button
+                android:id="@+id/dividebtn"
+                style="@style/Theme.Calculator.ButtonStyle"
+                android:onClick="btnClick"
+                android:text="@string/divide" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <!-- decimal Button -->
+            <Button
+                android:id="@+id/decimalbtn"
+                style="@style/Theme.Calculator.ButtonStyle"
+                android:onClick="btnClick"
+                android:text="@string/decimal" />
+            <!-- 0 Button -->
+            <Button
+                android:id="@+id/zerobtn"
+                style="@style/Theme.Calculator.ButtonStyle"
+                android:onClick="btnClick"
+                android:text="@string/zero" />
+            <!-- left paranthesis Button -->
+            <Button
+                android:id="@+id/left_paran"
+                style="@style/Theme.Calculator.ButtonStyle"
+                android:onClick="btnClick"
+                android:text="@string/left_paran" />
+            <!-- 0 Button -->
+            <Button
+                android:id="@+id/right_paran"
+                style="@style/Theme.Calculator.ButtonStyle"
+                android:onClick="btnClick"
+                android:text="@string/right_paran" />
+            <!-- Equal Button -->
+            <Button
+                android:id="@+id/equalbtn"
+                style="@style/Theme.Calculator.ButtonStyle"
+                android:onClick="btnClick"
+                android:text="@string/equal" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
