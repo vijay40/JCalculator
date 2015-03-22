@@ -1,9 +1,10 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e84e40"
     android:orientation="vertical"
-    android:background="#e84e40">
+    android:id="@+id/main_app">
+
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -14,177 +15,22 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:minHeight="60dp">
-            <TextView
-                android:id="@+id/entry"
-                style="@style/Theme.Calculator.Display"/>
-        </LinearLayout>      
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#ffffff"
-        android:layout_weight="40">
 
-        <!-- Layout for Buttons -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <LinearLayout
+            <!-- TODO try to make the text appear from the right -->
+            <HorizontalScrollView
+                android:id="@+id/display_pad"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
+                android:scrollbars="none">
 
-                <!-- 7 Button -->
-                <Button
-                    android:id="@+id/sevenbtn"
-                    android:text="@string/seven"
-                    android:onClick="btnClick"
-                    style="@style/Theme.Calculator.ButtonSytle"/>
+                <TextView
+                    android:id="@+id/entry"
+                    style="@style/Theme.Calculator.Display" />
+            </HorizontalScrollView>
 
-                <!-- 8 Button -->
-                <Button
-                    android:id="@+id/eightbtn"
-                    android:text="@string/eight"
-                    android:onClick="btnClick"
-                    style="@style/Theme.Calculator.ButtonSytle"/>
-
-                <!-- 9 Button -->
-                <Button
-                    android:id="@+id/ninebtn"
-                    android:text="@string/nine"
-                    android:onClick="btnClick"
-                    style="@style/Theme.Calculator.ButtonSytle"/>
-
-                <!-- Delete Button -->
-                <Button
-                    android:id="@+id/delbtn"
-                    android:text="@string/delete"
-                    android:onClick="btnClick"
-                    style="@style/Theme.Calculator.ButtonSytle"
-                    android:longClickable="true"/>
-
-                <!-- Clear Button -->
-                <Button
-                    android:id="@+id/clearbtn"
-                    android:text="@string/clear"
-                    android:onClick="btnClick"
-                    style="@style/Theme.Calculator.ButtonSytle"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-                <!-- 4 Button -->
-                <Button
-                    android:id="@+id/fourbtn"
-                    android:text="@string/four"
-                    android:onClick="btnClick"
-                    style="@style/Theme.Calculator.ButtonSytle"/>
-                <!-- 5 Button -->
-                <Button
-                    android:id="@+id/fivebtn"
-                    android:text="@string/five"
-                    android:onClick="btnClick"
-                    style="@style/Theme.Calculator.ButtonSytle"/>
-                <!-- 6 Button -->
-                <Button
-                    android:id="@+id/sixbtn"
-                    android:text="@string/six"
-                    android:onClick="btnClick"
-                    style="@style/Theme.Calculator.ButtonSytle"/>
-                <!-- Minus Button -->
-                <Button
-                    android:id="@+id/minusbtn"
-                    android:text="@string/minus"
-                    android:onClick="btnClick"
-                    style="@style/Theme.Calculator.ButtonSytle"/>
-
-                <!-- Plus Button -->
-                <Button
-                    android:id="@+id/plusbtn"
-                    android:text="@string/plus"
-                    android:onClick="btnClick"
-                    style="@style/Theme.Calculator.ButtonSytle"/>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-                <!-- 1 Button -->
-                <Button
-                    android:id="@+id/onebtn"
-                    android:text="@string/one"
-                    android:onClick="btnClick"
-                    style="@style/Theme.Calculator.ButtonSytle"/>
-                <!-- 2 Button -->
-                <Button
-                    android:id="@+id/twobtn"
-                    android:text="@string/two"
-                    android:onClick="btnClick"
-                    style="@style/Theme.Calculator.ButtonSytle"/>
-                <!-- 3 Button -->
-                <Button
-                    android:id="@+id/threebtn"
-                    android:text="@string/three"
-                    android:onClick="btnClick"
-                    style="@style/Theme.Calculator.ButtonSytle"/>
-                <!-- Multiply Button -->
-                <Button
-                    android:id="@+id/multiplybtn"
-                    android:text="@string/asterisk"
-                    android:onClick="btnClick"
-                    style="@style/Theme.Calculator.ButtonSytle"/>
-                <!-- Divide Button -->
-                <Button
-                    android:id="@+id/dividebtn"
-                    android:text="@string/divide"
-                    android:onClick="btnClick"
-                    style="@style/Theme.Calculator.ButtonSytle"/>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-                <!-- decimal Button -->
-                <Button
-                    android:id="@+id/decimalbtn"
-                    android:text="@string/decimal"
-                    android:onClick="btnClick"
-                    style="@style/Theme.Calculator.ButtonSytle"/>
-                <!-- 0 Button -->
-                <Button
-                    android:id="@+id/zerobtn"
-                    android:text="@string/zero"
-                    android:onClick="btnClick"
-                    style="@style/Theme.Calculator.ButtonSytle"/>
-                <!-- left paranthesis Button -->
-                <Button
-                    android:id="@+id/left_paran"
-                    android:text="@string/left_paran"
-                    android:onClick="btnClick"
-                    style="@style/Theme.Calculator.ButtonSytle"/>
-                <!-- 0 Button -->
-                <Button
-                    android:id="@+id/right_paran"
-                    android:text="@string/right_paran"
-                    android:onClick="btnClick"
-                    style="@style/Theme.Calculator.ButtonSytle"/>
-                <!-- Equal Button -->
-                <Button
-                    android:id="@+id/equalbtn"
-                    android:text="@string/equal"
-                    android:onClick="btnClick"
-                    style="@style/Theme.Calculator.ButtonSytle"/>
-            </LinearLayout>
         </LinearLayout>
-
     </RelativeLayout>
+
 </LinearLayout>
 
 

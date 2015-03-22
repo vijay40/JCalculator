@@ -24,6 +24,18 @@
     <string name="clear">C</string>
     <string name="left_paran">(</string>
     <string name="right_paran">)</string>
+    <string name="log_10">log</string>
+    <string name="logn">ln</string>
+    <string name="exponential">e</string>
+    <string name="factorial">!</string>
+    <string name="percentage">%</string>
+    <string name="power">^</string>
+    <string name="sqrt">\u221A</string>
+    <string name="pi">\u03C0</string>
+    <string name="sin">sin</string>
+    <string name="cos">cos</string>
+    <string name="tan">tan</string>
     <string name="error">Error in Calculation</string>
+    <string name="history">History</string>
 
 </resources>

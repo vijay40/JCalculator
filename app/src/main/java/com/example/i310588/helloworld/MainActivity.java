@@ -1,6 +1,8 @@
 package com.example.i310588.helloworld;
 
 import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,24 +23,37 @@ import net.sourceforge.jeval.Evaluator;
 public class MainActivity extends Activity {
 
     private String entryText = "";
-    private int lastBtnHit;
-    private double precision = 0.000000001;
+    private int lastBtnHit = -1;
+    TextView entry;
+    Utility utility;
+    ExpressionHandler exprhandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        BasicPad basicPad = new BasicPad();
+        FragmentManager manager = getFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.add(R.id.main_app, basicPad);
+        transaction.commit();
+
+        entry = (TextView) findViewById(R.id.entry);
+        utility = new Utility(this);
+        exprhandler = new ExpressionHandler();
+
+//        TODO enable long click on delete button
 //      Setting delete button to respond to long click
-        Button delbtn = (Button) findViewById(R.id.delbtn);
-        final TextView entry = (TextView) findViewById(R.id.entry);
-        delbtn.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                performClear(entry);
-                return true;
-            }
-        });
+//        Button delbtn = (Button) findViewById(R.id.delbtn);
+//        final TextView entry = (TextView) findViewById(R.id.entry);
+//        delbtn.setOnLongClickListener(new View.OnLongClickListener() {
+//            @Override
+//            public boolean onLongClick(View v) {
+//                performClear();
+//                return true;
+//            }
+//        });
     }
 
     @Override
@@ -82,99 +97,22 @@ public class MainActivity extends Activity {
         Log.d("Viz", "entryText restored : " + entryText);
     }
 
-//    Method to facilitate testing not to be used in actual app
+    // TODO remove these setEntry and getEntry text function before release.
+    //    Method to facilitate testing not to be used in actual app
     public void setEntryText(String text) {
         entryText = text;
     }
-
-    //    Method to determine wheather number is a double or not
-    public boolean isDouble(double num) {
-        long i = (long) num;
-
-        if (Math.abs(num - (double) i) < precision)
-            return false;
-        return true;
+    //    Method to facilitate testing not to be used in actual app
+    public String getEntryText() {
+        return entryText;
     }
 
-    //  Method to determine whether character is operator or not
-    public boolean isOperator(String ch) {
-        if ("+-x".contains(ch))
-            return true;
-        else if (ch.charAt(0) == '\u00f7')
-            return true;
-        return false;
-    }
-
-    //  Method to format expression for calculation
-    public String formatExpr(String expr) {
-        if (expr.isEmpty())
-            return "";
-
-        int len = expr.length();
-        String current, last, next;
-        String res = "";
-
-//        handle trailing operators
-        while (len > 0 && isOperator(expr.substring(len - 1, len)))
-            len--;
-
-//      handle invalid number of paranthesis
-        int leftpara = 0;
-
-        for (int i = 0; i < len; i++) {
-            current = expr.substring(i, i + 1);
-            if (current.equals("x"))
-                res += "*";
-            else if (current.charAt(0) == '\u00f7')
-                res += "/";
-            else if (current.equals("(")) {
-                leftpara++;
-                res += current;
-            } else if (current.equals(")")) {
-                leftpara--;
-                res += current;
-            } else
-                res += current;
-        }
-        while (leftpara > 0) {
-            res += ")";
-            leftpara--;
-        }
-
-//        handles condition like N( to N*( and )N to )*N
-        for (int i = 0; i < res.length(); i++) {
-            current = res.substring(i, i + 1);
-            if (current.equals("(") && i > 0) {
-                last = res.substring(i - 1, i);
-                if (!isOperator(last) && "1234567890.)".contains(last))
-                    res = res.substring(0, i) + "*" + res.substring(i, res.length());
-            } else if (current.equals(")") && i < res.length() - 1) {
-                next = res.substring(i + 1, i + 2);
-                if (!isOperator(next) && "1234567890.".contains(next))
-                    res = res.substring(0, i + 1) + "*" + res.substring(i + 1, res.length());
-            }
-        }
-
-//        handles conditions like . to 0.
-        for(int i=0; i<res.length(); i++)
-        {
-            current = res.substring(i,i+1);
-            if(i==0 && current.equals(".")) {
-                res = "0" + res;
-            }
-            else if(current.equals(".") && !("0123456789".contains(res.substring(i-1,i)))) {
-                res = res.substring(0,i) + "0" + res.substring(i,res.length());
-            }
-        }
-
-        return res;
-    }
 
     //  Method to perform calculation
-    public void performCal(TextView entry) {
+    public void performCal() {
 
         String expr;
-        expr = formatExpr(entryText);
+        expr = exprhandler.formatExpr(entryText);
 //        handle empty expression text
         if(expr.isEmpty())
             return;
@@ -185,30 +123,36 @@ public class MainActivity extends Activity {
             {
                 if(res > 0) {
                     entryText = "";
-                    entry.setText(Character.toString('\u221e'));
+                    utility.setDisplayText(Character.toString('\u221e'));
+//                    entry.setText(Character.toString('\u221e'));
                 }
                 else
                 {
                     entryText = "";
-                    entry.setText("-" + Character.toString('\u221e'));
+                    utility.setDisplayText("-" + Character.toString('\u221e'));
+//                    entry.setText("-" + Character.toString('\u221e'));
                 }
             }
             else if(Double.isNaN(res))
             {
-                entry.setText(Double.toString(res));
+                utility.setDisplayText(Double.toString(res));
+//                entry.setText(Double.toString(res));
                 entryText = "";
             }
-            else if (isDouble(res)) {
+            else if (utility.isDouble(res)) {
                 entryText = Double.toString(res);
-                entry.setText(entryText);
+                utility.setDisplayText(entryText);
+//                entry.setText(entryText);
             }
             else {
                 entryText = Long.toString((long) res);
-                entry.setText(entryText);
+                utility.setDisplayText(entryText);
+//                entry.setText(entryText);
             }
         } catch (EvaluationException ee) {
             entryText = "";
-            entry.setText(entryText);
+            utility.setDisplayText(entryText);
+//            entry.setText(entryText);
             Toast errorToast = new Toast(this);
             errorToast.setDuration(Toast.LENGTH_LONG);
             LayoutInflater lin = getLayoutInflater();
@@ -220,39 +164,26 @@ public class MainActivity extends Activity {
         entry.startAnimation(anim_fadein);
     }
 
-    //  Method to find whether current number contains a decimal point or not
-    public boolean hasDecimal() {
-        boolean dec = false;
-        int len = entryText.length();
-        for (int i = len - 1; i >= 0; i--) {
-            String lastchar = entryText.substring(i, i + 1);
-            if (isOperator(lastchar))
-                break;
-            else if (entryText.substring(i, i + 1).equals(".")) {
-                dec = true;
-                break;
-            }
-        }
-        return dec;
-    }
 
     //  Method to perform short press of delete button
-    public void performDelete(TextView entry) {
+    public void performDelete() {
         int len = entryText.length();
         if (len > 0) {
             entryText = entryText.substring(0, len - 1);
         }
-        entry.setText(entryText);
+        utility.setDisplayText(entryText);
+//        entry.setText(entryText);
     }
 
     //  Method to handle clear function
-    public void performClear(TextView entry) {
+    public void performClear() {
         entryText = "";
-        entry.setText(entryText);
+        utility.setDisplayText(entryText);
+//        entry.setText(entryText);
     }
 
     //  Method to handle click of operator button
-    public void opClick(String op, TextView entry) {
+    public void opClick(String op) {
         boolean hasNum = false;
 
 //        checking whether entryText contains any number or not
@@ -263,7 +194,7 @@ public class MainActivity extends Activity {
             return;
 
         for (int i = len - 1; i >= 0; i--) {
-            if (!isOperator(entryText.substring(i, i + 1))) {
+            if (!utility.isOperator(entryText.substring(i, i + 1))) {
                 hasNum = true;
                 break;
             }
@@ -272,9 +203,9 @@ public class MainActivity extends Activity {
 //        if no number is present
         if (!hasNum) {
             if (op.equals("x") || op.charAt(0) == '\u00f7')
-                return;
+                entryText = "";
             else if (op.equals("+") && entryText.equals(""))
-                return;
+                entryText = "";
             else if (op.equals("+") && entryText.equals("-"))
                 entryText = "";
             else
@@ -286,7 +217,7 @@ public class MainActivity extends Activity {
             if (lastOp.equals("+")) {
                 entryText = entryText.substring(0, len - 1) + op;
             } else if (lastOp.equals("-")) {
-                if (isOperator(entryText.substring(len - 2, len - 1)))
+                if (utility.isOperator(entryText.substring(len - 2, len - 1)))
                     entryText = entryText.substring(0, len - 2) + op;
                 else
                     entryText = entryText.substring(0, len - 1) + op;
@@ -299,40 +230,46 @@ public class MainActivity extends Activity {
                 entryText += op;
         }
 
-        entry.setText(entryText);
+        utility.setDisplayText(entryText);
+//        entry.setText(entryText);
     }
 
     //  Method to handle decimal button Click
-    public void decimalClick(TextView entry) {
-        if (lastBtnHit == R.id.decimalbtn)
-            entryText = "0";
-        if (!hasDecimal()) {
+    public void decimalClick() {
+//        if (lastBtnHit == R.id.decimalbtn)
+//            entryText = "0";
+        if (!utility.hasDecimal(entryText)) {
             entryText += ".";
-            entry.setText(entryText);
+            utility.setDisplayText(entryText);
+//            entry.setText(entryText);
         }
     }
 
     //  Method to handle click of a digit
-    public void digitClick(String dig, TextView entry) {
-        if (lastBtnHit == R.id.equalbtn)
+    public void digitClick(String dig) {
+        if (lastBtnHit == R.id.equalbtn) {
             entryText = "";
-        if (hasDecimal()) {
+        }
+        if (utility.hasDecimal(entryText)) {
             entryText += dig;
         } else {
             int idx = entryText.length() - 1;
             while (idx >= 0) {
                 String lastchar = entryText.substring(idx, idx + 1);
-                if (isOperator(lastchar))
+                if (utility.isOperator(lastchar)) {
                     break;
-                else
+                }
+                else {
                     idx--;
+                }
             }
             if (idx >= 0) {
                 String snumber = entryText.substring(idx + 1, entryText.length());
                 if (snumber.length() == 1 && snumber.equals("0")) {
                     entryText = entryText.substring(0, entryText.length() - 1) + dig;
-                } else
+                } else {
                     entryText += dig;
+                }
             } else {
                 if (entryText.length() == 1 && entryText.equals("0"))
                     entryText = dig;
@@ -340,21 +277,23 @@ public class MainActivity extends Activity {
                     entryText += dig;
             }
         }
-        entry.setText(entryText);
+        utility.setDisplayText(entryText);
+//        entry.setText(entryText);
     }
 
     //  Method to handle click of zero button
-    public void zeroClick(TextView entry) {
+    public void zeroClick() {
         if (lastBtnHit == R.id.equalbtn)
             entryText = "";
-        if (hasDecimal()) {
+        if (utility.hasDecimal(entryText)) {
             entryText += "0";
-            entry.setText(entryText);
+            utility.setDisplayText(entryText);
+//            entry.setText(entryText);
         } else {
             int idx = entryText.length() - 1;
             while (idx >= 0) {
                 String lastchar = entryText.substring(idx, idx + 1);
-                if (isOperator(lastchar))
+                if (utility.isOperator(lastchar))
                     break;
                 else
                     idx--;
@@ -365,25 +304,28 @@ public class MainActivity extends Activity {
                     return;
                 } else {
                     entryText += "0";
-                    entry.setText(entryText);
+                    utility.setDisplayText(entryText);
+//                    entry.setText(entryText);
                 }
             } else {
                 if (entryText.length() == 1 && entryText.equals("0"))
                     return;
                 entryText += "0";
-                entry.setText(entryText);
+                utility.setDisplayText(entryText);
+//                entry.setText(entryText);
             }
         }
     }
 
     //  Method to handle click of left paranthesis
-    public void leftParanClick(TextView entry) {
+    public void leftParanClick() {
         entryText += "(";
-        entry.setText(entryText);
+//        entry.setText(entryText);
+        utility.setDisplayText(entryText);
     }
 
     //  Method to handle click of right paranthesis
-    public void rightParanClick(TextView entry) {
+    public void rightParanClick() {
         int leftparan = 0, len;
         len = entryText.length();
         for (int i = 0; i < len; i++) {
@@ -395,53 +337,54 @@ public class MainActivity extends Activity {
 
         if (leftparan > 0 && !entryText.substring(len - 1, len).equals("(")) {
             entryText += ")";
-            entry.setText(entryText);
+            utility.setDisplayText(entryText);
+//            entry.setText(entryText);
         }
     }
+
+
 
     //  Method to handle clicks of button
     public void btnClick(View view) {
         Button btn = (Button) view;
-        TextView entry = (TextView) findViewById(R.id.entry);
         String btnText = btn.getText().toString();
         int btnId = btn.getId();
-
         switch (btnId) {
             case R.id.clearbtn:
-                performClear(entry);
+                performClear();
                 break;
             case R.id.delbtn:
-                performDelete(entry);
+                performDelete();
                 break;
             case R.id.plusbtn:
-                opClick(btnText, entry);
+                opClick(btnText);
                 break;
             case R.id.minusbtn:
-                opClick(btnText, entry);
+                opClick(btnText);
                 break;
             case R.id.multiplybtn:
-                opClick(btnText, entry);
+                opClick(btnText);
                 break;
             case R.id.dividebtn:
-                opClick(btnText, entry);
+                opClick(btnText);
                 break;
             case R.id.decimalbtn:
-                decimalClick(entry);
+                decimalClick();
                 break;
             case R.id.left_paran:
-                leftParanClick(entry);
+                leftParanClick();
                 break;
             case R.id.right_paran:
-                rightParanClick(entry);
+                rightParanClick();
                 break;
             case R.id.equalbtn:
-                performCal(entry);
+                performCal();
                 break;
             case R.id.zerobtn:
-                zeroClick(entry);
+                zeroClick();
                 break;
             default:
-                digitClick(btnText, entry);
+                digitClick(btnText);
         }
         lastBtnHit = btnId;
     }
