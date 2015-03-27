@@ -1,10 +1,9 @@
 package com.example.i310588.helloworld;
 
-import android.app.Activity;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.app.ActionBar;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,32 +15,52 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import net.sourceforge.jeval.EvaluationException;
-import net.sourceforge.jeval.Evaluator;
+import org.javia.arity.Symbols;
+
+import adapter.TabView;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends FragmentActivity{
 
     private String entryText = "";
     private int lastBtnHit = -1;
+    private double prec = 1000000000.0;
     TextView entry;
     Utility utility;
-    ExpressionHandler exprhandler;
+    private ExpressionHandler exprhandler;
+    private TabView tabViewAdapter;
+    private ActionBar actionBar;
+    private ViewPager viewPager;
+    private String[] modes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        BasicPad basicPad = new BasicPad();
-        FragmentManager manager = getFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-        transaction.add(R.id.main_app, basicPad);
-        transaction.commit();
+//        BasicPad basicPad = new BasicPad();
+//        FragmentManager manager = getFragmentManager();
+//        FragmentTransaction transaction = manager.beginTransaction();
+//        transaction.add(R.id.main_app, basicPad);
+//        transaction.commit();
 
+//        Initialization
         entry = (TextView) findViewById(R.id.entry);
         utility = new Utility(this);
         exprhandler = new ExpressionHandler();
+        tabViewAdapter = new TabView(getSupportFragmentManager());
+        actionBar = getActionBar();
+        viewPager = (ViewPager) findViewById(R.id.pad);
+        modes = getResources().getStringArray(R.array.modes);
+
+        viewPager.setAdapter(tabViewAdapter);
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
+        for(String mode:modes) {
+            actionBar.addTab(actionBar.newTab().setText(mode).setTabListener(new ScrollTabListener(this)));
+        }
+
+        viewPager.setOnPageChangeListener(new ViewPageListener(this));
 
 //        TODO enable long click on delete button
 //      Setting delete button to respond to long click
@@ -83,7 +102,6 @@ public class MainActivity extends Activity {
         super.onSaveInstanceState(outState);
         outState.putString("entryText", entryText);
         outState.putInt("lastBtn", lastBtnHit);
-        Log.d("Viz", "entryText saved : " + entryText);
     }
 
     @Override
@@ -94,7 +112,6 @@ public class MainActivity extends Activity {
         TextView entry = (TextView) findViewById(R.id.entry);
         entry.setText(entryText);
 
-        Log.d("Viz", "entryText restored : " + entryText);
     }
 
     // TODO remove these setEntry and getEntry text function before release.
@@ -116,43 +133,38 @@ public class MainActivity extends Activity {
 //        handle empty expression text
         if(expr.isEmpty())
             return;
-        Evaluator eval = new Evaluator();
+        Symbols symbol = new Symbols();
         try {
-            double res = eval.getNumberResult(expr);
+            double res = symbol.eval(expr);
             if(Double.isInfinite(res))
             {
                 if(res > 0) {
                     entryText = "";
                     utility.setDisplayText(Character.toString('\u221e'));
-//                    entry.setText(Character.toString('\u221e'));
                 }
                 else
                 {
                     entryText = "";
                     utility.setDisplayText("-" + Character.toString('\u221e'));
-//                    entry.setText("-" + Character.toString('\u221e'));
                 }
             }
             else if(Double.isNaN(res))
             {
                 utility.setDisplayText(Double.toString(res));
-//                entry.setText(Double.toString(res));
                 entryText = "";
             }
             else if (utility.isDouble(res)) {
+                res = Math.round(res*prec)/prec;
                 entryText = Double.toString(res);
                 utility.setDisplayText(entryText);
-//                entry.setText(entryText);
             }
             else {
                 entryText = Long.toString((long) res);
                 utility.setDisplayText(entryText);
-//                entry.setText(entryText);
             }
-        } catch (EvaluationException ee) {
+        } catch (Exception ee) {
             entryText = "";
             utility.setDisplayText(entryText);
-//            entry.setText(entryText);
             Toast errorToast = new Toast(this);
             errorToast.setDuration(Toast.LENGTH_LONG);
             LayoutInflater lin = getLayoutInflater();
@@ -172,14 +184,12 @@ public class MainActivity extends Activity {
             entryText = entryText.substring(0, len - 1);
         }
         utility.setDisplayText(entryText);
-//        entry.setText(entryText);
     }
 
     //  Method to handle clear function
     public void performClear() {
         entryText = "";
         utility.setDisplayText(entryText);
-//        entry.setText(entryText);
     }
 
     //  Method to handle click of operator button
@@ -231,17 +241,13 @@ public class MainActivity extends Activity {
         }
 
         utility.setDisplayText(entryText);
-//        entry.setText(entryText);
     }
 
     //  Method to handle decimal button Click
     public void decimalClick() {
-//        if (lastBtnHit == R.id.decimalbtn)
-//            entryText = "0";
         if (!utility.hasDecimal(entryText)) {
             entryText += ".";
             utility.setDisplayText(entryText);
-//            entry.setText(entryText);
         }
     }
 
@@ -278,7 +284,6 @@ public class MainActivity extends Activity {
             }
         }
         utility.setDisplayText(entryText);
-//        entry.setText(entryText);
     }
 
     //  Method to handle click of zero button
@@ -288,7 +293,6 @@ public class MainActivity extends Activity {
         if (utility.hasDecimal(entryText)) {
             entryText += "0";
             utility.setDisplayText(entryText);
-//            entry.setText(entryText);
         } else {
             int idx = entryText.length() - 1;
             while (idx >= 0) {
@@ -305,14 +309,12 @@ public class MainActivity extends Activity {
                 } else {
                     entryText += "0";
                     utility.setDisplayText(entryText);
-//                    entry.setText(entryText);
                 }
             } else {
                 if (entryText.length() == 1 && entryText.equals("0"))
                     return;
                 entryText += "0";
                 utility.setDisplayText(entryText);
-//                entry.setText(entryText);
             }
         }
     }
@@ -320,7 +322,6 @@ public class MainActivity extends Activity {
     //  Method to handle click of left paranthesis
     public void leftParanClick() {
         entryText += "(";
-//        entry.setText(entryText);
         utility.setDisplayText(entryText);
     }
 
@@ -338,11 +339,70 @@ public class MainActivity extends Activity {
         if (leftparan > 0 && !entryText.substring(len - 1, len).equals("(")) {
             entryText += ")";
             utility.setDisplayText(entryText);
-//            entry.setText(entryText);
         }
     }
 
+    public void trignoClick(String function){
+        if(lastBtnHit == R.id.equalbtn)
+            entryText = "";
+        entryText += function + "(";
+        utility.setDisplayText(entryText);
+    }
 
+    private void expoClick() {
+        if(entryText.length() > 0)
+        {
+            String lastchar = entryText.substring(entryText.length()-1);
+            if(utility.isDigit(lastchar)) {
+                entryText += "e";
+                utility.setDisplayText(entryText);
+            }
+        }
+    }
+
+    public void logClick(String log) {
+        if(lastBtnHit == R.id.equalbtn)
+            entryText = "";
+        entryText += log + "(";
+        utility.setDisplayText(entryText);
+    }
+
+    public void PIclick() {
+        entryText += "π";
+        utility.setDisplayText(entryText);
+    }
+
+    public void percentClick() {
+        if(entryText.length() == 0)
+            return;
+        else if(utility.isOperator(entryText.substring(entryText.length()-1)))
+            return;
+        entryText += "%";
+        utility.setDisplayText(entryText);
+    }
+
+    public void factorialClick() {
+        if(entryText.length() == 0)
+            return;
+        else if(utility.isOperator(entryText.substring(entryText.length()-1)))
+            return;
+        entryText += "!";
+        utility.setDisplayText(entryText);
+    }
+
+    public void sqrtClick() {
+        entryText += "√";
+        utility.setDisplayText(entryText);
+    }
+
+    public void powerClick() {
+        if(entryText.length() == 0)
+            return;
+        else if(utility.isOperator(entryText.substring(entryText.length()-1)))
+            return;
+        entryText += "^";
+        utility.setDisplayText(entryText);
+    }
 
     //  Method to handle clicks of button
     public void btnClick(View view) {
@@ -382,6 +442,39 @@ public class MainActivity extends Activity {
                 break;
             case R.id.zerobtn:
                 zeroClick();
+                break;
+            case R.id.sin:
+                trignoClick("sin");
+                break;
+            case R.id.cos:
+                trignoClick("cos");
+                break;
+            case R.id.tan:
+                trignoClick("tan");
+                break;
+            case R.id.exponential:
+                expoClick();
+                break;
+            case R.id.logn:
+                logClick("ln");
+                break;
+            case R.id.log:
+                logClick("log");
+                break;
+            case R.id.pi:
+                PIclick();
+                break;
+            case R.id.percentage:
+                percentClick();
+                break;
+            case R.id.factorial:
+                factorialClick();
+                break;
+            case R.id.sqrt:
+                sqrtClick();
+                break;
+            case R.id.power:
+                powerClick();
                 break;
             default:
                 digitClick(btnText);

@@ -41,6 +41,12 @@ public class Utility {
         return false;
     }
 
+    public boolean isDigit(String ch) {
+        if("0123456789".contains(ch))
+            return true;
+        return false;
+    }
+
     //  Method to find whether current number contains a decimal point or not
     public boolean hasDecimal(String entryText) {
         boolean dec = false;

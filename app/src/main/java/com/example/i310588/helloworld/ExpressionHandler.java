@@ -1,6 +1,5 @@
 package com.example.i310588.helloworld;
 
-import net.objecthunter.exp4j.Expression;
 
 /**
  * Created by I310588 on 3/22/2015.
@@ -14,6 +13,37 @@ public class ExpressionHandler {
         utility = new Utility();
     }
 
+//  handle sin formatting
+    public String handleTrig(String expr, String func) {
+        int lastindex = 0, previndex;
+        String lastchar;
+        while(lastindex != -1) {
+            lastindex = expr.indexOf(func, lastindex);
+            if(lastindex != -1) {
+                previndex = lastindex-1;
+                if(previndex >= 0) {
+                    lastchar = expr.substring(previndex, lastindex);
+                    if (!utility.isOperator(lastchar) && !"(".contains(lastchar)) {
+                        expr = expr.substring(0, lastindex) + "*" + expr.substring(lastindex);
+                    }
+                }
+                lastindex += 3;
+            }
+        }
+        return expr;
+    }
+
+    public int handleTrailing(String expr) {
+        int len = expr.length();
+
+//        handle trailing operators and open brackets
+        while (len > 0 && (utility.isOperator(expr.substring(len - 1, len)) || "(".contains(expr.substring(len-1, len))))
+            len--;
+
+        return len;
+    }
+
+
     //  Method to format expression for calculation
     public String formatExpr(String expr) {
         if (expr.isEmpty())
@@ -23,9 +53,8 @@ public class ExpressionHandler {
         String current, last, next;
         String res = "";
 
-//        handle trailing operators
-        while (len > 0 && utility.isOperator(expr.substring(len - 1, len)))
-            len--;
+
+        len = handleTrailing(expr);
 
 //      handle invalid number of paranthesis
         int leftpara = 0;
@@ -75,6 +104,9 @@ public class ExpressionHandler {
                 res = res.substring(0,i) + "0" + res.substring(i,res.length());
             }
         }
+        res = handleTrig(res, "sin");
+        res = handleTrig(res, "cos");
+        res = handleTrig(res, "tan");
 
         return res;
     }

@@ -21,7 +21,6 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile files('libs/exp4j.jar')
-    compile files('libs/jeval.jar')
+    compile files('libs/arity-2.1.7.jar')
     compile 'com.android.support:appcompat-v7:21.0.3'
 }
