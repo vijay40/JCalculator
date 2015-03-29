@@ -37,7 +37,7 @@ public class ExpressionHandler {
         int len = expr.length();
 
 //        handle trailing operators and open brackets
-        while (len > 0 && (utility.isOperator(expr.substring(len - 1, len)) || "(".contains(expr.substring(len-1, len))))
+        while (len > 0 && (utility.isOperator(expr.substring(len - 1, len)) || "(e^√".contains(expr.substring(len-1, len))))
             len--;
 
         return len;

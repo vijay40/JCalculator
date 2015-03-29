@@ -14,7 +14,7 @@ public class Utility {
     Activity activity;
 
     // used for utility functions called by classes who didn't extend activity
-    public Utility(){
+    public Utility() {
         this.activity = null;
     }
 
@@ -32,17 +32,53 @@ public class Utility {
         return true;
     }
 
+    //    determine how many characters should be deleted with the help of delete button
+    public int numCharDelete(String f) {
+        if ("sin(".equals(f) || "cos(".equals(f) || "tan(".equals(f) || "log(".equals(f))
+            return 4;
+        else {
+            f = f.substring(f.length() - 3);
+            if ("ln(".equals(f))
+                return 3;
+            else
+                return 1;
+        }
+    }
+
+    //    determine whether last operations is exponential or not
+    public boolean isLastExpo(String expr) {
+        if (expr.length() > 0 && "e".contains(expr.substring(expr.length() - 1)))
+            return true;
+        return false;
+    }
+
     //  Method to determine whether character is operator or not
     public boolean isOperator(String ch) {
-        if ("+-x".contains(ch))
+        if ("+-x÷".contains(ch))
             return true;
-        else if (ch.charAt(0) == '\u00f7')
+        return false;
+    }
+
+    //    determine whether the last character is a number or pi or '%' or '!'
+    //    this helps in determining that operators which require two operands are applicable or not.
+    public boolean isLastOperand(String expr) {
+        if (expr.length() > 0) {
+            String lastchar = expr.substring(expr.length() - 1);
+            if ("0123456789.%!π".contains(lastchar))
+                return true;
+        }
+        return false;
+    }
+
+    //    determine whether last char is operator or not
+    public boolean isLastOperator(String expr) {
+        if (expr.length() > 0 && isOperator(expr.substring(expr.length() - 1)))
             return true;
         return false;
     }
 
     public boolean isDigit(String ch) {
-        if("0123456789".contains(ch))
+        if ("0123456789".contains(ch))
             return true;
         return false;
     }

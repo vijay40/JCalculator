@@ -20,7 +20,7 @@ import org.javia.arity.Symbols;
 import adapter.TabView;
 
 
-public class MainActivity extends FragmentActivity{
+public class MainActivity extends FragmentActivity {
 
     private String entryText = "";
     private int lastBtnHit = -1;
@@ -56,7 +56,7 @@ public class MainActivity extends FragmentActivity{
         viewPager.setAdapter(tabViewAdapter);
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
-        for(String mode:modes) {
+        for (String mode : modes) {
             actionBar.addTab(actionBar.newTab().setText(mode).setTabListener(new ScrollTabListener(this)));
         }
 
@@ -119,6 +119,7 @@ public class MainActivity extends FragmentActivity{
     public void setEntryText(String text) {
         entryText = text;
     }
+
     //    Method to facilitate testing not to be used in actual app
     public String getEntryText() {
         return entryText;
@@ -131,34 +132,27 @@ public class MainActivity extends FragmentActivity{
         String expr;
         expr = exprhandler.formatExpr(entryText);
 //        handle empty expression text
-        if(expr.isEmpty())
+        if (expr.isEmpty())
             return;
         Symbols symbol = new Symbols();
         try {
             double res = symbol.eval(expr);
-            if(Double.isInfinite(res))
-            {
-                if(res > 0) {
+            if (Double.isInfinite(res)) {
+                if (res > 0) {
                     entryText = "";
                     utility.setDisplayText(Character.toString('\u221e'));
-                }
-                else
-                {
+                } else {
                     entryText = "";
                     utility.setDisplayText("-" + Character.toString('\u221e'));
                 }
-            }
-            else if(Double.isNaN(res))
-            {
+            } else if (Double.isNaN(res)) {
                 utility.setDisplayText(Double.toString(res));
                 entryText = "";
-            }
-            else if (utility.isDouble(res)) {
-                res = Math.round(res*prec)/prec;
+            } else if (utility.isDouble(res)) {
+                res = Math.round(res * prec) / prec;
                 entryText = Double.toString(res);
                 utility.setDisplayText(entryText);
-            }
-            else {
+            } else {
                 entryText = Long.toString((long) res);
                 utility.setDisplayText(entryText);
             }
@@ -168,7 +162,7 @@ public class MainActivity extends FragmentActivity{
             Toast errorToast = new Toast(this);
             errorToast.setDuration(Toast.LENGTH_LONG);
             LayoutInflater lin = getLayoutInflater();
-            View appear = lin.inflate(R.layout.error_toast, (ViewGroup)findViewById(R.id.error_toastroot));
+            View appear = lin.inflate(R.layout.error_toast, (ViewGroup) findViewById(R.id.error_toastroot));
             errorToast.setView(appear);
             errorToast.show();
         }
@@ -181,7 +175,14 @@ public class MainActivity extends FragmentActivity{
     public void performDelete() {
         int len = entryText.length();
         if (len > 0) {
-            entryText = entryText.substring(0, len - 1);
+            if (len <= 2)
+                entryText = entryText.substring(0, len - 1);
+            else if (len == 3) {
+                entryText = entryText.substring(0, len - utility.numCharDelete(entryText));
+            } else {
+                int delchar = utility.numCharDelete(entryText.substring(len - 4));
+                entryText = entryText.substring(0, len - delchar);
+            }
         }
         utility.setDisplayText(entryText);
     }
@@ -194,52 +195,59 @@ public class MainActivity extends FragmentActivity{
 
     //  Method to handle click of operator button
     public void opClick(String op) {
-        boolean hasNum = false;
-
-//        checking whether entryText contains any number or not
-        int len = entryText.length();
-
-//        if operator is same as last char then return
-        if (len > 0 && entryText.substring(len - 1, len).equals(op))
-            return;
-
-        for (int i = len - 1; i >= 0; i--) {
-            if (!utility.isOperator(entryText.substring(i, i + 1))) {
-                hasNum = true;
-                break;
-            }
-        }
-
-//        if no number is present
-        if (!hasNum) {
-            if (op.equals("x") || op.charAt(0) == '\u00f7')
-                entryText = "";
-            else if (op.equals("+") && entryText.equals(""))
-                entryText = "";
-            else if (op.equals("+") && entryText.equals("-"))
-                entryText = "";
-            else
-                entryText = "-";
-        }
-//        if number is present
-        else {
-            String lastOp = entryText.substring(len - 1, len);
-            if (lastOp.equals("+")) {
-                entryText = entryText.substring(0, len - 1) + op;
-            } else if (lastOp.equals("-")) {
-                if (utility.isOperator(entryText.substring(len - 2, len - 1)))
-                    entryText = entryText.substring(0, len - 2) + op;
+        if (op.equals("-")) {
+            if(utility.isLastOperator(entryText))
+            {
+                if(op.equals(entryText.substring(entryText.length()-1)))
+                        return;
+                else if("+".equals(entryText.substring(entryText.length()-1)))
+                    entryText = entryText.substring(0,entryText.length()-1) + op;
                 else
-                    entryText = entryText.substring(0, len - 1) + op;
-            } else if (lastOp.equals("x") || lastOp.charAt(0) == '\u00f7') {
-                if (op.equals("-"))
+                    entryText += op;
+            }
+            else
+            {
+                entryText += op;
+            }
+        } else if (op.equals("+")) {
+            if(utility.isLastOperator(entryText))
+            {
+                if(op.equals(entryText.substring(entryText.length()-1)))
+                    return;
+                else if("-".equals(entryText.substring(entryText.length()-1)))
+                {
+                   entryText = entryText.substring(0,entryText.length()-1);
+                }
+                else
+                    entryText = entryText.substring(0,entryText.length()-1) + op;
+            }
+            else if(utility.isLastOperand(entryText))
+            {
+                entryText += op;
+            }
+
+        } else    // it should be 'x' or '÷'
+        {
+            if(utility.isLastOperator(entryText))
+            {
+                if(op.equals(entryText.substring(entryText.length()-1)))
+                    return;
+                else
+                {
+                    if(entryText.length() > 1 && utility.isLastOperand(entryText.substring(entryText.length()-2)))
+                        entryText = entryText.substring(0,entryText.length()-1) + op;
+                    else
+                        return;
+                }
+            }
+            else
+            {
+                if(utility.isLastOperand(entryText))
                     entryText += op;
                 else
-                    entryText = entryText.substring(0, len - 1) + op;
-            } else        // no operator after number
-                entryText += op;
+                    return;
+            }
         }
-
         utility.setDisplayText(entryText);
     }
 
@@ -264,8 +272,7 @@ public class MainActivity extends FragmentActivity{
                 String lastchar = entryText.substring(idx, idx + 1);
                 if (utility.isOperator(lastchar)) {
                     break;
-                }
-                else {
+                } else {
                     idx--;
                 }
             }
@@ -342,49 +349,52 @@ public class MainActivity extends FragmentActivity{
         }
     }
 
-    public void trignoClick(String function){
-        if(lastBtnHit == R.id.equalbtn)
+    public void trignoClick(String function) {
+        if (lastBtnHit == R.id.equalbtn)
             entryText = "";
+        if (utility.isLastExpo(entryText))
+            return;
         entryText += function + "(";
         utility.setDisplayText(entryText);
     }
 
     private void expoClick() {
-        if(entryText.length() > 0)
+        if(utility.isLastOperand(entryText))
         {
-            String lastchar = entryText.substring(entryText.length()-1);
-            if(utility.isDigit(lastchar)) {
-                entryText += "e";
-                utility.setDisplayText(entryText);
-            }
+            entryText += "e";
+            utility.setDisplayText(entryText);
         }
     }
 
     public void logClick(String log) {
-        if(lastBtnHit == R.id.equalbtn)
+        if (lastBtnHit == R.id.equalbtn)
             entryText = "";
+        if (utility.isLastExpo(entryText))
+            return;
         entryText += log + "(";
         utility.setDisplayText(entryText);
     }
 
     public void PIclick() {
+        if (utility.isLastExpo(entryText))
+            return;
         entryText += "π";
         utility.setDisplayText(entryText);
     }
 
     public void percentClick() {
-        if(entryText.length() == 0)
+        if (entryText.length() == 0 || utility.isLastExpo(entryText))
             return;
-        else if(utility.isOperator(entryText.substring(entryText.length()-1)))
+        else if (utility.isOperator(entryText.substring(entryText.length() - 1)))
             return;
         entryText += "%";
         utility.setDisplayText(entryText);
     }
 
     public void factorialClick() {
-        if(entryText.length() == 0)
+        if (entryText.length() == 0 || utility.isLastExpo(entryText))
             return;
-        else if(utility.isOperator(entryText.substring(entryText.length()-1)))
+        else if (utility.isOperator(entryText.substring(entryText.length() - 1)))
             return;
         entryText += "!";
         utility.setDisplayText(entryText);
@@ -396,12 +406,11 @@ public class MainActivity extends FragmentActivity{
     }
 
     public void powerClick() {
-        if(entryText.length() == 0)
-            return;
-        else if(utility.isOperator(entryText.substring(entryText.length()-1)))
-            return;
-        entryText += "^";
-        utility.setDisplayText(entryText);
+        if(utility.isLastOperand(entryText))
+        {
+            entryText += "^";
+            utility.setDisplayText(entryText);
+        }
     }
 
     //  Method to handle clicks of button
