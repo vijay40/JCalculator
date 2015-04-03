@@ -125,51 +125,71 @@ public class MainActivity extends FragmentActivity {
         return entryText;
     }
 
-
-    //  Method to perform calculation
-    public void performCal() {
-
-        String expr;
-        expr = exprhandler.formatExpr(entryText);
-//        handle empty expression text
-        if (expr.isEmpty())
-            return;
-        Symbols symbol = new Symbols();
-        try {
-            double res = symbol.eval(expr);
-            if (Double.isInfinite(res)) {
-                if (res > 0) {
-                    entryText = "";
-                    utility.setDisplayText(Character.toString('\u221e'));
-                } else {
-                    entryText = "";
-                    utility.setDisplayText("-" + Character.toString('\u221e'));
-                }
-            } else if (Double.isNaN(res)) {
-                utility.setDisplayText(Double.toString(res));
+    public void performCal(String expression) {
+        double res = evaluate(expression);
+        if (Double.isInfinite(res)) {
+            if (res > 0) {
                 entryText = "";
-            } else if (utility.isDouble(res)) {
-                res = Math.round(res * prec) / prec;
-                entryText = Double.toString(res);
-                utility.setDisplayText(entryText);
+                utility.setDisplayText(Character.toString('\u221e'));
             } else {
-                entryText = Long.toString((long) res);
-                utility.setDisplayText(entryText);
+                entryText = "";
+                utility.setDisplayText("-" + Character.toString('\u221e'));
             }
-        } catch (Exception ee) {
+        } else if (Double.isNaN(res)) {
+            utility.setDisplayText(Double.toString(res));
             entryText = "";
+        } else if (utility.isDouble(res)) {
+            res = Math.round(res * prec) / prec;
+            entryText = Double.toString(res);
             utility.setDisplayText(entryText);
-            Toast errorToast = new Toast(this);
-            errorToast.setDuration(Toast.LENGTH_LONG);
-            LayoutInflater lin = getLayoutInflater();
-            View appear = lin.inflate(R.layout.error_toast, (ViewGroup) findViewById(R.id.error_toastroot));
-            errorToast.setView(appear);
-            errorToast.show();
+        } else {
+            entryText = Long.toString((long) res);
+            utility.setDisplayText(entryText);
         }
         Animation anim_fadein = AnimationUtils.loadAnimation(this, R.anim.fade_in);
         entry.startAnimation(anim_fadein);
     }
 
+    //  Method to perform calculation
+    public double evaluate(String expression) {
+
+        String expr;
+        expr = exprhandler.formatExpr(expression);
+//        handle empty expression text
+        if (expr.isEmpty())
+            return 0;
+        Symbols symbol = new Symbols();
+        try {
+            double res = symbol.eval(expr);
+            return res;
+        } catch (Exception ee) {
+            entryText = "";
+            utility.setDisplayText(entryText);
+            Toast errorToast = new Toast(this);
+            errorToast.setDuration(Toast.LENGTH_SHORT);
+            LayoutInflater lin = getLayoutInflater();
+            View appear = lin.inflate(R.layout.error_toast, (ViewGroup) findViewById(R.id.error_toastroot));
+            errorToast.setView(appear);
+            errorToast.show();
+            return 0;
+        }
+    }
+
+    public void hexDisplayResult(String result)
+    {
+        entryText = result;
+        utility.setDisplayText(entryText);
+        Animation anim_fadein = AnimationUtils.loadAnimation(this, R.anim.fade_in);
+        entry.startAnimation(anim_fadein);
+    }
+
+    public void hexPerformCalc(String expression) {
+        expression = utility.convertToRadix(expression, 16, 10);
+        double res = evaluate(expression);
+        expression = utility.convertToRadix(Double.toString(res), 10, 16);
+
+        hexDisplayResult(expression);
+    }
 
     //  Method to perform short press of delete button
     public void performDelete() {
@@ -413,6 +433,13 @@ public class MainActivity extends FragmentActivity {
         }
     }
 
+    public void hexClick(String btn){
+        if(lastBtnHit == R.id.equalbtn)
+            entryText = "";
+        entryText += btn;
+        utility.setDisplayText(entryText);
+    }
+
     //  Method to handle clicks of button
     public void btnClick(View view) {
         Button btn = (Button) view;
@@ -447,7 +474,7 @@ public class MainActivity extends FragmentActivity {
                 rightParanClick();
                 break;
             case R.id.equalbtn:
-                performCal();
+                performCal(entryText);
                 break;
             case R.id.zerobtn:
                 zeroClick();
@@ -485,10 +512,31 @@ public class MainActivity extends FragmentActivity {
             case R.id.power:
                 powerClick();
                 break;
+            case R.id.hexA:
+                hexClick("A");
+                break;
+            case R.id.hexB:
+                hexClick("B");
+                break;
+            case R.id.hexC:
+                hexClick("C");
+                break;
+            case R.id.hexD:
+                hexClick("D");
+                break;
+            case R.id.hexE:
+                hexClick("E");
+                break;
+            case R.id.hexF:
+                hexClick("F");
+                break;
+            case R.id.hexequalbtn:
+                hexPerformCalc(entryText);
+                btnId = R.id.equalbtn;
+                break;
             default:
                 digitClick(btnText);
         }
         lastBtnHit = btnId;
     }
-
 }

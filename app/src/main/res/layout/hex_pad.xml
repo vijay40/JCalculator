@@ -40,26 +40,32 @@
         <Button
             android:id="@+id/hexA"
             android:text="@string/hexA"
+            android:onClick="btnClick"
             style="@style/Theme.Calculator.ButtonStyle" />
         <Button
             android:id="@+id/hexB"
             android:text="@string/hexB"
+            android:onClick="btnClick"
             style="@style/Theme.Calculator.ButtonStyle" />
         <Button
             android:id="@+id/hexC"
             android:text="@string/hexC"
+            android:onClick="btnClick"
             style="@style/Theme.Calculator.ButtonStyle" />
         <Button
             android:id="@+id/hexD"
             android:text="@string/hexD"
+            android:onClick="btnClick"
             style="@style/Theme.Calculator.ButtonStyle" />
         <Button
             android:id="@+id/hexE"
             android:text="@string/hexE"
+            android:onClick="btnClick"
             style="@style/Theme.Calculator.ButtonStyle" />
         <Button
             android:id="@+id/hexF"
             android:text="@string/hexF"
+            android:onClick="btnClick"
             style="@style/Theme.Calculator.ButtonStyle" />
     </LinearLayout>
 
@@ -176,7 +182,7 @@
             android:text="@string/zero" />
         <!-- Equal Button -->
         <Button
-            android:id="@+id/equalbtn"
+            android:id="@+id/hexequalbtn"
             style="@style/Theme.Calculator.ButtonStyle"
             android:onClick="btnClick"
             android:text="@string/equal" />
