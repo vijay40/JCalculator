@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.i310588.helloworld" >
+    package="com.example.i310588.helloworld">
 
     <application
         android:allowBackup="true"
@@ -15,6 +15,13 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".SettingsActivity"
+            android:label="Settings"
+            android:theme="@style/Theme.AppCompat.CompactMenu">
+
         </activity>
     </application>
 

@@ -50,4 +50,20 @@
         <item>Hex</item>
     </string-array>
 
+    <!--TODO replace names of themes with some sensible names-->
+    <string-array name="themes">
+        <item>Default</item>
+        <item>Theme1</item>
+    </string-array>
+
+    <string-array name="theme_values">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string name="about">About</string>
+    <string name="copyright">Copyright info</string>
+    <string name="actions">Actions</string>
+    <string name="return_basic">Return to basic</string>
+    <string name="return_basic_summary">Automatically return from Advance mode</string>
 </resources>

@@ -1,6 +1,8 @@
 package com.example.i310588.helloworld;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.HorizontalScrollView;
 import android.widget.TextView;
@@ -39,6 +41,11 @@ public class Utility {
         return true;
     }
 
+    public boolean returnToBasic() {
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(activity);
+        return pref.getBoolean("return_basic", false);
+    }
+
     //    determine how many characters should be deleted with the help of delete button
     public int numCharDelete(String f) {
         if ("sin(".equals(f) || "cos(".equals(f) || "tan(".equals(f) || "log(".equals(f))
@@ -71,7 +78,7 @@ public class Utility {
     public boolean isLastOperand(String expr) {
         if (expr.length() > 0) {
             String lastchar = expr.substring(expr.length() - 1);
-            if ("0123456789.%!πABCDEF".contains(lastchar))
+            if ("0123456789.%!πABCDEF)".contains(lastchar))
                 return true;
         }
         return false;

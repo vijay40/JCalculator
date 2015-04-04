@@ -1,9 +1,12 @@
 package com.example.i310588.helloworld;
 
 import android.app.ActionBar;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -91,6 +94,8 @@ public class MainActivity extends FragmentActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
             return true;
         }
 
@@ -440,6 +445,10 @@ public class MainActivity extends FragmentActivity {
         utility.setDisplayText(entryText);
     }
 
+    public boolean onAdvancePanel(){
+        return this.getActionBar().getSelectedNavigationIndex() == 1;
+    }
+
     //  Method to handle clicks of button
     public void btnClick(View view) {
         Button btn = (Button) view;
@@ -538,5 +547,10 @@ public class MainActivity extends FragmentActivity {
                 digitClick(btnText);
         }
         lastBtnHit = btnId;
+
+        if(onAdvancePanel() && utility.returnToBasic())
+        {
+            new ScrollTabListener(this).changeToBasic();
+        }
     }
 }

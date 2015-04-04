@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory
+        android:title="@string/actions">
+
+        <CheckBoxPreference
+            android:key="return_basic"
+            android:title="@string/return_basic"
+            android:summary="@string/return_basic_summary"
+            android:defaultValue="false"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Theme">
+
+        <ListPreference
+            android:key="theme"
+            android:title="Current Theme"
+            android:entries="@array/themes"
+            android:entryValues="@array/theme_values"
+            android:defaultValue="1"/>
+    </PreferenceCategory>
+
+
+
+    <PreferenceCategory
+        android:title="@string/about">
+        <Preference android:key="about"
+            android:title="@string/app_name"
+            android:summary="@string/copyright"/>
+    </PreferenceCategory>
+
+</PreferenceScreen>
