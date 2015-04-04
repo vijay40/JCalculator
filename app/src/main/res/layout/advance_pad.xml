@@ -32,12 +32,14 @@
             android:text="@string/tan" />
 
         <!-- Delete Button -->
-        <Button
+        <ImageButton
             android:id="@+id/delbtn"
-            style="@style/Theme.Calculator.ButtonStyle"
-            android:longClickable="true"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:onClick="btnClick"
-            android:text="@string/delete" />
+            android:src="@drawable/ic_delete"
+            android:background="@color/white"/>
 
     </LinearLayout>
 
@@ -64,11 +66,14 @@
             android:onClick="btnClick"
             android:text="@string/pi" />
         <!-- clear Button -->
-        <Button
+        <ImageButton
             android:id="@+id/clearbtn"
-            style="@style/Theme.Calculator.ButtonStyle"
             android:onClick="btnClick"
-            android:text="@string/clear" />
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_clear"
+            android:background="@color/white"/>
 
     </LinearLayout>
 
