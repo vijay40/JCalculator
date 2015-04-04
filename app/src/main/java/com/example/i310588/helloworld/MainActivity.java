@@ -259,7 +259,7 @@ public class MainActivity extends FragmentActivity {
                     return;
                 else
                 {
-                    if(entryText.length() > 1 && utility.isLastOperand(entryText.substring(entryText.length()-2)))
+                    if(entryText.length() > 1 && utility.isLastOperand(entryText.substring(0,entryText.length()-1)))
                         entryText = entryText.substring(0,entryText.length()-1) + op;
                     else
                         return;
@@ -548,6 +548,7 @@ public class MainActivity extends FragmentActivity {
         }
         lastBtnHit = btnId;
 
+        utility.vibrate();
         if(onAdvancePanel() && utility.returnToBasic())
         {
             new ScrollTabListener(this).changeToBasic();

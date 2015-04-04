@@ -1,7 +1,9 @@
 package com.example.i310588.helloworld;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.HorizontalScrollView;
@@ -44,6 +46,15 @@ public class Utility {
     public boolean returnToBasic() {
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(activity);
         return pref.getBoolean("return_basic", false);
+    }
+
+    public void vibrate() {
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(activity);
+        boolean vib = pref.getBoolean("vibrate", false);
+        if(vib) {
+            Vibrator v = (Vibrator) activity.getSystemService(Context.VIBRATOR_SERVICE);
+            v.vibrate(100);
+        }
     }
 
     //    determine how many characters should be deleted with the help of delete button

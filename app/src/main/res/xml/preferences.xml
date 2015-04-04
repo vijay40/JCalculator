@@ -10,6 +10,11 @@
             android:summary="@string/return_basic_summary"
             android:defaultValue="false"/>
 
+        <CheckBoxPreference
+            android:key="vibrate"
+            android:title="@string/vibrate"
+            android:defaultValue="false" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
