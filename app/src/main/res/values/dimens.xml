@@ -6,4 +6,5 @@
     <dimen name="error_size">25sp</dimen>
     <dimen name="entryText_padding">8dp</dimen>
     <dimen name="display_height">200dp</dimen>
+    <dimen name="btn_margin">1dp</dimen>
 </resources>

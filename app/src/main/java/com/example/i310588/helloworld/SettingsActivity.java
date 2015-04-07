@@ -22,14 +22,8 @@ public class SettingsActivity extends Activity {
         getFragmentManager().beginTransaction()
                 .replace(android.R.id.content, new SettingsFragment()).commit();
 
-        pref = PreferenceManager.getDefaultSharedPreferences(this);
-        registerPreferenceChange();
     }
 
-    private void registerPreferenceChange() {
-        listener = new PreferenceListener();
-        pref.registerOnSharedPreferenceChangeListener(listener);
-    }
 
     public static class SettingsFragment extends PreferenceFragment {
 

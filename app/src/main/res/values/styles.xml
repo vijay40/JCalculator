@@ -10,17 +10,34 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_weight">1</item>
-        <item name="android:textSize">30sp</item>
-        <item name="android:fontFamily">sans-serif-thin</item>
+        <item name="android:textSize">35sp</item>
+        <item name="android:fontFamily">sans-serif</item>
         <item name="android:layout_marginLeft">0dp</item>
-        <item name="android:textColor">@color/text_color</item>
+        <item name="android:textColor">@drawable/btn_color</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:gravity">center</item>
-        <item name="android:background">@drawable/btn_style</item>
+        <item name="android:background">@color/grey_theme_normal</item>
+        <item name="android:layout_margin">@dimen/btn_margin</item>
+    </style>
+
+    <!--Delete and Clear button Style-->
+    <style name="Theme.Calculator.ButtonStyle.ImageButton" parent="Theme.Calculator.ButtonStyle">
+        <item name="android:background">@color/grey_theme_hex</item>
+    </style>
+
+    <style name="Theme.Calculator.ButtonStyle.Operator" parent="Theme.Calculator.ButtonStyle">
+        <item name="android:background">@color/grey_theme_hex</item>
+    </style>
+
+    <!-- Hex button style -->
+    <style name="Theme.Calculator.ButtonStyle.Hex" parent="Theme.Calculator.ButtonStyle">
+        <item name="android:background">@color/grey_theme_hex</item>
     </style>
 
     <!-- Empty Space Style -->
     <style name="Theme.Calculator.Empty" parent="Theme.Calculator.ButtonStyle">
-        <item name="android:layout_weight">3</item>
+        <item name="android:layout_weight">4</item>
+        <item name="android:background">@color/grey_theme_hex</item>
     </style>
 
     <!-- Display Style -->
@@ -30,9 +47,9 @@
         <item name="android:layout_weight">1</item>
         <item name="android:gravity">center_vertical|right</item>
         <item name="android:layout_gravity">right</item>
-        <item name="android:fontFamily">sans-serif-thin</item>
+        <item name="android:fontFamily">sans-serif</item>
         <item name="android:textSize">@dimen/font_size</item>
-        <item name="android:textColor">@color/text_color</item>
+        <item name="android:textColor">@color/dark_theme_text_color</item>
         <item name="android:maxLines">1</item>
         <item name="android:scrollbars">none</item>
         <item name="android:scrollHorizontally">true</item>

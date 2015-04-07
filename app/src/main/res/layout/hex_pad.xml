@@ -1,7 +1,7 @@
 <!-- Layout for Buttons -->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@color/white"
+    android:background="@color/default_theme"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -16,25 +16,21 @@
             style="@style/Theme.Calculator.Empty"
          />
 
-        <!-- Delete Button -->
+        android:layout_margin="@dimen/btn_margin"
         <ImageButton
             android:id="@+id/delbtn"
-            android:layout_height="match_parent"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            style="@style/Theme.Calculator.ButtonStyle.ImageButton"
             android:onClick="btnClick"
-            android:src="@drawable/ic_delete"
-            android:background="@color/white"/>
+            android:src="@drawable/delete_white"/>
+        <!-- Delete Button -->
 
         <!-- Clear Button -->
         <ImageButton
             android:id="@+id/clearbtn"
             android:onClick="btnClick"
-            android:layout_height="match_parent"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:src="@drawable/ic_clear"
-            android:background="@color/white"/>
+            style="@style/Theme.Calculator.ButtonStyle.ImageButton"
+            android:src="@drawable/clear_white"
+            android:layout_margin="@dimen/btn_margin"/>
 
     </LinearLayout>
 
@@ -46,32 +42,32 @@
             android:id="@+id/hexA"
             android:text="@string/hexA"
             android:onClick="btnClick"
-            style="@style/Theme.Calculator.ButtonStyle" />
+            style="@style/Theme.Calculator.ButtonStyle.Hex" />
         <Button
             android:id="@+id/hexB"
             android:text="@string/hexB"
             android:onClick="btnClick"
-            style="@style/Theme.Calculator.ButtonStyle" />
+            style="@style/Theme.Calculator.ButtonStyle.Hex" />
         <Button
             android:id="@+id/hexC"
             android:text="@string/hexC"
             android:onClick="btnClick"
-            style="@style/Theme.Calculator.ButtonStyle" />
+            style="@style/Theme.Calculator.ButtonStyle.Hex" />
         <Button
             android:id="@+id/hexD"
             android:text="@string/hexD"
             android:onClick="btnClick"
-            style="@style/Theme.Calculator.ButtonStyle" />
+            style="@style/Theme.Calculator.ButtonStyle.Hex" />
         <Button
             android:id="@+id/hexE"
             android:text="@string/hexE"
             android:onClick="btnClick"
-            style="@style/Theme.Calculator.ButtonStyle" />
+            style="@style/Theme.Calculator.ButtonStyle.Hex" />
         <Button
             android:id="@+id/hexF"
             android:text="@string/hexF"
             android:onClick="btnClick"
-            style="@style/Theme.Calculator.ButtonStyle" />
+            style="@style/Theme.Calculator.ButtonStyle.Hex" />
     </LinearLayout>
 
     <!--<LinearLayout-->
@@ -105,14 +101,14 @@
         <!-- Minus Button -->
         <Button
             android:id="@+id/minusbtn"
-            style="@style/Theme.Calculator.ButtonStyle"
+            style="@style/Theme.Calculator.ButtonStyle.Operator"
             android:onClick="btnClick"
             android:text="@string/minus" />
 
         <!-- Plus Button -->
         <Button
             android:id="@+id/plusbtn"
-            style="@style/Theme.Calculator.ButtonStyle"
+            style="@style/Theme.Calculator.ButtonStyle.Operator"
             android:onClick="btnClick"
             android:text="@string/plus" />
 
@@ -143,13 +139,13 @@
         <!-- Multiply Button -->
         <Button
             android:id="@+id/multiplybtn"
-            style="@style/Theme.Calculator.ButtonStyle"
+            style="@style/Theme.Calculator.ButtonStyle.Operator"
             android:onClick="btnClick"
             android:text="@string/asterisk" />
         <!-- Divide Button -->
         <Button
             android:id="@+id/dividebtn"
-            style="@style/Theme.Calculator.ButtonStyle"
+            style="@style/Theme.Calculator.ButtonStyle.Operator"
             android:onClick="btnClick"
             android:text="@string/divide" />
 

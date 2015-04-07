@@ -4,6 +4,7 @@ import android.app.ActionBar;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -15,6 +16,8 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,7 +26,7 @@ import org.javia.arity.Symbols;
 import adapter.TabView;
 
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends FragmentActivity{
 
     private String entryText = "";
     private int lastBtnHit = -1;
@@ -35,6 +38,8 @@ public class MainActivity extends FragmentActivity {
     private ActionBar actionBar;
     private ViewPager viewPager;
     private String[] modes;
+    SharedPreferences pref;
+    SharedPreferences.OnSharedPreferenceChangeListener listener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +81,20 @@ public class MainActivity extends FragmentActivity {
 //                return true;
 //            }
 //        });
+
+        pref = PreferenceManager.getDefaultSharedPreferences(this);
+        listener = new SharedPreferences.OnSharedPreferenceChangeListener() {
+
+            @Override
+            public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+                if (key.equals("theme"))
+                {
+                    String theme = sharedPreferences.getString(key, "1");
+                    handleTheme(theme);
+                }
+            }
+        };
+        pref.registerOnSharedPreferenceChangeListener(listener);
     }
 
     @Override
@@ -119,6 +138,12 @@ public class MainActivity extends FragmentActivity {
 
     }
 
+    public void handleTheme(String theme)
+    {
+        LookHandler theme_set = new LookHandler(this);
+        theme_set.changeTheme(theme);
+    }
+
     // TODO remove these setEntry and getEntry text function before release.
     //    Method to facilitate testing not to be used in actual app
     public void setEntryText(String text) {
@@ -154,6 +179,7 @@ public class MainActivity extends FragmentActivity {
         Animation anim_fadein = AnimationUtils.loadAnimation(this, R.anim.fade_in);
         entry.startAnimation(anim_fadein);
     }
+
 
     //  Method to perform calculation
     public double evaluate(String expression) {
@@ -451,9 +477,19 @@ public class MainActivity extends FragmentActivity {
 
     //  Method to handle clicks of button
     public void btnClick(View view) {
-        Button btn = (Button) view;
-        String btnText = btn.getText().toString();
-        int btnId = btn.getId();
+        int btnId = view.getId();
+        String btnText;
+        if(btnId == R.id.clearbtn || btnId == R.id.delbtn)
+        {
+//            ImageButton btn = (ImageButton) view;
+            btnText = null;
+        }
+        else
+        {
+            Button btn = (Button) view;
+            btnText = btn.getText().toString();
+        }
+
         switch (btnId) {
             case R.id.clearbtn:
                 performClear();
@@ -554,4 +590,5 @@ public class MainActivity extends FragmentActivity {
             new ScrollTabListener(this).changeToBasic();
         }
     }
+
 }
