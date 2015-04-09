@@ -2,8 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/default_theme"
-    android:orientation="vertical">
+    android:background="@color/default_dark"
+    android:orientation="vertical"
+    android:id="@+id/basic_pad">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,26 +14,38 @@
         <!-- 7 Button -->
         <Button
             android:id="@+id/sevenbtn"
-            style="@style/Theme.Calculator.ButtonStyle"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/btn_margin"
             android:onClick="btnClick"
             android:text="@string/seven" />
 
         <!-- 8 Button -->
         <Button
             android:id="@+id/eightbtn"
-            style="@style/Theme.Calculator.ButtonStyle"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/btn_margin"
             android:onClick="btnClick"
             android:text="@string/eight" />
 
         <!-- 9 Button -->
         <Button
             android:id="@+id/ninebtn"
-            style="@style/Theme.Calculator.ButtonStyle"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/btn_margin"
             android:onClick="btnClick"
             android:text="@string/nine" />
 
         <!-- Delete Button -->
         <ImageButton
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:id="@+id/delbtn"
             style="@style/Theme.Calculator.ButtonStyle.ImageButton"
             android:src="@drawable/delete_white"
@@ -41,6 +54,9 @@
         <!-- Clear Button -->
         <ImageButton
             android:id="@+id/clearbtn"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:onClick="btnClick"
             style="@style/Theme.Calculator.ButtonStyle.ImageButton"
             android:src="@drawable/clear_white"
@@ -55,32 +71,47 @@
         <!-- 4 Button -->
         <Button
             android:id="@+id/fourbtn"
-            style="@style/Theme.Calculator.ButtonStyle"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/btn_margin"
             android:onClick="btnClick"
             android:text="@string/four" />
         <!-- 5 Button -->
         <Button
             android:id="@+id/fivebtn"
-            style="@style/Theme.Calculator.ButtonStyle"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/btn_margin"
             android:onClick="btnClick"
             android:text="@string/five" />
         <!-- 6 Button -->
         <Button
             android:id="@+id/sixbtn"
-            style="@style/Theme.Calculator.ButtonStyle"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/btn_margin"
             android:onClick="btnClick"
             android:text="@string/six" />
         <!-- Minus Button -->
         <Button
             android:id="@+id/minusbtn"
-            style="@style/Theme.Calculator.ButtonStyle.Operator"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/btn_margin"
             android:onClick="btnClick"
             android:text="@string/minus" />
 
         <!-- Plus Button -->
         <Button
             android:id="@+id/plusbtn"
-            style="@style/Theme.Calculator.ButtonStyle.Operator"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/btn_margin"
             android:onClick="btnClick"
             android:text="@string/plus" />
 
@@ -93,31 +124,46 @@
         <!-- 1 Button -->
         <Button
             android:id="@+id/onebtn"
-            style="@style/Theme.Calculator.ButtonStyle"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/btn_margin"
             android:onClick="btnClick"
             android:text="@string/one" />
         <!-- 2 Button -->
         <Button
             android:id="@+id/twobtn"
-            style="@style/Theme.Calculator.ButtonStyle"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/btn_margin"
             android:onClick="btnClick"
             android:text="@string/two" />
         <!-- 3 Button -->
         <Button
             android:id="@+id/threebtn"
-            style="@style/Theme.Calculator.ButtonStyle"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/btn_margin"
             android:onClick="btnClick"
             android:text="@string/three" />
         <!-- Multiply Button -->
         <Button
             android:id="@+id/multiplybtn"
-            style="@style/Theme.Calculator.ButtonStyle.Operator"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/btn_margin"
             android:onClick="btnClick"
             android:text="@string/asterisk" />
         <!-- Divide Button -->
         <Button
             android:id="@+id/dividebtn"
-            style="@style/Theme.Calculator.ButtonStyle.Operator"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/btn_margin"
             android:onClick="btnClick"
             android:text="@string/divide" />
 
@@ -130,31 +176,46 @@
         <!-- decimal Button -->
         <Button
             android:id="@+id/decimalbtn"
-            style="@style/Theme.Calculator.ButtonStyle"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/btn_margin"
             android:onClick="btnClick"
             android:text="@string/decimal" />
         <!-- 0 Button -->
         <Button
             android:id="@+id/zerobtn"
-            style="@style/Theme.Calculator.ButtonStyle"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/btn_margin"
             android:onClick="btnClick"
             android:text="@string/zero" />
         <!-- left paranthesis Button -->
         <Button
             android:id="@+id/left_paran"
-            style="@style/Theme.Calculator.ButtonStyle"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/btn_margin"
             android:onClick="btnClick"
             android:text="@string/left_paran" />
         <!-- 0 Button -->
         <Button
             android:id="@+id/right_paran"
-            style="@style/Theme.Calculator.ButtonStyle"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/btn_margin"
             android:onClick="btnClick"
             android:text="@string/right_paran" />
         <!-- Equal Button -->
         <Button
             android:id="@+id/equalbtn"
-            style="@style/Theme.Calculator.ButtonStyle"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/btn_margin"
             android:onClick="btnClick"
             android:text="@string/equal"/>
     </LinearLayout>

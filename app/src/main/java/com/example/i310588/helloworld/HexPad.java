@@ -16,4 +16,10 @@ public class HexPad extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.hex_pad, null);
     }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        LookHandler.setThemeForHex(getActivity(), MainActivity.theme);
+    }
 }

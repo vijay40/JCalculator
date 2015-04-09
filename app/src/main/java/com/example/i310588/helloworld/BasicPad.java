@@ -17,4 +17,10 @@ public class BasicPad extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.basic_pad, null);
     }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        LookHandler.setThemeForBasic(getActivity(), MainActivity.theme);
+    }
 }

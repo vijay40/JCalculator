@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/default_theme"
+    android:id="@+id/advance_pad"
     android:orientation="vertical">
 
     <LinearLayout
@@ -13,31 +13,42 @@
         <!-- sin Button -->
         <Button
             android:id="@+id/sin"
-            style="@style/Theme.Calculator.ButtonStyle"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/btn_margin"
             android:onClick="btnClick"
             android:text="@string/sin" />
 
         <!-- cos Button -->
         <Button
             android:id="@+id/cos"
-            style="@style/Theme.Calculator.ButtonStyle"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/btn_margin"
             android:onClick="btnClick"
             android:text="@string/cos" />
 
         <!-- tan Button -->
         <Button
             android:id="@+id/tan"
-            style="@style/Theme.Calculator.ButtonStyle"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/btn_margin"
             android:onClick="btnClick"
             android:text="@string/tan" />
 
         <!-- Delete Button -->
         <ImageButton
-            android:id="@+id/delbtn"
-            style="@style/Theme.Calculator.ButtonStyle.ImageButton"
+            android:id="@+id/delbtnadv"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/btn_margin"
             android:onClick="btnClick"
-            android:src="@drawable/delete_white"
-            android:layout_margin="@dimen/btn_margin"/>
+            android:src="@drawable/delete_white"/>
 
     </LinearLayout>
 
@@ -48,28 +59,39 @@
         <!-- natural log Button -->
         <Button
             android:id="@+id/logn"
-            style="@style/Theme.Calculator.ButtonStyle"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/btn_margin"
             android:onClick="btnClick"
             android:text="@string/logn" />
         <!-- log 10 Button -->
         <Button
             android:id="@+id/log"
-            style="@style/Theme.Calculator.ButtonStyle"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/btn_margin"
             android:onClick="btnClick"
             android:text="@string/log_10" />
         <!-- pi Button -->
         <Button
             android:id="@+id/pi"
-            style="@style/Theme.Calculator.ButtonStyle"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/btn_margin"
             android:onClick="btnClick"
             android:text="@string/pi" />
         <!-- clear Button -->
         <ImageButton
-            android:id="@+id/clearbtn"
+            android:id="@+id/clearbtnadv"
             android:onClick="btnClick"
-            style="@style/Theme.Calculator.ButtonStyle.ImageButton"
-            android:src="@drawable/clear_white"
-            android:layout_margin="@dimen/btn_margin"/>
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/btn_margin"
+            android:src="@drawable/clear_white"/>
 
     </LinearLayout>
 
@@ -80,25 +102,37 @@
         <!-- percentage Button -->
         <Button
             android:id="@+id/percentage"
-            style="@style/Theme.Calculator.ButtonStyle"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/btn_margin"
             android:onClick="btnClick"
             android:text="@string/percentage" />
         <!-- factorial Button -->
         <Button
             android:id="@+id/factorial"
-            style="@style/Theme.Calculator.ButtonStyle"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/btn_margin"
             android:onClick="btnClick"
             android:text="@string/factorial" />
         <!-- power Button -->
         <Button
             android:id="@+id/power"
-            style="@style/Theme.Calculator.ButtonStyle"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/btn_margin"
             android:onClick="btnClick"
             android:text="@string/power" />
         <!-- exponential Button -->
         <Button
             android:id="@+id/exponential"
-            style="@style/Theme.Calculator.ButtonStyle"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/btn_margin"
             android:onClick="btnClick"
             android:text="@string/exponential" />
 
@@ -111,25 +145,37 @@
         <!-- sqrt Button -->
         <Button
             android:id="@+id/sqrt"
-            style="@style/Theme.Calculator.ButtonStyle"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/btn_margin"
             android:onClick="btnClick"
             android:text="@string/sqrt" />
         <!-- left paranthesis Button -->
         <Button
             android:id="@+id/left_paran"
-            style="@style/Theme.Calculator.ButtonStyle"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/btn_margin"
             android:onClick="btnClick"
             android:text="@string/left_paran" />
         <!-- right parathesis Button -->
         <Button
             android:id="@+id/right_paran"
-            style="@style/Theme.Calculator.ButtonStyle"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/btn_margin"
             android:onClick="btnClick"
             android:text="@string/right_paran" />
         <!-- Equal Button -->
         <Button
             android:id="@+id/equalbtn"
-            style="@style/Theme.Calculator.ButtonStyle"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/btn_margin"
             android:onClick="btnClick"
             android:text="@string/equal" />
     </LinearLayout>

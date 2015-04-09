@@ -1,6 +1,7 @@
 package com.example.i310588.helloworld;
 
 import android.app.ActionBar;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -38,19 +39,19 @@ public class MainActivity extends FragmentActivity{
     private ActionBar actionBar;
     private ViewPager viewPager;
     private String[] modes;
+    private final int REQUEST_EXIT=1;
+    public static String theme;
     SharedPreferences pref;
-    SharedPreferences.OnSharedPreferenceChangeListener listener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-//        BasicPad basicPad = new BasicPad();
-//        FragmentManager manager = getFragmentManager();
-//        FragmentTransaction transaction = manager.beginTransaction();
-//        transaction.add(R.id.main_app, basicPad);
-//        transaction.commit();
+        pref = PreferenceManager.getDefaultSharedPreferences(this);
+        theme = pref.getString("theme", "1");
+        LookHandler.onActivityCreatedSetTheme(this, theme);
+
+        setContentView(R.layout.activity_main);
 
 //        Initialization
         entry = (TextView) findViewById(R.id.entry);
@@ -82,19 +83,12 @@ public class MainActivity extends FragmentActivity{
 //            }
 //        });
 
-        pref = PreferenceManager.getDefaultSharedPreferences(this);
-        listener = new SharedPreferences.OnSharedPreferenceChangeListener() {
+    }
 
-            @Override
-            public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-                if (key.equals("theme"))
-                {
-                    String theme = sharedPreferences.getString(key, "1");
-                    handleTheme(theme);
-                }
-            }
-        };
-        pref.registerOnSharedPreferenceChangeListener(listener);
+    @Override
+    protected void onStart() {
+        super.onStart();
+        LookHandler.setTheme(this,theme);
     }
 
     @Override
@@ -114,11 +108,21 @@ public class MainActivity extends FragmentActivity{
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             Intent intent = new Intent(this, SettingsActivity.class);
-            startActivity(intent);
+            startActivityForResult(intent, REQUEST_EXIT);
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_EXIT)
+        {
+            this.finish();
+            this.startActivity(new Intent(this, this.getClass()));
+        }
     }
 
     @Override
@@ -136,12 +140,6 @@ public class MainActivity extends FragmentActivity{
         TextView entry = (TextView) findViewById(R.id.entry);
         entry.setText(entryText);
 
-    }
-
-    public void handleTheme(String theme)
-    {
-        LookHandler theme_set = new LookHandler(this);
-        theme_set.changeTheme(theme);
     }
 
     // TODO remove these setEntry and getEntry text function before release.
@@ -479,9 +477,8 @@ public class MainActivity extends FragmentActivity{
     public void btnClick(View view) {
         int btnId = view.getId();
         String btnText;
-        if(btnId == R.id.clearbtn || btnId == R.id.delbtn)
+        if(btnId == R.id.clearbtn || btnId == R.id.delbtn || btnId == R.id.clearbtnadv || btnId == R.id.delbtnadv || btnId == R.id.delbtnhex || btnId == R.id.clearbtnhex)
         {
-//            ImageButton btn = (ImageButton) view;
             btnText = null;
         }
         else
@@ -494,7 +491,19 @@ public class MainActivity extends FragmentActivity{
             case R.id.clearbtn:
                 performClear();
                 break;
+            case R.id.clearbtnadv:
+                performClear();
+                break;
+            case R.id.clearbtnhex:
+                performClear();
+                break;
             case R.id.delbtn:
+                performDelete();
+                break;
+            case R.id.delbtnadv:
+                performDelete();
+                break;
+            case R.id.delbtnhex:
                 performDelete();
                 break;
             case R.id.plusbtn:
@@ -507,6 +516,18 @@ public class MainActivity extends FragmentActivity{
                 opClick(btnText);
                 break;
             case R.id.dividebtn:
+                opClick(btnText);
+                break;
+            case R.id.plusbtnhex:
+                opClick(btnText);
+                break;
+            case R.id.minusbtnhex:
+                opClick(btnText);
+                break;
+            case R.id.multiplybtnhex:
+                opClick(btnText);
+                break;
+            case R.id.dividebtnhex:
                 opClick(btnText);
                 break;
             case R.id.decimalbtn:

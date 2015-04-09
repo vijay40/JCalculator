@@ -16,4 +16,10 @@ public class AdvancePad extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.advance_pad, null);
     }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        LookHandler.setThemeForAdvance(getActivity(), MainActivity.theme);
+    }
 }

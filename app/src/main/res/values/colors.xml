@@ -6,10 +6,11 @@
     <color name="red">#f00</color>
     <color name="btn_pressed">#f2f7f9</color>
     <color name="transparent">#00000000</color>
-    <color name="sky_blue">#484A48</color>
     <color name="operator">#E8EDDF</color>
     <color name="red_theme">#e84e40</color>
-    <color name="default_theme">#000</color>
+    <color name="default_dark">#000</color>
     <color name="grey_theme_normal">#636363</color>
     <color name="grey_theme_hex">#434343</color>
+    <color name="default_light">#ff33b5e5</color>
+    <color name="default_light_op">#fff7f9f9</color>
 </resources>

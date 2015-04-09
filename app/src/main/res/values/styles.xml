@@ -2,7 +2,7 @@
 
     <!-- Base application theme. -->
     <style name="Theme.Calculator" parent="android:Theme.Holo">
-
+        <item name="android:buttonStyle">@style/Theme.Calculator.ButtonStyle</item>
     </style>
     
     <!-- Button Style -->
@@ -13,11 +13,22 @@
         <item name="android:textSize">35sp</item>
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:layout_marginLeft">0dp</item>
-        <item name="android:textColor">@drawable/btn_color</item>
+        <item name="android:textColor">@drawable/btn_color_default_dark</item>
         <item name="android:textStyle">bold</item>
         <item name="android:gravity">center</item>
         <item name="android:background">@color/grey_theme_normal</item>
         <item name="android:layout_margin">@dimen/btn_margin</item>
+    </style>
+
+    <!--Light Theme -->
+    <style name="Theme.Calculator.Light" parent="android:Theme.Holo">
+        <item name="android:buttonStyle">@style/Theme.Calculator.ButtonStyle.Light</item>
+    </style>
+
+    <!--Light theme for Buttons -->
+    <style name="Theme.Calculator.ButtonStyle.Light" parent="Theme.Calculator.ButtonStyle">
+        <item name="android:background">@color/white</item>
+        <item name="android:textColor">@drawable/btn_color_default_light</item>
     </style>
 
     <!--Delete and Clear button Style-->
