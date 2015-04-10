@@ -47,7 +47,6 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:id="@+id/delbtn"
-            style="@style/Theme.Calculator.ButtonStyle.ImageButton"
             android:src="@drawable/delete_white"
             android:layout_margin="@dimen/btn_margin"/>
 
@@ -58,7 +57,6 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:onClick="btnClick"
-            style="@style/Theme.Calculator.ButtonStyle.ImageButton"
             android:src="@drawable/clear_white"
             android:layout_margin="@dimen/btn_margin"/>
 

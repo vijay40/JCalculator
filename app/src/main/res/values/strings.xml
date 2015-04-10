@@ -52,13 +52,13 @@
 
     <!--TODO replace names of themes with some sensible names-->
     <string-array name="themes">
-        <item>Default Dark</item>
         <item>Default Light</item>
+        <item>Default Dark</item>
     </string-array>
 
     <string-array name="theme_values">
+        <item>0</item>
         <item>1</item>
-        <item>2</item>
     </string-array>
 
     <string name="about">About</string>

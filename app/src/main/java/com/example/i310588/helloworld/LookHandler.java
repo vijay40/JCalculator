@@ -15,9 +15,8 @@ import android.widget.LinearLayout;
 public class LookHandler {
 
     Activity activity;
+    private static final String DEFAULT_THEME_LIGHT = "0";
     private static final String DEFAULT_THEME_DARK = "1";
-    private static final String DEFAULT_THEME_LIGHT = "2";
-    private final String BLUE_THEME = "3";
     private static int display_color;
     private static int op_color;
 
