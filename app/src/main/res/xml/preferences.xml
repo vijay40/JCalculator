@@ -25,7 +25,7 @@
             android:title="Current Theme"
             android:entries="@array/themes"
             android:entryValues="@array/theme_values"
-            android:defaultValue="1"/>
+            android:defaultValue="0"/>
     </PreferenceCategory>
 
 

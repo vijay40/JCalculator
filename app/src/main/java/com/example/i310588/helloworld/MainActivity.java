@@ -48,7 +48,7 @@ public class MainActivity extends FragmentActivity{
         super.onCreate(savedInstanceState);
 
         pref = PreferenceManager.getDefaultSharedPreferences(this);
-        theme = pref.getString("theme", "1");
+        theme = pref.getString("theme", "0");
         LookHandler.onActivityCreatedSetTheme(this, theme);
 
         setContentView(R.layout.activity_main);
@@ -477,6 +477,8 @@ public class MainActivity extends FragmentActivity{
     public void btnClick(View view) {
         int btnId = view.getId();
         String btnText;
+        // TODO remove this log
+        Log.e("Vijay", "btnID : " + btnId);
         if(btnId == R.id.clearbtn || btnId == R.id.delbtn || btnId == R.id.clearbtnadv || btnId == R.id.delbtnadv || btnId == R.id.delbtnhex || btnId == R.id.clearbtnhex)
         {
             btnText = null;

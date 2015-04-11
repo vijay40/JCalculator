@@ -43,10 +43,11 @@
 
         <!-- Delete Button -->
         <ImageButton
+            android:id="@+id/delbtn"
             android:layout_height="match_parent"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:id="@+id/delbtn"
+            android:onClick="btnClick"
             android:src="@drawable/delete_white"
             android:layout_margin="@dimen/btn_margin"/>
 
