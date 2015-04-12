@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="1">
 
         <!-- empty space Button -->
@@ -19,6 +19,7 @@
             android:layout_weight="4"
             android:layout_margin="@dimen/btn_margin"
             android:id="@+id/blank_space"/>
+
 
         <ImageButton
             android:id="@+id/delbtnhex"
@@ -44,7 +45,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="1">
         <Button
             android:id="@+id/hexA"
@@ -98,7 +99,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="1">
         <!-- 1 Button -->
         <Button
@@ -151,7 +152,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="1">
         <!-- 4 Button -->
         <Button
@@ -203,7 +204,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="1">
         <!-- 7 Button -->
         <Button
@@ -253,5 +254,44 @@
             android:onClick="btnClick"
             android:text="@string/equal" />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/btn_margin"
+            android:id="@+id/bin_mode"
+            android:text="@string/bin"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/btn_margin"
+            android:id="@+id/octal_mode"
+            android:text="@string/octal"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/btn_margin"
+            android:id="@+id/dec_mode"
+            android:text="@string/dec"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/btn_margin"
+            android:id="@+id/hex_mode"
+            android:text="@string/hex"/>
+
+    </LinearLayout>
+
 </LinearLayout>
 

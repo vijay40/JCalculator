@@ -43,6 +43,10 @@
     <string name="hexD">D</string>
     <string name="hexE">E</string>
     <string name="hexF">F</string>
+    <string name="hex">Hex</string>
+    <string name="dec">Decimal</string>
+    <string name="octal">Octal</string>
+    <string name="bin">Binary</string>
 
     <string-array name="modes">
         <item>Basic</item>
