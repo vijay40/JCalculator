@@ -17,6 +17,6 @@
     <color name="default_light">#ff33b5e5</color>
     <color name="default_light_op">#fff7f9f9</color>
     <color name="default_light_disable">#E5ECF4</color>
-    <color name="default_light_mode_enable">#433F6B</color>
-    <color name="default_light_mode_disable">#4F6D7A</color>
+    <color name="default_light_mode_disable">#433F6B</color>
+    <color name="default_light_mode_enable">#13262F</color>
 </resources>
