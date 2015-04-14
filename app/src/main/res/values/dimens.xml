@@ -7,4 +7,6 @@
     <dimen name="entryText_padding">8dp</dimen>
     <dimen name="display_height">200dp</dimen>
     <dimen name="btn_margin">1dp</dimen>
+    <dimen name="btn_text_size">35sp</dimen>
+    <dimen name="mode_btn_text_size">18sp</dimen>
 </resources>

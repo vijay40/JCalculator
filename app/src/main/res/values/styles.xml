@@ -7,7 +7,7 @@
     
     <!-- Button Style -->
     <style name="Theme.Calculator.ButtonStyle" parent="@android:style/Widget.Button">
-        <item name="android:textSize">35sp</item>
+        <item name="android:textSize">@dimen/btn_text_size</item>
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:layout_marginLeft">0dp</item>
         <item name="android:textColor">@color/dark_theme_text_color</item>
