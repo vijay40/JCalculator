@@ -73,22 +73,25 @@ public class HexPad extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         int id = v.getId();
+        Utility utility = new Utility(getActivity());
         if(id == R.id.hex_mode){
+            MainActivity.entryText = Utility.convertToRadix(MainActivity.entryText, MainActivity.mode, 16);
             MainActivity.mode = 16;
-            handleMode();
         }
         else if(id == R.id.dec_mode) {
+            MainActivity.entryText = Utility.convertToRadix(MainActivity.entryText, MainActivity.mode, 10);
             MainActivity.mode = 10;
-            handleMode();
         }
         else if(id == R.id.octal_mode) {
+            MainActivity.entryText = Utility.convertToRadix(MainActivity.entryText, MainActivity.mode, 8);
             MainActivity.mode = 8;
-            handleMode();
         }
         else if(id == R.id.bin_mode) {
+            MainActivity.entryText = Utility.convertToRadix(MainActivity.entryText, MainActivity.mode, 2);
             MainActivity.mode = 2;
-            handleMode();
         }
+        handleMode();
+        utility.setDisplayText(MainActivity.entryText);
     }
 
     public static int ModeToIdx()

@@ -21,7 +21,7 @@ import java.util.regex.Pattern;
  */
 public class Utility {
     private double precision = 0.000000001;
-    private int PRECISION = 9;
+    private static int PRECISION = 9;
     Activity activity;
 
     // used for utility functions called by classes who didn't extend activity
@@ -109,7 +109,7 @@ public class Utility {
     }
 
 //  Method to change the base of a number
-    public String changeBase(String originalNumber, int originalBase, int base) throws SyntaxException {
+    public static String changeBase(String originalNumber, int originalBase, int base) throws SyntaxException {
         Symbols symbol = new Symbols();
         String[] parts = originalNumber.split(Pattern.quote("."));
         if(parts.length == 0) {
@@ -167,7 +167,7 @@ public class Utility {
         return (wholeNumber + "." + decimalNumber).toUpperCase(Locale.US);
     }
 
-    public String convertToRadix(String expr, int originalRadix, int radix) {
+    public static String convertToRadix(String expr, int originalRadix, int radix) {
         String res = "", num = "", ch;
         long n;
         for(int i=0; i<expr.length(); i++){

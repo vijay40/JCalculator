@@ -27,9 +27,9 @@ import org.javia.arity.Symbols;
 import adapter.TabView;
 
 
-public class MainActivity extends FragmentActivity{
+public class MainActivity extends FragmentActivity {
 
-    private String entryText = "";
+    public static String entryText = "";
     private int lastBtnHit = -1;
     private double prec = 1000000000.0;
     TextView entry;
@@ -39,7 +39,7 @@ public class MainActivity extends FragmentActivity{
     private ActionBar actionBar;
     private ViewPager viewPager;
     private String[] modes;
-    private final int REQUEST_EXIT=1;
+    private final int REQUEST_EXIT = 1;
     public static int theme;
     public static int mode;
     SharedPreferences pref;
@@ -90,7 +90,7 @@ public class MainActivity extends FragmentActivity{
     @Override
     protected void onStart() {
         super.onStart();
-        LookHandler.setTheme(this,theme);
+        LookHandler.setTheme(this, theme);
     }
 
     @Override
@@ -120,8 +120,7 @@ public class MainActivity extends FragmentActivity{
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == REQUEST_EXIT)
-        {
+        if (requestCode == REQUEST_EXIT) {
             this.finish();
             this.startActivity(new Intent(this, this.getClass()));
         }
@@ -155,33 +154,8 @@ public class MainActivity extends FragmentActivity{
         return entryText;
     }
 
-    public void performCal(String expression) {
-        double res = evaluate(expression);
-        if (Double.isInfinite(res)) {
-            if (res > 0) {
-                entryText = "";
-                utility.setDisplayText(Character.toString('\u221e'));
-            } else {
-                entryText = "";
-                utility.setDisplayText("-" + Character.toString('\u221e'));
-            }
-        } else if (Double.isNaN(res)) {
-            utility.setDisplayText(Double.toString(res));
-            entryText = "";
-        } else if (utility.isDouble(res)) {
-            res = Math.round(res * prec) / prec;
-            entryText = Double.toString(res);
-            utility.setDisplayText(entryText);
-        } else {
-            entryText = Long.toString((long) res);
-            utility.setDisplayText(entryText);
-        }
-        Animation anim_fadein = AnimationUtils.loadAnimation(this, R.anim.fade_in);
-        entry.startAnimation(anim_fadein);
-    }
-
-
     //  Method to perform calculation
+    //  expression is always in decimal here
     public double evaluate(String expression) {
 
         String expr;
@@ -206,21 +180,93 @@ public class MainActivity extends FragmentActivity{
         }
     }
 
-    public void hexDisplayResult(String result)
-    {
-        entryText = result;
+//    public void performCal(String expression) {
+//        double res = evaluate(expression);
+//        if (Double.isInfinite(res)) {
+//            if (res > 0) {
+//                entryText = "";
+//                utility.setDisplayText(Character.toString('\u221e'));
+//            } else {
+//                entryText = "";
+//                utility.setDisplayText("-" + Character.toString('\u221e'));
+//            }
+//        } else if (Double.isNaN(res)) {
+//            utility.setDisplayText(Double.toString(res));
+//            entryText = "";
+//        } else if (utility.isDouble(res)) {
+//            res = Math.round(res * prec) / prec;
+//            entryText = Double.toString(res);
+//            utility.setDisplayText(entryText);
+//        } else {
+//            entryText = Long.toString((long) res);
+//            utility.setDisplayText(entryText);
+//        }
+//        Animation anim_fadein = AnimationUtils.loadAnimation(this, R.anim.fade_in);
+//        entry.startAnimation(anim_fadein);
+//    }
+
+
+//    public void hexDisplayResult(String result)
+//    {
+//        entryText = result;
+//        utility.setDisplayText(entryText);
+//        Animation anim_fadein = AnimationUtils.loadAnimation(this, R.anim.fade_in);
+//        entry.startAnimation(anim_fadein);
+//    }
+
+    //    method to display the result in the current mode of calculator
+    public void DisplayResult(String expression) {
+        double res;
+        if (mode == 16) {
+            expression = Utility.convertToRadix(expression, 16, 10);
+        } else if (mode == 8) {
+            expression = Utility.convertToRadix(expression, 8, 10);
+        } else if (mode == 2) {
+            expression = Utility.convertToRadix(expression, 2, 10);
+        }
+
+        res = evaluate(expression);
+
+        if (Double.isInfinite(res)) {
+            if (res > 0) {
+                entryText = "";
+                utility.setDisplayText(Character.toString('\u221e'));
+                return;
+            } else {
+                entryText = "";
+                utility.setDisplayText("-" + Character.toString('\u221e'));
+                return;
+            }
+        } else if (Double.isNaN(res)) {
+            utility.setDisplayText(Double.toString(res));
+            entryText = "";
+            return;
+        } else if (mode == 10 && utility.isDouble(res)) {
+            res = Math.round(res * prec) / prec;
+            entryText = Double.toString(res);
+        } else if(mode == 10){
+            entryText = Long.toString((long) res);
+        } else if(mode == 16) {
+            entryText = Utility.convertToRadix(Double.toString(res), 10, 16);
+        } else if(mode == 8) {
+            entryText = Utility.convertToRadix(Double.toString(res), 10, 8);
+        } else if(mode == 2) {
+            entryText = Utility.convertToRadix(Double.toString(res), 10, 2);
+        }
+
         utility.setDisplayText(entryText);
         Animation anim_fadein = AnimationUtils.loadAnimation(this, R.anim.fade_in);
         entry.startAnimation(anim_fadein);
     }
 
-    public void hexPerformCalc(String expression) {
-        expression = utility.convertToRadix(expression, 16, 10);
-        double res = evaluate(expression);
-        expression = utility.convertToRadix(Double.toString(res), 10, 16);
 
-        hexDisplayResult(expression);
-    }
+//    public void hexPerformCalc(String expression) {
+//        expression = utility.convertToRadix(expression, 16, 10);
+//        double res = evaluate(expression);
+//        expression = utility.convertToRadix(Double.toString(res), 10, 16);
+//
+//        hexDisplayResult(expression);
+//    }
 
     //  Method to perform short press of delete button
     public void performDelete() {
@@ -247,53 +293,41 @@ public class MainActivity extends FragmentActivity{
     //  Method to handle click of operator button
     public void opClick(String op) {
         if (op.equals("-")) {
-            if(utility.isLastOperator(entryText))
-            {
-                if(op.equals(entryText.substring(entryText.length()-1)))
-                        return;
-                else if("+".equals(entryText.substring(entryText.length()-1)))
-                    entryText = entryText.substring(0,entryText.length()-1) + op;
+            if (utility.isLastOperator(entryText)) {
+                if (op.equals(entryText.substring(entryText.length() - 1)))
+                    return;
+                else if ("+".equals(entryText.substring(entryText.length() - 1)))
+                    entryText = entryText.substring(0, entryText.length() - 1) + op;
                 else
                     entryText += op;
-            }
-            else
-            {
+            } else {
                 entryText += op;
             }
         } else if (op.equals("+")) {
-            if(utility.isLastOperator(entryText))
-            {
-                if(op.equals(entryText.substring(entryText.length()-1)))
+            if (utility.isLastOperator(entryText)) {
+                if (op.equals(entryText.substring(entryText.length() - 1)))
                     return;
-                else if("-".equals(entryText.substring(entryText.length()-1)))
-                {
-                   entryText = entryText.substring(0,entryText.length()-1);
-                }
-                else
-                    entryText = entryText.substring(0,entryText.length()-1) + op;
-            }
-            else if(utility.isLastOperand(entryText))
-            {
+                else if ("-".equals(entryText.substring(entryText.length() - 1))) {
+                    entryText = entryText.substring(0, entryText.length() - 1);
+                } else
+                    entryText = entryText.substring(0, entryText.length() - 1) + op;
+            } else if (utility.isLastOperand(entryText)) {
                 entryText += op;
             }
 
         } else    // it should be 'x' or '÷'
         {
-            if(utility.isLastOperator(entryText))
-            {
-                if(op.equals(entryText.substring(entryText.length()-1)))
+            if (utility.isLastOperator(entryText)) {
+                if (op.equals(entryText.substring(entryText.length() - 1)))
                     return;
-                else
-                {
-                    if(entryText.length() > 1 && utility.isLastOperand(entryText.substring(0,entryText.length()-1)))
-                        entryText = entryText.substring(0,entryText.length()-1) + op;
+                else {
+                    if (entryText.length() > 1 && utility.isLastOperand(entryText.substring(0, entryText.length() - 1)))
+                        entryText = entryText.substring(0, entryText.length() - 1) + op;
                     else
                         return;
                 }
-            }
-            else
-            {
-                if(utility.isLastOperand(entryText))
+            } else {
+                if (utility.isLastOperand(entryText))
                     entryText += op;
                 else
                     return;
@@ -410,8 +444,7 @@ public class MainActivity extends FragmentActivity{
     }
 
     private void expoClick() {
-        if(utility.isLastOperand(entryText))
-        {
+        if (utility.isLastOperand(entryText)) {
             entryText += "e";
             utility.setDisplayText(entryText);
         }
@@ -457,21 +490,20 @@ public class MainActivity extends FragmentActivity{
     }
 
     public void powerClick() {
-        if(utility.isLastOperand(entryText))
-        {
+        if (utility.isLastOperand(entryText)) {
             entryText += "^";
             utility.setDisplayText(entryText);
         }
     }
 
-    public void hexClick(String btn){
-        if(lastBtnHit == R.id.equalbtn)
+    public void hexClick(String btn) {
+        if (lastBtnHit == R.id.equalbtn)
             entryText = "";
         entryText += btn;
         utility.setDisplayText(entryText);
     }
 
-    public boolean onAdvancePanel(){
+    public boolean onAdvancePanel() {
         return this.getActionBar().getSelectedNavigationIndex() == 1;
     }
 
@@ -481,12 +513,9 @@ public class MainActivity extends FragmentActivity{
 
         String btnText;
 
-        if(btnId == R.id.clearbtn || btnId == R.id.delbtn || btnId == R.id.clearbtnadv || btnId == R.id.delbtnadv || btnId == R.id.delbtnhex || btnId == R.id.clearbtnhex)
-        {
+        if (btnId == R.id.clearbtn || btnId == R.id.delbtn || btnId == R.id.clearbtnadv || btnId == R.id.delbtnadv || btnId == R.id.delbtnhex || btnId == R.id.clearbtnhex) {
             btnText = null;
-        }
-        else
-        {
+        } else {
             Button btn = (Button) view;
             btnText = btn.getText().toString();
         }
@@ -544,7 +573,7 @@ public class MainActivity extends FragmentActivity{
                 rightParanClick();
                 break;
             case R.id.equalbtn:
-                performCal(entryText);
+                DisplayResult(entryText);
                 break;
             case R.id.zerobtn:
                 zeroClick();
@@ -601,7 +630,7 @@ public class MainActivity extends FragmentActivity{
                 hexClick("F");
                 break;
             case R.id.hexequalbtn:
-                hexPerformCalc(entryText);
+                DisplayResult(entryText);
                 btnId = R.id.equalbtn;
                 break;
             default:
@@ -610,8 +639,7 @@ public class MainActivity extends FragmentActivity{
         lastBtnHit = btnId;
 
         utility.vibrate();
-        if(onAdvancePanel() && utility.returnToBasic())
-        {
+        if (onAdvancePanel() && utility.returnToBasic()) {
             new ScrollTabListener(this).changeToBasic();
         }
     }
