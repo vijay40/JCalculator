@@ -1,11 +1,7 @@
 package com.example.i310588.helloworld;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.media.Image;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 

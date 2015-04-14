@@ -4,11 +4,9 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 /**
  * Created by I310588 on 3/22/2015.
@@ -105,70 +103,6 @@ public class HexPad extends Fragment implements View.OnClickListener{
         else
             return 3;
     }
-
-//    private void EnableButtons()
-//    {
-//        int theme = MainActivity.theme;
-//        int color = 0, hex_color = 0, mode_color = 0;
-//
-//        if(theme == LookHandler.DEFAULT_THEME_DARK)
-//        {
-//            color = activity.getResources().getColor(R.color.grey_theme_normal);
-//            hex_color = activity.getResources().getColor(R.color.grey_theme_hex);
-//            mode_color = activity.getResources().getColor(R.color.default_dark_mode_enable);
-//        }
-//        else if(theme == LookHandler.DEFAULT_THEME_LIGHT)
-//        {
-//            color = activity.getResources().getColor(R.color.white);
-//            hex_color = activity.getResources().getColor(R.color.default_light_op);
-//            mode_color = activity.getResources().getColor(R.color.default_light_mode_enable);
-//        }
-//
-//        for(int i=0; i<Math.min(MainActivity.mode, 10); i++)
-//        {
-//            buttons[i].setClickable(true);
-//            buttons[i].setBackgroundColor(color);
-//        }
-//
-//        for(int i=10; i<MainActivity.mode; i++)
-//        {
-//            buttons[i].setClickable(true);
-//            buttons[i].setBackgroundColor(hex_color);
-//        }
-//        HexPad.modes[HexPad.ModeToIdx()].setBackgroundColor(mode_color);
-//    }
-
-
-//    private void DisableButtons() {
-//        int theme = MainActivity.theme;
-//        int color = 0, mode_color = 0;
-//
-//        if(theme == LookHandler.DEFAULT_THEME_DARK)
-//        {
-//            color = activity.getResources().getColor(R.color.default_dark_disable);
-//            mode_color = activity.getResources().getColor(R.color.default_dark_mode_disable);
-//        }
-//        else if(theme == LookHandler.DEFAULT_THEME_LIGHT)
-//        {
-//            color = activity.getResources().getColor(R.color.default_light_disable);
-//            mode_color = activity.getResources().getColor(R.color.default_light_mode_disable);
-//        }
-//
-//        for(int i=0; i<4; i++)
-//        {
-//            int currentMode = HexPad.ModeToIdx();
-//            if(i == currentMode)
-//                continue;
-//            else
-//                HexPad.modes[i].setBackgroundColor(mode_color);
-//        }
-//
-//        for(int i=MainActivity.mode; i<16; i++)
-//        {
-//            buttons[i].setClickable(false);
-//            buttons[i].setBackgroundColor(color);
-//        }
-//    }
 
     public void handleMode()
     {

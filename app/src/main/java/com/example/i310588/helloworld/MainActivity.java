@@ -1,14 +1,12 @@
 package com.example.i310588.helloworld;
 
 import android.app.ActionBar;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,8 +15,6 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -180,40 +176,6 @@ public class MainActivity extends FragmentActivity {
         }
     }
 
-//    public void performCal(String expression) {
-//        double res = evaluate(expression);
-//        if (Double.isInfinite(res)) {
-//            if (res > 0) {
-//                entryText = "";
-//                utility.setDisplayText(Character.toString('\u221e'));
-//            } else {
-//                entryText = "";
-//                utility.setDisplayText("-" + Character.toString('\u221e'));
-//            }
-//        } else if (Double.isNaN(res)) {
-//            utility.setDisplayText(Double.toString(res));
-//            entryText = "";
-//        } else if (utility.isDouble(res)) {
-//            res = Math.round(res * prec) / prec;
-//            entryText = Double.toString(res);
-//            utility.setDisplayText(entryText);
-//        } else {
-//            entryText = Long.toString((long) res);
-//            utility.setDisplayText(entryText);
-//        }
-//        Animation anim_fadein = AnimationUtils.loadAnimation(this, R.anim.fade_in);
-//        entry.startAnimation(anim_fadein);
-//    }
-
-
-//    public void hexDisplayResult(String result)
-//    {
-//        entryText = result;
-//        utility.setDisplayText(entryText);
-//        Animation anim_fadein = AnimationUtils.loadAnimation(this, R.anim.fade_in);
-//        entry.startAnimation(anim_fadein);
-//    }
-
     //    method to display the result in the current mode of calculator
     public void DisplayResult(String expression) {
         double res;
@@ -258,15 +220,6 @@ public class MainActivity extends FragmentActivity {
         Animation anim_fadein = AnimationUtils.loadAnimation(this, R.anim.fade_in);
         entry.startAnimation(anim_fadein);
     }
-
-
-//    public void hexPerformCalc(String expression) {
-//        expression = utility.convertToRadix(expression, 16, 10);
-//        double res = evaluate(expression);
-//        expression = utility.convertToRadix(Double.toString(res), 10, 16);
-//
-//        hexDisplayResult(expression);
-//    }
 
     //  Method to perform short press of delete button
     public void performDelete() {
