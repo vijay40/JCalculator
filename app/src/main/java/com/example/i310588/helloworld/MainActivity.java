@@ -40,7 +40,8 @@ public class MainActivity extends FragmentActivity{
     private ViewPager viewPager;
     private String[] modes;
     private final int REQUEST_EXIT=1;
-    public static String theme;
+    public static int theme;
+    public static int mode;
     SharedPreferences pref;
 
     @Override
@@ -48,7 +49,7 @@ public class MainActivity extends FragmentActivity{
         super.onCreate(savedInstanceState);
 
         pref = PreferenceManager.getDefaultSharedPreferences(this);
-        theme = pref.getString("theme", "0");
+        theme = Integer.parseInt(pref.getString("theme", "0"));
         LookHandler.onActivityCreatedSetTheme(this, theme);
 
         setContentView(R.layout.activity_main);
@@ -83,6 +84,7 @@ public class MainActivity extends FragmentActivity{
 //            }
 //        });
 
+        mode = 10;
     }
 
     @Override
@@ -476,6 +478,7 @@ public class MainActivity extends FragmentActivity{
     //  Method to handle clicks of button
     public void btnClick(View view) {
         int btnId = view.getId();
+
         String btnText;
 
         if(btnId == R.id.clearbtn || btnId == R.id.delbtn || btnId == R.id.clearbtnadv || btnId == R.id.delbtnadv || btnId == R.id.delbtnhex || btnId == R.id.clearbtnhex)

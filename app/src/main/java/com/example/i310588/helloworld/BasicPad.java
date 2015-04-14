@@ -1,5 +1,6 @@
 package com.example.i310588.helloworld;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,15 @@ import android.view.ViewGroup;
  * Contains functionality of Basic pad fragment
  */
 public class BasicPad extends Fragment {
+    Activity activity;
+    View[] buttons = new View[10];
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        this.activity = activity;
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -22,5 +32,19 @@ public class BasicPad extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         LookHandler.setThemeForBasic(getActivity(), MainActivity.theme);
+
+        buttons[0] = activity.findViewById(R.id.zerobtn);
+        buttons[1] = activity.findViewById(R.id.onebtn);
+        buttons[2] = activity.findViewById(R.id.twobtn);
+        buttons[3] = activity.findViewById(R.id.threebtn);
+        buttons[4] = activity.findViewById(R.id.fourbtn);
+        buttons[5] = activity.findViewById(R.id.fivebtn);
+        buttons[6] = activity.findViewById(R.id.sixbtn);
+        buttons[7] = activity.findViewById(R.id.sevenbtn);
+        buttons[8] = activity.findViewById(R.id.eightbtn);
+        buttons[9] = activity.findViewById(R.id.ninebtn);
+
+        LookHandler.DisableButtons(activity, buttons, "basic");
+        LookHandler.EnableButtons(activity, buttons, "basic");
     }
 }

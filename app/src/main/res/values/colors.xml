@@ -11,6 +11,12 @@
     <color name="default_dark">#000</color>
     <color name="grey_theme_normal">#636363</color>
     <color name="grey_theme_hex">#434343</color>
+    <color name="default_dark_disable">#9998A5</color>
+    <color name="default_dark_mode_enable">#070707</color>
+    <color name="default_dark_mode_disable">#12130F</color>
     <color name="default_light">#ff33b5e5</color>
     <color name="default_light_op">#fff7f9f9</color>
+    <color name="default_light_disable">#E5ECF4</color>
+    <color name="default_light_mode_enable">#433F6B</color>
+    <color name="default_light_mode_disable">#4F6D7A</color>
 </resources>
