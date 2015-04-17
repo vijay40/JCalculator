@@ -20,6 +20,8 @@ import android.widget.Toast;
 
 import org.javia.arity.Symbols;
 
+import java.util.ArrayList;
+
 import adapter.TabView;
 
 
@@ -38,7 +40,9 @@ public class MainActivity extends FragmentActivity {
     private final int REQUEST_EXIT = 1;
     public static int theme;
     public static int mode;
+    public static ArrayList<String> history;
     SharedPreferences pref;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,13 +84,25 @@ public class MainActivity extends FragmentActivity {
 //            }
 //        });
 
+//        default calculation mode
         mode = 10;
+
+//        TODO replace this dummy history data with actual history
+        history = new ArrayList<String>();
+        history.add("23");
+        history.add("32");
+        history.add("123");
+        history.add("23.839");
+        history.add("AB.839");
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         LookHandler.setTheme(this, theme);
+
+//        TODO remove this display if any problem occurs. Currently in testing phase.
+        utility.setDisplayText(entryText);
     }
 
     @Override
@@ -107,6 +123,12 @@ public class MainActivity extends FragmentActivity {
         if (id == R.id.action_settings) {
             Intent intent = new Intent(this, SettingsActivity.class);
             startActivityForResult(intent, REQUEST_EXIT);
+            return true;
+        }
+        else if (id == R.id.history)
+        {
+            Intent intent = new Intent(this, History.class);
+            startActivity(intent);
             return true;
         }
 
