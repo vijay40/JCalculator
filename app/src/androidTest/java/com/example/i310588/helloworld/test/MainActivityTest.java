@@ -16,7 +16,7 @@ import junit.framework.TestCase;
  */
 public class MainActivityTest extends TestCase {
 
-   public void runAssertEqual(String message, String actualOutput, String expectedOutput) {
+   public static void runAssertEqual(String message, String actualOutput, String expectedOutput) {
        message += "\n" +"Expected : " + expectedOutput + "\t";
        message += "Actual : " + actualOutput + "\t\t";
        assertEquals(message, actualOutput, expectedOutput);
@@ -152,77 +152,4 @@ public class MainActivityTest extends TestCase {
 
     }
 
-    @MediumTest
-    public void testOpClick() {
-        MainActivity m = new MainActivity();
-        String message;
-        String actualOutput;
-        String expectedOutput;
-
-////      Test 1
-//        message = "testing + click on empty entryText";
-//        m.setEntryText("");
-//        m.opClick("+");
-//        actualOutput = m.getEntryText();
-//        expectedOutput = "";
-//        runAssertEqual(message,actualOutput,expectedOutput);
-//
-////      Test 2
-//        message = "testing - click on empty entryText";
-//        m.setEntryText("");
-//        m.opClick("-");
-//        actualOutput = m.getEntryText();
-//        expectedOutput = "-";
-//        runAssertEqual(message,actualOutput,expectedOutput);
-//
-////      Test 3
-//        message = "testing x click on empty entryText";
-//        m.setEntryText("");
-//        m.opClick("x");
-//        actualOutput = m.getEntryText();
-//        expectedOutput = "";
-//        runAssertEqual(message,actualOutput,expectedOutput);
-//
-////      Test 4
-//        message = "testing ÷ click on empty entryText";
-//        m.setEntryText("");
-//        m.opClick("÷");
-//        actualOutput = m.getEntryText();
-//        expectedOutput = "";
-//        runAssertEqual(message,actualOutput,expectedOutput);
-//
-////      Test 5
-//        message = "testing ÷ click on - entryText";
-//        m.setEntryText("-");
-//        m.opClick("÷");
-//        actualOutput = m.getEntryText();
-//        expectedOutput = "-";
-//        runAssertEqual(message,actualOutput,expectedOutput);
-//
-////      Test 6
-//        message = "testing + click on - entryText";
-//        m.setEntryText("-");
-//        m.opClick("+");
-//        actualOutput = m.getEntryText();
-//        expectedOutput = "";
-//        runAssertEqual(message,actualOutput,expectedOutput);
-//
-////      Test 7
-//        message = "testing x click on - entryText";
-//        m.setEntryText("-");
-//        m.opClick("x");
-//        actualOutput = m.getEntryText();
-//        expectedOutput = "-";
-//        runAssertEqual(message,actualOutput,expectedOutput);
-//
-////      Test 6
-//        message = "testing - click on - entryText";
-//        m.setEntryText("-");
-//        m.opClick("-");
-//        actualOutput = m.getEntryText();
-//        expectedOutput = "-";
-//        runAssertEqual(message,actualOutput,expectedOutput);
-
-
-    }
 }
