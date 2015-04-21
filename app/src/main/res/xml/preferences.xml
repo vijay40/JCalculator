@@ -15,6 +15,11 @@
             android:title="@string/vibrate"
             android:defaultValue="false" />
 
+        <com.example.i310588.helloworld.NumberPickerPreference
+            android:key="max_history"
+            android:title="History Entries"
+            android:defaultValue="25"/>
+
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -27,8 +32,6 @@
             android:entryValues="@array/theme_values"
             android:defaultValue="0"/>
     </PreferenceCategory>
-
-
 
     <PreferenceCategory
         android:title="@string/about">
