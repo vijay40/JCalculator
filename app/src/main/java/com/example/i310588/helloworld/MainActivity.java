@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,7 +29,7 @@ import adapter.TabView;
 public class MainActivity extends FragmentActivity {
 
     public static String entryText = "";
-    private int lastBtnHit = -1;
+    public static int lastBtnHit = -1;
     private double prec = 1000000000.0;
     TextView entry;
     Utility utility;
@@ -87,13 +88,7 @@ public class MainActivity extends FragmentActivity {
 //        default calculation mode
         mode = 10;
 
-//        TODO replace this dummy history data with actual history
         history = new ArrayList<String>();
-        history.add("23");
-        history.add("32");
-        history.add("123");
-        history.add("23.839");
-        history.add("AB.839");
     }
 
     @Override
@@ -101,8 +96,19 @@ public class MainActivity extends FragmentActivity {
         super.onStart();
         LookHandler.setTheme(this, theme);
 
-//        TODO remove this display if any problem occurs. Currently in testing phase.
         utility.setDisplayText(entryText);
+
+//     reading history from file
+        utility.historyRead();
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+//        write history to file
+        utility.historyWrite();
     }
 
     @Override
@@ -228,14 +234,24 @@ public class MainActivity extends FragmentActivity {
         } else if (mode == 10 && utility.isDouble(res)) {
             res = Math.round(res * prec) / prec;
             entryText = Double.toString(res);
+
+            history.add(entryText);
         } else if(mode == 10){
             entryText = Long.toString((long) res);
+
+            history.add(entryText);
         } else if(mode == 16) {
             entryText = Utility.convertToRadix(Double.toString(res), 10, 16);
+
+            history.add(entryText);
         } else if(mode == 8) {
             entryText = Utility.convertToRadix(Double.toString(res), 10, 8);
+
+            history.add(entryText);
         } else if(mode == 2) {
             entryText = Utility.convertToRadix(Double.toString(res), 10, 2);
+
+            history.add(entryText);
         }
 
         utility.setDisplayText(entryText);

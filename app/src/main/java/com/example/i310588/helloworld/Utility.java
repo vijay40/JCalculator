@@ -12,6 +12,15 @@ import android.widget.TextView;
 import org.javia.arity.Symbols;
 import org.javia.arity.SyntaxException;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.StreamCorruptedException;
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.regex.Pattern;
 
@@ -227,4 +236,53 @@ public class Utility {
         });
     }
 
+    public void historyWrite(){
+        FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
+        try {
+            fos = activity.openFileOutput("history", Context.MODE_PRIVATE);
+            oos = new ObjectOutputStream(fos);
+            oos.writeObject(MainActivity.history);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                fos.close();
+                oos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+
+    public void historyRead()
+    {
+        FileInputStream fin = null;
+        ObjectInputStream ois;
+
+        try {
+            fin = activity.openFileInput("history");
+            ois = new ObjectInputStream(fin);
+            MainActivity.history = (ArrayList<String>) ois.readObject();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (StreamCorruptedException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if(fin != null)
+                    fin.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

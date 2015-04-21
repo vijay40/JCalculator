@@ -30,8 +30,12 @@ public class History extends Activity implements AdapterView.OnItemClickListener
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         TextView tv = (TextView) view;
-//        Todo if last character in entryText is operator then append otherwise replace
-        MainActivity.entryText = (String) tv.getText();
+
+        if(MainActivity.lastBtnHit == R.id.equalbtn)
+            MainActivity.entryText = (String) tv.getText();
+        else
+            MainActivity.entryText += tv.getText();
+
         this.finish();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
