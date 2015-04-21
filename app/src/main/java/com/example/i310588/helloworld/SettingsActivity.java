@@ -41,14 +41,32 @@ public class SettingsActivity extends Activity{
             themeNames = getResources().getStringArray(R.array.themes);
             ListPreference lp = (ListPreference) findPreference("theme");
             lp.setTitle(themeNames[Integer.parseInt(theme)]);
+
+            handleHistoryChange();
+        }
+
+        private void handleHistoryChange()
+        {
+            NumberPickerPreference npp = (NumberPickerPreference) findPreference("max_history");
+            int max_history = pref.getInt("max_history", 1);
+            npp.setSummary("Store upto " + max_history + " history entries");
+            History.removeHistoryEntries();
         }
 
         @Override
         public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
 
-            ListPreference lp = (ListPreference) findPreference("theme");
-            theme = pref.getString("theme", "0");
-            lp.setTitle(themeNames[Integer.parseInt(theme)]);
+            if(key.equals("theme"))
+            {
+                ListPreference lp = (ListPreference) findPreference("theme");
+                theme = pref.getString("theme", "0");
+                lp.setTitle(themeNames[Integer.parseInt(theme)]);
+            }else if(key.equals("max_history"))
+            {
+                handleHistoryChange();
+            }
+
+
         }
 
         @Override

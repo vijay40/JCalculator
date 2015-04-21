@@ -30,6 +30,7 @@ public class MainActivity extends FragmentActivity {
 
     public static String entryText = "";
     public static int lastBtnHit = -1;
+    public static int max_history;
     private double prec = 1000000000.0;
     TextView entry;
     Utility utility;
@@ -89,6 +90,8 @@ public class MainActivity extends FragmentActivity {
         mode = 10;
 
         history = new ArrayList<String>();
+        NumberPickerPreference npp = new NumberPickerPreference(this, null);
+        max_history = pref.getInt("max_history", 1);
     }
 
     @Override
@@ -235,23 +238,23 @@ public class MainActivity extends FragmentActivity {
             res = Math.round(res * prec) / prec;
             entryText = Double.toString(res);
 
-            history.add(entryText);
+            History.addHistoryEntry();
         } else if(mode == 10){
             entryText = Long.toString((long) res);
 
-            history.add(entryText);
+            History.addHistoryEntry();
         } else if(mode == 16) {
             entryText = Utility.convertToRadix(Double.toString(res), 10, 16);
 
-            history.add(entryText);
+            History.addHistoryEntry();
         } else if(mode == 8) {
             entryText = Utility.convertToRadix(Double.toString(res), 10, 8);
 
-            history.add(entryText);
+            History.addHistoryEntry();
         } else if(mode == 2) {
             entryText = Utility.convertToRadix(Double.toString(res), 10, 2);
 
-            history.add(entryText);
+            History.addHistoryEntry();
         }
 
         utility.setDisplayText(entryText);

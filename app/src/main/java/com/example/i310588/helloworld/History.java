@@ -3,6 +3,7 @@ package com.example.i310588.helloworld;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,6 +16,8 @@ import android.widget.TextView;
 public class History extends Activity implements AdapterView.OnItemClickListener{
 
     ListView history_entries;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,5 +42,20 @@ public class History extends Activity implements AdapterView.OnItemClickListener
         this.finish();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+    public static void removeHistoryEntries()
+    {
+        int maxHistory = MainActivity.max_history;
+        while(MainActivity.history.size() >= maxHistory)
+        {
+            MainActivity.history.remove(MainActivity.history.size()-1);
+        }
+    }
+
+    public static void addHistoryEntry()
+    {
+        removeHistoryEntries();
+        MainActivity.history.add(0, MainActivity.entryText);
     }
 }
