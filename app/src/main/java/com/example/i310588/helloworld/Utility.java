@@ -12,7 +12,6 @@ import android.widget.TextView;
 import org.javia.arity.Symbols;
 import org.javia.arity.SyntaxException;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -240,7 +239,7 @@ public class Utility {
         FileOutputStream fos = null;
         ObjectOutputStream oos = null;
         try {
-            fos = activity.openFileOutput("history", Context.MODE_PRIVATE);
+            fos = activity.openFileOutput("result", Context.MODE_PRIVATE);
             oos = new ObjectOutputStream(fos);
             oos.writeObject(MainActivity.history);
         } catch (FileNotFoundException e) {
@@ -265,9 +264,9 @@ public class Utility {
         ObjectInputStream ois;
 
         try {
-            fin = activity.openFileInput("history");
+            fin = activity.openFileInput("result");
             ois = new ObjectInputStream(fin);
-            MainActivity.history = (ArrayList<String>) ois.readObject();
+            MainActivity.history = (ArrayList<HistoryRow>) ois.readObject();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (StreamCorruptedException e) {

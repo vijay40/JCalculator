@@ -49,6 +49,7 @@ public class SettingsActivity extends Activity{
         {
             NumberPickerPreference npp = (NumberPickerPreference) findPreference("max_history");
             int max_history = pref.getInt("max_history", 1);
+            MainActivity.max_history = max_history;
             npp.setSummary("Store upto " + max_history + " history entries");
             History.removeHistoryEntries();
         }

@@ -3,7 +3,6 @@ package com.example.i310588.helloworld;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -25,9 +24,10 @@ public class History extends Activity implements AdapterView.OnItemClickListener
         setContentView(R.layout.history);
 
         history_entries = (ListView) findViewById(R.id.listView);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, MainActivity.history);
-        history_entries.setAdapter(adapter);
-        history_entries.setOnItemClickListener(this);
+        history_entries.setAdapter(new HistoryView(this));
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.history_entry, R.id.result, MainActivity.result);
+//        history_entries.setAdapter(adapter);
+//        history_entries.setOnItemClickListener(this);
     }
 
     @Override
@@ -49,13 +49,17 @@ public class History extends Activity implements AdapterView.OnItemClickListener
         int maxHistory = MainActivity.max_history;
         while(MainActivity.history.size() >= maxHistory)
         {
+//            MainActivity.result.remove(MainActivity.result.size()-1);
+//            MainActivity.expression.remove(MainActivity.expression.size()-1);
             MainActivity.history.remove(MainActivity.history.size()-1);
         }
     }
 
-    public static void addHistoryEntry()
+    public static void addHistoryEntry(String expr)
     {
         removeHistoryEntries();
-        MainActivity.history.add(0, MainActivity.entryText);
+//        MainActivity.result.add(0, MainActivity.entryText);
+//        MainActivity.expression.add(0, expr);
+        MainActivity.history.add(0, new HistoryRow(expr, MainActivity.entryText));
     }
 }

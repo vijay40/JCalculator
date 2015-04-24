@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -42,7 +41,7 @@ public class MainActivity extends FragmentActivity {
     private final int REQUEST_EXIT = 1;
     public static int theme;
     public static int mode;
-    public static ArrayList<String> history;
+    public static ArrayList<HistoryRow> history;
     SharedPreferences pref;
 
 
@@ -89,9 +88,8 @@ public class MainActivity extends FragmentActivity {
 //        default calculation mode
         mode = 10;
 
-        history = new ArrayList<String>();
-        NumberPickerPreference npp = new NumberPickerPreference(this, null);
-        max_history = pref.getInt("max_history", 1);
+        history = new ArrayList<HistoryRow>();
+        max_history = pref.getInt("max_history", 25);
     }
 
     @Override
@@ -101,7 +99,7 @@ public class MainActivity extends FragmentActivity {
 
         utility.setDisplayText(entryText);
 
-//     reading history from file
+//     reading result from file
         utility.historyRead();
 
     }
@@ -110,7 +108,7 @@ public class MainActivity extends FragmentActivity {
     protected void onStop() {
         super.onStop();
 
-//        write history to file
+//        write result to file
         utility.historyWrite();
     }
 
@@ -238,23 +236,23 @@ public class MainActivity extends FragmentActivity {
             res = Math.round(res * prec) / prec;
             entryText = Double.toString(res);
 
-            History.addHistoryEntry();
+            History.addHistoryEntry(expression);
         } else if(mode == 10){
             entryText = Long.toString((long) res);
 
-            History.addHistoryEntry();
+            History.addHistoryEntry(expression);
         } else if(mode == 16) {
             entryText = Utility.convertToRadix(Double.toString(res), 10, 16);
 
-            History.addHistoryEntry();
+            History.addHistoryEntry(expression);
         } else if(mode == 8) {
             entryText = Utility.convertToRadix(Double.toString(res), 10, 8);
 
-            History.addHistoryEntry();
+            History.addHistoryEntry(expression);
         } else if(mode == 2) {
             entryText = Utility.convertToRadix(Double.toString(res), 10, 2);
 
-            History.addHistoryEntry();
+            History.addHistoryEntry(expression);
         }
 
         utility.setDisplayText(entryText);
