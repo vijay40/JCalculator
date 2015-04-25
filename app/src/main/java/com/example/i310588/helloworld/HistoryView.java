@@ -1,10 +1,14 @@
 package com.example.i310588.helloworld;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 /**
@@ -13,6 +17,7 @@ import android.widget.TextView;
 public class HistoryView extends BaseAdapter {
 
     Context context;
+    protected ListView history;
 
     HistoryView(Context c)
     {
@@ -43,6 +48,40 @@ public class HistoryView extends BaseAdapter {
         HistoryRow temp = MainActivity.history.get(position);
         expr.setText(temp.expression);
         result.setText(temp.result);
+
+        expr.setOnClickListener(mExprClickListener);
+        result.setOnClickListener(mResClickListener);
+
+        expr.setTag(position);
+        result.setTag(position);
+
         return row;
     }
+
+    private void addToEntryText(String expr)
+    {
+
+        if(MainActivity.lastBtnHit == R.id.equalbtn)
+            MainActivity.entryText = expr;
+        else
+            MainActivity.entryText += expr;
+
+        ((Activity)context).finish();
+    }
+
+    private View.OnClickListener mExprClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            final int position = (int) v.getTag();
+            addToEntryText(MainActivity.history.get(position).expression);
+        }
+    };
+
+    private View.OnClickListener mResClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            final int position = (int) v.getTag();
+            addToEntryText(MainActivity.history.get(position).result);
+        }
+    };
 }

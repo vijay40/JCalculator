@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -43,7 +44,6 @@ public class MainActivity extends FragmentActivity {
     public static int mode;
     public static ArrayList<HistoryRow> history;
     SharedPreferences pref;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,11 +97,10 @@ public class MainActivity extends FragmentActivity {
         super.onStart();
         LookHandler.setTheme(this, theme);
 
-        utility.setDisplayText(entryText);
-
 //     reading result from file
         utility.historyRead();
 
+        utility.setDisplayText(entryText);
     }
 
     @Override

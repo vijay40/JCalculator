@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.HorizontalScrollView;
 import android.widget.TextView;
@@ -210,6 +211,7 @@ public class Utility {
     //  Method to find whether current number contains a decimal point or not
     public boolean hasDecimal(String entryText) {
         boolean dec = false;
+
         int len = entryText.length();
         for (int i = len - 1; i >= 0; i--) {
             String lastchar = entryText.substring(i, i + 1);
@@ -244,8 +246,10 @@ public class Utility {
             oos.writeObject(MainActivity.history);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+            Log.e("Vijay", e.toString());
         } catch (IOException e) {
             e.printStackTrace();
+            Log.e("Vijay", e.toString());
         }
         finally {
             try {
@@ -253,6 +257,7 @@ public class Utility {
                 oos.close();
             } catch (IOException e) {
                 e.printStackTrace();
+                Log.e("Vijay", e.toString());
             }
 
         }
@@ -260,6 +265,8 @@ public class Utility {
 
     public void historyRead()
     {
+        //todo remove this log
+        Log.e("Vijay", "history read get called");
         FileInputStream fin = null;
         ObjectInputStream ois;
 
@@ -267,20 +274,27 @@ public class Utility {
             fin = activity.openFileInput("result");
             ois = new ObjectInputStream(fin);
             MainActivity.history = (ArrayList<HistoryRow>) ois.readObject();
+            // todo remove this log
+            Log.e("Vijay", "History : " + MainActivity.history);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+            Log.e("Vijay", e.toString());
         } catch (StreamCorruptedException e) {
             e.printStackTrace();
+            Log.e("Vijay", e.toString());
         } catch (IOException e) {
             e.printStackTrace();
+            Log.e("Vijay", e.toString());
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
+            Log.e("Vijay", e.toString());
         } finally {
             try {
                 if(fin != null)
                     fin.close();
             } catch (IOException e) {
                 e.printStackTrace();
+                Log.e("Vijay", e.toString());
             }
         }
     }

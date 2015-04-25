@@ -12,7 +12,7 @@ import android.widget.TextView;
 /**
  * Created by I310588 on 4/17/2015.
  */
-public class History extends Activity implements AdapterView.OnItemClickListener{
+public class History extends Activity{
 
     ListView history_entries;
 
@@ -25,23 +25,6 @@ public class History extends Activity implements AdapterView.OnItemClickListener
 
         history_entries = (ListView) findViewById(R.id.listView);
         history_entries.setAdapter(new HistoryView(this));
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.history_entry, R.id.result, MainActivity.result);
-//        history_entries.setAdapter(adapter);
-//        history_entries.setOnItemClickListener(this);
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        TextView tv = (TextView) view;
-
-        if(MainActivity.lastBtnHit == R.id.equalbtn)
-            MainActivity.entryText = (String) tv.getText();
-        else
-            MainActivity.entryText += tv.getText();
-
-        this.finish();
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
     }
 
     public static void removeHistoryEntries()
@@ -49,8 +32,6 @@ public class History extends Activity implements AdapterView.OnItemClickListener
         int maxHistory = MainActivity.max_history;
         while(MainActivity.history.size() >= maxHistory)
         {
-//            MainActivity.result.remove(MainActivity.result.size()-1);
-//            MainActivity.expression.remove(MainActivity.expression.size()-1);
             MainActivity.history.remove(MainActivity.history.size()-1);
         }
     }
@@ -58,8 +39,6 @@ public class History extends Activity implements AdapterView.OnItemClickListener
     public static void addHistoryEntry(String expr)
     {
         removeHistoryEntries();
-//        MainActivity.result.add(0, MainActivity.entryText);
-//        MainActivity.expression.add(0, expr);
         MainActivity.history.add(0, new HistoryRow(expr, MainActivity.entryText));
     }
 }
