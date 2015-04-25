@@ -54,7 +54,6 @@
         <item>Hex</item>
     </string-array>
 
-    <!--TODO replace names of themes with some sensible names-->
     <string-array name="themes">
         <item>Default Light</item>
         <item>Default Dark</item>
