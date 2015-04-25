@@ -1,4 +1,4 @@
-package com.example.i310588.helloworld;
+package com.vj.android.calci;
 
 
 /**
@@ -9,19 +9,19 @@ public class ExpressionHandler {
 
     Utility utility;
 
-    public ExpressionHandler(){
+    public ExpressionHandler() {
         utility = new Utility();
     }
 
-//  handle sin formatting
+    //  handle sin formatting
     public String handleTrig(String expr, String func) {
         int lastindex = 0, previndex;
         String lastchar;
-        while(lastindex != -1) {
+        while (lastindex != -1) {
             lastindex = expr.indexOf(func, lastindex);
-            if(lastindex != -1) {
-                previndex = lastindex-1;
-                if(previndex >= 0) {
+            if (lastindex != -1) {
+                previndex = lastindex - 1;
+                if (previndex >= 0) {
                     lastchar = expr.substring(previndex, lastindex);
                     if (!utility.isOperator(lastchar) && !"(".contains(lastchar)) {
                         expr = expr.substring(0, lastindex) + "*" + expr.substring(lastindex);
@@ -37,7 +37,7 @@ public class ExpressionHandler {
         int len = expr.length();
 
 //        handle trailing operators and open brackets
-        while (len > 0 && (utility.isOperator(expr.substring(len - 1, len)) || "(e^√".contains(expr.substring(len-1, len))))
+        while (len > 0 && (utility.isOperator(expr.substring(len - 1, len)) || "(e^√".contains(expr.substring(len - 1, len))))
             len--;
 
         return len;
@@ -94,14 +94,12 @@ public class ExpressionHandler {
         }
 
 //        handles conditions like . to 0.
-        for(int i=0; i<res.length(); i++)
-        {
-            current = res.substring(i,i+1);
-            if(i==0 && current.equals(".")) {
+        for (int i = 0; i < res.length(); i++) {
+            current = res.substring(i, i + 1);
+            if (i == 0 && current.equals(".")) {
                 res = "0" + res;
-            }
-            else if(current.equals(".") && !("0123456789".contains(res.substring(i-1,i)))) {
-                res = res.substring(0,i) + "0" + res.substring(i,res.length());
+            } else if (current.equals(".") && !("0123456789".contains(res.substring(i - 1, i)))) {
+                res = res.substring(0, i) + "0" + res.substring(i, res.length());
             }
         }
         res = handleTrig(res, "sin");

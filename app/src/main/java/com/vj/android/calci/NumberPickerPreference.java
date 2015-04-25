@@ -1,4 +1,4 @@
-package com.example.i310588.helloworld;
+package com.vj.android.calci;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -67,12 +67,12 @@ public class NumberPickerPreference extends DialogPreference {
         setValue(restorePersistedValue ? getPersistedInt(MIN_VALUE) : (Integer) defaultValue);
     }
 
+    public int getValue() {
+        return this.value;
+    }
+
     public void setValue(int value) {
         this.value = value;
         persistInt(this.value);
-    }
-
-    public int getValue() {
-        return this.value;
     }
 }

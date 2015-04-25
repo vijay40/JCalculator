@@ -1,4 +1,4 @@
-package com.example.i310588.helloworld;
+package com.vj.android.calci;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -8,19 +8,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+
 /**
  * Created by I310588 on 3/22/2015.
  */
 public class HexPad extends Fragment implements View.OnClickListener{
 
+    static View[] modes = new View[4];
     private final int BINARY_MODE = 0;
     private final int OCTAL_MODE = 1;
     private final int DECIMAL_MODE = 2;
     private final int HEX_MODE = 3;
-
     Activity activity;
     View[] buttons = new View[16];
-    static View[] modes = new View[4];
+
+    public static int ModeToIdx() {
+        if (MainActivity.mode == 2)
+            return 0;
+        else if (MainActivity.mode == 8)
+            return 1;
+        else if (MainActivity.mode == 10)
+            return 2;
+        else
+            return 3;
+    }
 
     @Override
     public void onAttach(Activity activity) {
@@ -42,7 +53,7 @@ public class HexPad extends Fragment implements View.OnClickListener{
         modes[OCTAL_MODE] = activity.findViewById(R.id.octal_mode);
         modes[BINARY_MODE] = activity.findViewById(R.id.bin_mode);
 
-        for(int i=0; i<4; i++)
+        for (int i = 0; i < 4; i++)
             modes[i].setOnClickListener(this);
 
         LookHandler.setThemeForHex(getActivity(), MainActivity.theme);
@@ -72,36 +83,21 @@ public class HexPad extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
         int id = v.getId();
         Utility utility = new Utility(getActivity());
-        if(id == R.id.hex_mode){
+        if (id == R.id.hex_mode) {
             MainActivity.entryText = Utility.convertToRadix(MainActivity.entryText, MainActivity.mode, 16);
             MainActivity.mode = 16;
-        }
-        else if(id == R.id.dec_mode) {
+        } else if (id == R.id.dec_mode) {
             MainActivity.entryText = Utility.convertToRadix(MainActivity.entryText, MainActivity.mode, 10);
             MainActivity.mode = 10;
-        }
-        else if(id == R.id.octal_mode) {
+        } else if (id == R.id.octal_mode) {
             MainActivity.entryText = Utility.convertToRadix(MainActivity.entryText, MainActivity.mode, 8);
             MainActivity.mode = 8;
-        }
-        else if(id == R.id.bin_mode) {
+        } else if (id == R.id.bin_mode) {
             MainActivity.entryText = Utility.convertToRadix(MainActivity.entryText, MainActivity.mode, 2);
             MainActivity.mode = 2;
         }
         handleMode();
         utility.setDisplayText(MainActivity.entryText);
-    }
-
-    public static int ModeToIdx()
-    {
-        if(MainActivity.mode == 2)
-            return 0;
-        else if(MainActivity.mode == 8)
-            return 1;
-        else if(MainActivity.mode == 10)
-            return 2;
-        else
-            return 3;
     }
 
     public void handleMode()

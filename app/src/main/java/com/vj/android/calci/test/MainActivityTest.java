@@ -1,12 +1,11 @@
-package com.example.i310588.helloworld.test;
+package com.vj.android.calci.test;
 
-import android.content.Intent;
 import android.test.suitebuilder.annotation.MediumTest;
 import android.test.suitebuilder.annotation.SmallTest;
 
-import com.example.i310588.helloworld.ExpressionHandler;
-import com.example.i310588.helloworld.MainActivity;
-import com.example.i310588.helloworld.Utility;
+import com.vj.android.calci.ExpressionHandler;
+import com.vj.android.calci.MainActivity;
+import com.vj.android.calci.Utility;
 
 import junit.framework.TestCase;
 

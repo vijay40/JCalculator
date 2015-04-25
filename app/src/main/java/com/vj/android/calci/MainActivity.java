@@ -1,4 +1,4 @@
-package com.example.i310588.helloworld;
+package com.vj.android.calci;
 
 import android.app.ActionBar;
 import android.content.Intent;
@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,19 +30,19 @@ public class MainActivity extends FragmentActivity {
     public static String entryText = "";
     public static int lastBtnHit = -1;
     public static int max_history;
-    private double prec = 1000000000.0;
+    public static int theme;
+    public static int mode;
+    public static ArrayList<HistoryRow> history;
+    private final int REQUEST_EXIT = 1;
     TextView entry;
     Utility utility;
+    SharedPreferences pref;
+    private double prec = 1000000000.0;
     private ExpressionHandler exprhandler;
     private TabView tabViewAdapter;
     private ActionBar actionBar;
     private ViewPager viewPager;
     private String[] modes;
-    private final int REQUEST_EXIT = 1;
-    public static int theme;
-    public static int mode;
-    public static ArrayList<HistoryRow> history;
-    SharedPreferences pref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -167,15 +166,15 @@ public class MainActivity extends FragmentActivity {
 
     }
 
+    //    Method to facilitate testing not to be used in actual app
+    public String getEntryText() {
+        return entryText;
+    }
+
     // TODO remove these setEntry and getEntry text function before release.
     //    Method to facilitate testing not to be used in actual app
     public void setEntryText(String text) {
         entryText = text;
-    }
-
-    //    Method to facilitate testing not to be used in actual app
-    public String getEntryText() {
-        return entryText;
     }
 
     //  Method to perform calculation
@@ -235,23 +234,23 @@ public class MainActivity extends FragmentActivity {
             res = Math.round(res * prec) / prec;
             entryText = Double.toString(res);
 
-            History.addHistoryEntry(expression);
+            History.addHistoryEntry(expression, this);
         } else if(mode == 10){
             entryText = Long.toString((long) res);
 
-            History.addHistoryEntry(expression);
+            History.addHistoryEntry(expression, this);
         } else if(mode == 16) {
             entryText = Utility.convertToRadix(Double.toString(res), 10, 16);
 
-            History.addHistoryEntry(expression);
+            History.addHistoryEntry(expression, this);
         } else if(mode == 8) {
             entryText = Utility.convertToRadix(Double.toString(res), 10, 8);
 
-            History.addHistoryEntry(expression);
+            History.addHistoryEntry(expression, this);
         } else if(mode == 2) {
             entryText = Utility.convertToRadix(Double.toString(res), 10, 2);
 
-            History.addHistoryEntry(expression);
+            History.addHistoryEntry(expression, this);
         }
 
         utility.setDisplayText(entryText);

@@ -1,4 +1,4 @@
-package com.example.i310588.helloworld;
+package com.vj.android.calci;
 
 import android.app.Activity;
 import android.support.v4.view.ViewPager;

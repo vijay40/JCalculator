@@ -1,10 +1,10 @@
-package com.example.i310588.helloworld.test;
+package com.vj.android.calci.test;
 
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.UiThreadTest;
 import android.test.suitebuilder.annotation.MediumTest;
 
-import com.example.i310588.helloworld.MainActivity;
+import com.vj.android.calci.MainActivity;
 
 /**
  * Created by I310588 on 4/19/2015.

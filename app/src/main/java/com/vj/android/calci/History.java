@@ -1,8 +1,10 @@
-package com.example.i310588.helloworld;
+package com.vj.android.calci;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.widget.ListView;
+
 
 /**
  * Created by I310588 on 4/17/2015.
@@ -10,19 +12,19 @@ import android.widget.ListView;
 public class History extends Activity{
 
     ListView history_entries;
-    Utility utility;
 
-    public static void removeHistoryEntries() {
+    public static void removeHistoryEntries(Context context) {
         int maxHistory = MainActivity.max_history;
-        while (MainActivity.history.size() >= maxHistory) {
+        while (MainActivity.history.size() > maxHistory) {
             MainActivity.history.remove(MainActivity.history.size() - 1);
         }
+        (new Utility((Activity) context)).historyWrite();
     }
 
-    public static void addHistoryEntry(String expr)
+    public static void addHistoryEntry(String expr, Context context)
     {
-        removeHistoryEntries();
         MainActivity.history.add(0, new HistoryRow(expr, MainActivity.entryText));
+        removeHistoryEntries(context);
     }
 
     @Override
@@ -31,14 +33,8 @@ public class History extends Activity{
 
         setContentView(R.layout.history);
 
-        utility = new Utility(this);
-
         history_entries = (ListView) findViewById(R.id.listView);
         history_entries.setAdapter(new HistoryView(this));
     }
 
-//    public void dataChanged()
-//    {
-//       utility.historyWrite();
-//    }
 }

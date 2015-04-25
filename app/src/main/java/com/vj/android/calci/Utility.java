@@ -1,4 +1,4 @@
-package com.example.i310588.helloworld;
+package com.vj.android.calci;
 
 import android.app.Activity;
 import android.content.Context;
@@ -43,61 +43,61 @@ public class Utility {
         this.activity = activity;
     }
 
-//  Method to change the base of a number
-public static String changeBase(String originalNumber, int originalBase, int base) throws SyntaxException {
-    Symbols symbol = new Symbols();
-    String[] parts = originalNumber.split(Pattern.quote("."));
-    if (parts.length == 0) {
-        parts = new String[1];
-        parts[0] = "0";
-    }
-    if (parts[0].isEmpty()) {
-        parts[0] = "0";
-    }
-    if (originalBase != 10) {
-        parts[0] = Long.toString(Long.parseLong(parts[0], originalBase));
-    }
+    //  Method to change the base of a number
+    public static String changeBase(String originalNumber, int originalBase, int base) throws SyntaxException {
+        Symbols symbol = new Symbols();
+        String[] parts = originalNumber.split(Pattern.quote("."));
+        if (parts.length == 0) {
+            parts = new String[1];
+            parts[0] = "0";
+        }
+        if (parts[0].isEmpty()) {
+            parts[0] = "0";
+        }
+        if (originalBase != 10) {
+            parts[0] = Long.toString(Long.parseLong(parts[0], originalBase));
+        }
 
 
-    String wholeNumber = "";
-    switch (base) {
-        case 2:
-            wholeNumber = Long.toBinaryString(Long.parseLong(parts[0]));
-            break;
-        case 8:
-            wholeNumber = Long.toOctalString(Long.parseLong(parts[0]));
-            break;
-        case 10:
-            wholeNumber = parts[0];
-            break;
-        case 16:
-            wholeNumber = Long.toHexString(Long.parseLong(parts[0]));
-            break;
-    }
-    if (parts.length == 1) return wholeNumber.toUpperCase(Locale.US);
+        String wholeNumber = "";
+        switch (base) {
+            case 2:
+                wholeNumber = Long.toBinaryString(Long.parseLong(parts[0]));
+                break;
+            case 8:
+                wholeNumber = Long.toOctalString(Long.parseLong(parts[0]));
+                break;
+            case 10:
+                wholeNumber = parts[0];
+                break;
+            case 16:
+                wholeNumber = Long.toHexString(Long.parseLong(parts[0]));
+                break;
+        }
+        if (parts.length == 1) return wholeNumber.toUpperCase(Locale.US);
 
-    // Catch overflow (it's a decimal, it can be (slightly) rounded
-    if (parts[1].length() > 13) {
-        parts[1] = parts[1].substring(0, 13);
-    }
+        // Catch overflow (it's a decimal, it can be (slightly) rounded
+        if (parts[1].length() > 13) {
+            parts[1] = parts[1].substring(0, 13);
+        }
 
-    double decimal = 0;
-    if (originalBase != 10) {
-        String decimalFraction = Long.toString(Long.parseLong(parts[1], originalBase)) + "/" + originalBase + "^" + parts[1].length();
-        decimal = symbol.eval(decimalFraction);
-    } else
-        decimal = Double.parseDouble("0." + parts[1]);
+        double decimal = 0;
+        if (originalBase != 10) {
+            String decimalFraction = Long.toString(Long.parseLong(parts[1], originalBase)) + "/" + originalBase + "^" + parts[1].length();
+            decimal = symbol.eval(decimalFraction);
+        } else
+            decimal = Double.parseDouble("0." + parts[1]);
 
-    if (decimal == 0) return wholeNumber.toUpperCase(Locale.US);
+        if (decimal == 0) return wholeNumber.toUpperCase(Locale.US);
 
-    String decimalNumber = "";
-    for (int i = 0, id = 0; decimal != 0 && i <= PRECISION; i++) {
-        decimal *= base;
-        id = (int) Math.floor(decimal);
-        decimal -= id;
-        decimalNumber += Integer.toHexString(id);
-    }
-    return (wholeNumber + "." + decimalNumber).toUpperCase(Locale.US);
+        String decimalNumber = "";
+        for (int i = 0, id = 0; decimal != 0 && i <= PRECISION; i++) {
+            decimal *= base;
+            id = (int) Math.floor(decimal);
+            decimal -= id;
+            decimalNumber += Integer.toHexString(id);
+        }
+        return (wholeNumber + "." + decimalNumber).toUpperCase(Locale.US);
     }
 
     public static String convertToRadix(String expr, int originalRadix, int radix) {
@@ -232,7 +232,7 @@ public static String changeBase(String originalNumber, int originalBase, int bas
         });
     }
 
-    public void historyWrite(){
+    public void historyWrite() {
         FileOutputStream fos = null;
         ObjectOutputStream oos = null;
         try {
@@ -245,8 +245,7 @@ public static String changeBase(String originalNumber, int originalBase, int bas
         } catch (IOException e) {
             e.printStackTrace();
             Log.e("Vijay", e.toString());
-        }
-        finally {
+        } finally {
             try {
                 fos.close();
                 oos.close();
@@ -258,8 +257,7 @@ public static String changeBase(String originalNumber, int originalBase, int bas
         }
     }
 
-    public void historyRead()
-    {
+    public void historyRead() {
         FileInputStream fin = null;
         ObjectInputStream ois;
         // todo change the tag of logs from vijay to something other
@@ -282,7 +280,7 @@ public static String changeBase(String originalNumber, int originalBase, int bas
             Log.e("Vijay", e.toString());
         } finally {
             try {
-                if(fin != null)
+                if (fin != null)
                     fin.close();
             } catch (IOException e) {
                 e.printStackTrace();

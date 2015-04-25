@@ -4,9 +4,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.example.i310588.helloworld.AdvancePad;
-import com.example.i310588.helloworld.BasicPad;
-import com.example.i310588.helloworld.HexPad;
+import com.vj.android.calci.AdvancePad;
+import com.vj.android.calci.BasicPad;
+import com.vj.android.calci.HexPad;
 
 /**
  * Created by I310588 on 3/22/2015.
@@ -19,13 +19,11 @@ public class TabView extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int i) {
-        if(i==0){
+        if (i == 0) {
             return new BasicPad();
-        }
-        else if(i==1){
+        } else if (i == 1) {
             return new AdvancePad();
-        }
-        else{
+        } else {
             return new HexPad();
         }
     }

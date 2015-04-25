@@ -1,20 +1,21 @@
-package com.example.i310588.helloworld;
+package com.vj.android.calci;
 
 import android.app.Activity;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
+
 /**
  * Created by I310588 on 4/5/2015.
  */
 public class LookHandler {
 
-    Activity activity;
     public static final int DEFAULT_THEME_LIGHT = 0;
     public static final int DEFAULT_THEME_DARK = 1;
     private static int display_color;
     private static int op_color;
+    Activity activity;
 
 
     public LookHandler(Activity activity) {

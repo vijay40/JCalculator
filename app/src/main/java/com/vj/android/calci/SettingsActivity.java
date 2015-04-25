@@ -1,24 +1,21 @@
-package com.example.i310588.helloworld;
+package com.vj.android.calci;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.ListPreference;
-import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
-import android.util.Log;
 
-import java.util.prefs.PreferenceChangeListener;
 
 /**
  * Created by I310588 on 4/4/2015.
  */
 public class SettingsActivity extends Activity{
 
-    static SharedPreferences pref;
     public static String theme;
+    static SharedPreferences pref;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +48,7 @@ public class SettingsActivity extends Activity{
             int max_history = pref.getInt("max_history", 1);
             MainActivity.max_history = max_history;
             npp.setSummary("Store upto " + max_history + " history entries");
-            History.removeHistoryEntries();
+            History.removeHistoryEntries(this.getActivity());
         }
 
         @Override

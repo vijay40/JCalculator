@@ -1,19 +1,19 @@
-package com.example.i310588.helloworld;
+package com.vj.android.calci;
 
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
+
 
 /**
  * Created by I310588 on 3/22/2015.
  */
 public class ScrollTabListener implements ActionBar.TabListener {
 
+    private final int BASIC_MODE = 0;
     Activity activity;
     private ViewPager viewPager;
-    private final int BASIC_MODE = 0;
     public ScrollTabListener(Activity activity){
         this.activity = activity;
         viewPager = (ViewPager) this.activity.findViewById(R.id.pad);

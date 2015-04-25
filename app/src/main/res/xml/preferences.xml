@@ -1,43 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory
-        android:title="@string/actions">
+    <PreferenceCategory android:title="@string/actions">
 
         <CheckBoxPreference
+            android:defaultValue="false"
             android:key="return_basic"
-            android:title="@string/return_basic"
             android:summary="@string/return_basic_summary"
-            android:defaultValue="false"/>
+            android:title="@string/return_basic" />
 
         <CheckBoxPreference
+            android:defaultValue="false"
             android:key="vibrate"
-            android:title="@string/vibrate"
-            android:defaultValue="false" />
+            android:title="@string/vibrate" />
 
-        <com.example.i310588.helloworld.NumberPickerPreference
+        <com.vj.android.calci.NumberPickerPreference
+            android:defaultValue="25"
             android:key="max_history"
-            android:title="History Entries"
-            android:defaultValue="25"/>
+            android:title="History Entries" />
 
     </PreferenceCategory>
 
-    <PreferenceCategory
-        android:title="Theme">
+    <PreferenceCategory android:title="Theme">
 
         <ListPreference
-            android:key="theme"
-            android:title="Current Theme"
+            android:defaultValue="0"
             android:entries="@array/themes"
             android:entryValues="@array/theme_values"
-            android:defaultValue="0"/>
+            android:key="theme"
+            android:title="Current Theme" />
     </PreferenceCategory>
 
-    <PreferenceCategory
-        android:title="@string/about">
-        <Preference android:key="about"
-            android:title="@string/app_name"
-            android:summary="@string/copyright"/>
+    <PreferenceCategory android:title="@string/about">
+        <Preference
+            android:key="about"
+            android:summary="@string/copyright"
+            android:title="@string/app_name" />
     </PreferenceCategory>
 
 </PreferenceScreen>
