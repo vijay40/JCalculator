@@ -24,4 +24,7 @@
     <color name="celadon_green_theme">#4BC6B9</color>
     <color name="celadon_green_mode_disable">#2D898B</color>
     <color name="celadon_green_mode_enable">#326771</color>
+    <color name="cerise_pink_theme">#E1007A</color>
+    <color name="cerise_pink_mode_disable">#950051</color>
+    <color name="cerise_pink_mode_enable">#490027</color>
 </resources>

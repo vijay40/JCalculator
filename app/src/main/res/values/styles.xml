@@ -31,6 +31,11 @@
         <item name="android:buttonStyle">@style/Theme.Calculator.ButtonStyle.Cgreen</item>
     </style>
 
+    <!-- Cerise Pink Theme -->
+    <style name="Theme.Calculator.Cpink" parent="android:Theme.Holo">
+        <item name="android:buttonStyle">@style/Theme.Calculator.ButtonStyle.Cpink</item>
+    </style>
+
     <!--Light theme for Buttons -->
     <style name="Theme.Calculator.ButtonStyle.Light" parent="Theme.Calculator.ButtonStyle">
         <item name="android:background">@color/white</item>
@@ -45,6 +50,11 @@
     <!-- Celadon green theme for Buttons -->
     <style name="Theme.Calculator.ButtonStyle.Cgreen" parent="Theme.Calculator.ButtonStyle.Light">
         <item name="android:textColor">@color/celadon_green_theme</item>
+    </style>
+
+    <!-- Cerise Pink theme for Buttons -->
+    <style name="Theme.Calculator.ButtonStyle.Cpink" parent="Theme.Calculator.ButtonStyle.Light">
+        <item name="android:textColor">@color/cerise_pink_theme</item>
     </style>
 
     <!--Delete and Clear button Style-->
