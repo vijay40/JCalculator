@@ -15,90 +15,90 @@ import junit.framework.TestCase;
  */
 public class MainActivityTest extends TestCase {
 
-   public static void runAssertEqual(String message, String actualOutput, String expectedOutput) {
-       message += "\n" +"Expected : " + expectedOutput + "\t";
-       message += "Actual : " + actualOutput + "\t\t";
-       assertEquals(message, actualOutput, expectedOutput);
-   }
+    public static void runAssertEqual(String message, String actualOutput, String expectedOutput) {
+        message += "\n" + "Expected : " + expectedOutput + "\t";
+        message += "Actual : " + actualOutput + "\t\t";
+        assertEquals(message, actualOutput, expectedOutput);
+    }
 
-   @MediumTest
+    @MediumTest
     public void testFormatExpr() {
-       ExpressionHandler m = new ExpressionHandler();
-       String message;
-       String actualOutput;
-       String expectedOutput;
+        ExpressionHandler m = new ExpressionHandler();
+        String message;
+        String actualOutput;
+        String expectedOutput;
 
-       message = "testing completion of paranthesis";
-       actualOutput = m.formatExpr("2+(1");
-       expectedOutput = "2+(1)";
-       runAssertEqual(message, actualOutput, expectedOutput);
+        message = "testing completion of paranthesis";
+        actualOutput = m.formatExpr("2+(1");
+        expectedOutput = "2+(1)";
+        runAssertEqual(message, actualOutput, expectedOutput);
 
-       message = "testing change of x & ÷ and completion of paranthesis";
-       actualOutput = m.formatExpr("7x(9-4÷3÷");
-       expectedOutput = "7*(9-4/3)";
-       runAssertEqual(message, actualOutput, expectedOutput);
+        message = "testing change of x & ÷ and completion of paranthesis";
+        actualOutput = m.formatExpr("7x(9-4÷3÷");
+        expectedOutput = "7*(9-4/3)";
+        runAssertEqual(message, actualOutput, expectedOutput);
 
-       message = "testing number( changes to number*( and completion of paranthesis";
-       actualOutput = m.formatExpr("4+3(5");
-       expectedOutput = "4+3*(5)";
-       runAssertEqual(message, actualOutput, expectedOutput);
+        message = "testing number( changes to number*( and completion of paranthesis";
+        actualOutput = m.formatExpr("4+3(5");
+        expectedOutput = "4+3*(5)";
+        runAssertEqual(message, actualOutput, expectedOutput);
 
-       message = "testing trailing open brackets";
-       actualOutput = m.formatExpr("4+3(5(-");
-       expectedOutput = "4+3*(5)";
-       runAssertEqual(message, actualOutput, expectedOutput);
+        message = "testing trailing open brackets";
+        actualOutput = m.formatExpr("4+3(5(-");
+        expectedOutput = "4+3*(5)";
+        runAssertEqual(message, actualOutput, expectedOutput);
 
-       message = "testing N( changes to N*( and )N to )*N";
-       actualOutput = m.formatExpr("45(23)34");
-       expectedOutput = "45*(23)*34";
-       runAssertEqual(message, actualOutput, expectedOutput);
+        message = "testing N( changes to N*( and )N to )*N";
+        actualOutput = m.formatExpr("45(23)34");
+        expectedOutput = "45*(23)*34";
+        runAssertEqual(message, actualOutput, expectedOutput);
 
-       message = "testing .( changes to .*(";
-       actualOutput = m.formatExpr("2.(32.).1");
-       expectedOutput = "2.*(32.)*0.1";
-       runAssertEqual(message, actualOutput, expectedOutput);
+        message = "testing .( changes to .*(";
+        actualOutput = m.formatExpr("2.(32.).1");
+        expectedOutput = "2.*(32.)*0.1";
+        runAssertEqual(message, actualOutput, expectedOutput);
 
-       message = "converting . to 0 part 1";
-       actualOutput = m.formatExpr(".");
-       expectedOutput = "0.";
-       runAssertEqual(message, actualOutput, expectedOutput);
+        message = "converting . to 0 part 1";
+        actualOutput = m.formatExpr(".");
+        expectedOutput = "0.";
+        runAssertEqual(message, actualOutput, expectedOutput);
 
-       message = "converting . to 0 part 2";
-       actualOutput = m.formatExpr("23x.");
-       expectedOutput = "23*0.";
-       runAssertEqual(message, actualOutput, expectedOutput);
+        message = "converting . to 0 part 2";
+        actualOutput = m.formatExpr("23x.");
+        expectedOutput = "23*0.";
+        runAssertEqual(message, actualOutput, expectedOutput);
 
-       message = "testing sin formatting";
-       actualOutput = m.formatExpr("2x3sin(24)32sin(21)+32sin(1)");
-       expectedOutput = "2*3*sin(24)*32*sin(21)+32*sin(1)";
-       runAssertEqual(message, actualOutput, expectedOutput);
+        message = "testing sin formatting";
+        actualOutput = m.formatExpr("2x3sin(24)32sin(21)+32sin(1)");
+        expectedOutput = "2*3*sin(24)*32*sin(21)+32*sin(1)";
+        runAssertEqual(message, actualOutput, expectedOutput);
 
-       message = "testing basic sin formatting";
-       actualOutput = m.formatExpr("sin(3)");
-       expectedOutput = "sin(3)";
-       runAssertEqual(message, actualOutput, expectedOutput);
+        message = "testing basic sin formatting";
+        actualOutput = m.formatExpr("sin(3)");
+        expectedOutput = "sin(3)";
+        runAssertEqual(message, actualOutput, expectedOutput);
 
-       message = "testing sin & cos formatting";
-       actualOutput = m.formatExpr("2x3sin(24)32cos(21)+32sin(1)");
-       expectedOutput = "2*3*sin(24)*32*cos(21)+32*sin(1)";
-       runAssertEqual(message, actualOutput, expectedOutput);
+        message = "testing sin & cos formatting";
+        actualOutput = m.formatExpr("2x3sin(24)32cos(21)+32sin(1)");
+        expectedOutput = "2*3*sin(24)*32*cos(21)+32*sin(1)";
+        runAssertEqual(message, actualOutput, expectedOutput);
 
-       message = "testing sin, cos & tan formatting";
-       actualOutput = m.formatExpr("2x3sin(24)32cos(21)+32sin(1)-54tan(1)+tan(9)");
-       expectedOutput = "2*3*sin(24)*32*cos(21)+32*sin(1)-54*tan(1)+tan(9)";
-       runAssertEqual(message, actualOutput, expectedOutput);
+        message = "testing sin, cos & tan formatting";
+        actualOutput = m.formatExpr("2x3sin(24)32cos(21)+32sin(1)-54tan(1)+tan(9)");
+        expectedOutput = "2*3*sin(24)*32*cos(21)+32*sin(1)-54*tan(1)+tan(9)";
+        runAssertEqual(message, actualOutput, expectedOutput);
 
-       message = "testing basic cos formatting";
-       actualOutput = m.formatExpr("cos(3)");
-       expectedOutput = "cos(3)";
-       runAssertEqual(message, actualOutput, expectedOutput);
+        message = "testing basic cos formatting";
+        actualOutput = m.formatExpr("cos(3)");
+        expectedOutput = "cos(3)";
+        runAssertEqual(message, actualOutput, expectedOutput);
 
-       message = "testing sin & paranthesis formatting";
-       actualOutput = m.formatExpr("2(sin(3");
-       expectedOutput = "2*(sin(3))";
-       runAssertEqual(message, actualOutput, expectedOutput);
+        message = "testing sin & paranthesis formatting";
+        actualOutput = m.formatExpr("2(sin(3");
+        expectedOutput = "2*(sin(3))";
+        runAssertEqual(message, actualOutput, expectedOutput);
 
-   }
+    }
 
     @SmallTest
     public void testIsOperator() {

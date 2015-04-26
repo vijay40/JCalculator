@@ -129,9 +129,7 @@ public class MainActivity extends FragmentActivity {
             Intent intent = new Intent(this, SettingsActivity.class);
             startActivityForResult(intent, REQUEST_EXIT);
             return true;
-        }
-        else if (id == R.id.history)
-        {
+        } else if (id == R.id.history) {
             Intent intent = new Intent(this, History.class);
             startActivity(intent);
             return true;
@@ -235,19 +233,19 @@ public class MainActivity extends FragmentActivity {
             entryText = Double.toString(res);
 
             History.addHistoryEntry(expression, this);
-        } else if(mode == 10){
+        } else if (mode == 10) {
             entryText = Long.toString((long) res);
 
             History.addHistoryEntry(expression, this);
-        } else if(mode == 16) {
+        } else if (mode == 16) {
             entryText = Utility.convertToRadix(Double.toString(res), 10, 16);
 
             History.addHistoryEntry(expression, this);
-        } else if(mode == 8) {
+        } else if (mode == 8) {
             entryText = Utility.convertToRadix(Double.toString(res), 10, 8);
 
             History.addHistoryEntry(expression, this);
-        } else if(mode == 2) {
+        } else if (mode == 2) {
             entryText = Utility.convertToRadix(Double.toString(res), 10, 2);
 
             History.addHistoryEntry(expression, this);

@@ -7,7 +7,6 @@
     <color name="btn_pressed">#f2f7f9</color>
     <color name="transparent">#00000000</color>
     <color name="operator">#E8EDDF</color>
-    <color name="red_theme">#e84e40</color>
     <color name="default_dark">#000</color>
     <color name="grey_theme_normal">#636363</color>
     <color name="grey_theme_hex">#434343</color>
@@ -19,4 +18,7 @@
     <color name="default_light_disable">#E5ECF4</color>
     <color name="default_light_mode_disable">#433F6B</color>
     <color name="default_light_mode_enable">#13262F</color>
+    <color name="crimson_red_theme">#e84e40</color>
+    <color name="crimson_red_mode_disable">#BA1F33</color>
+    <color name="crimson_red_mode_enable">#3C0916</color>
 </resources>

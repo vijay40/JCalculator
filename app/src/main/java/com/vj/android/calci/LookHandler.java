@@ -13,6 +13,7 @@ public class LookHandler {
 
     public static final int DEFAULT_THEME_LIGHT = 0;
     public static final int DEFAULT_THEME_DARK = 1;
+    public static final int CRIMSON_RED = 2;
     private static int display_color;
     private static int op_color;
     Activity activity;
@@ -22,22 +23,29 @@ public class LookHandler {
         this.activity = activity;
     }
 
-
     public static void onActivityCreatedSetTheme(Activity activity, int theme) {
         if (theme == DEFAULT_THEME_DARK) {
             activity.setTheme(R.style.Theme_Calculator);
         } else if (theme == DEFAULT_THEME_LIGHT) {
             activity.setTheme(R.style.Theme_Calculator_Light);
+        } else if (theme == CRIMSON_RED) {
+            activity.setTheme(R.style.Theme_Calculator_Cred);
         }
     }
 
     private static void giveDisplayColor(Activity activity, int theme) {
+        if (isDarkTheme()) {
+            op_color = activity.getResources().getColor(R.color.grey_theme_hex);
+        } else {
+            op_color = activity.getResources().getColor(R.color.default_light_op);
+        }
+
         if (theme == DEFAULT_THEME_DARK) {
             display_color = activity.getResources().getColor(R.color.default_dark);
-            op_color = activity.getResources().getColor(R.color.grey_theme_hex);
         } else if (theme == DEFAULT_THEME_LIGHT) {
             display_color = activity.getResources().getColor(R.color.default_light);
-            op_color = activity.getResources().getColor(R.color.default_light_op);
+        } else if (theme == CRIMSON_RED) {
+            display_color = activity.getResources().getColor(R.color.crimson_red_theme);
         }
     }
 
@@ -46,6 +54,26 @@ public class LookHandler {
         giveDisplayColor(activity, theme);
         main_app.setBackgroundColor(display_color);
     }
+
+    public static void setBtnImage(ImageButton clear_btn, ImageButton delete_btn) {
+        int theme = MainActivity.theme;
+        if (theme == DEFAULT_THEME_DARK) {
+            clear_btn.setImageResource(R.drawable.clear_white);
+            delete_btn.setImageResource(R.drawable.delete_white);
+        } else if (theme == DEFAULT_THEME_LIGHT) {
+            clear_btn.setImageResource(R.drawable.clear_blue);
+            delete_btn.setImageResource(R.drawable.delete_blue);
+        } else if (theme == CRIMSON_RED) {
+            clear_btn.setImageResource(R.drawable.clear_red);
+            delete_btn.setImageResource(R.drawable.delete_red);
+        }
+    }
+
+    public static void setOpColor(View[] v) {
+        for (int i = 0; i < v.length; i++)
+            v[i].setBackgroundColor(op_color);
+    }
+
 
     public static void setThemeForBasic(Activity activity, int theme) {
         LinearLayout basic_pad = (LinearLayout) activity.findViewById(R.id.basic_pad);
@@ -56,23 +84,13 @@ public class LookHandler {
         ImageButton clear_btn = (ImageButton) activity.findViewById(R.id.clearbtn);
         ImageButton delete_btn = (ImageButton) activity.findViewById(R.id.delbtn);
 
-        giveDisplayColor(activity, theme);
+        View[] v = {plus_btn, minus_btn, multiply_btn, divide_btn, clear_btn, delete_btn};
 
         basic_pad.setBackgroundColor(display_color);
-        plus_btn.setBackgroundColor(op_color);
-        minus_btn.setBackgroundColor(op_color);
-        multiply_btn.setBackgroundColor(op_color);
-        divide_btn.setBackgroundColor(op_color);
-        clear_btn.setBackgroundColor(op_color);
-        delete_btn.setBackgroundColor(op_color);
 
-        if (theme == DEFAULT_THEME_DARK) {
-            clear_btn.setImageResource(R.drawable.clear_white);
-            delete_btn.setImageResource(R.drawable.delete_white);
-        } else if (theme == DEFAULT_THEME_LIGHT) {
-            clear_btn.setImageResource(R.drawable.clear_blue);
-            delete_btn.setImageResource(R.drawable.delete_blue);
-        }
+        giveDisplayColor(activity, theme);
+        setOpColor(v);
+        setBtnImage(clear_btn, delete_btn);
     }
 
     public static void setThemeForAdvance(Activity activity, int theme) {
@@ -80,19 +98,14 @@ public class LookHandler {
         ImageButton clear_btn = (ImageButton) activity.findViewById(R.id.clearbtnadv);
         ImageButton delete_btn = (ImageButton) activity.findViewById(R.id.delbtnadv);
 
-        giveDisplayColor(activity, theme);
+        View[] v = {clear_btn, delete_btn};
 
         advance_pad.setBackgroundColor(display_color);
-        clear_btn.setBackgroundColor(op_color);
-        delete_btn.setBackgroundColor(op_color);
 
-        if (theme == DEFAULT_THEME_DARK) {
-            clear_btn.setImageResource(R.drawable.clear_white);
-            delete_btn.setImageResource(R.drawable.delete_white);
-        } else if (theme == DEFAULT_THEME_LIGHT) {
-            clear_btn.setImageResource(R.drawable.clear_blue);
-            delete_btn.setImageResource(R.drawable.delete_blue);
-        }
+        giveDisplayColor(activity, theme);
+        setOpColor(v);
+        setBtnImage(clear_btn, delete_btn);
+
     }
 
     public static void setThemeForHex(Activity activity, int theme) {
@@ -111,44 +124,42 @@ public class LookHandler {
         ImageButton clear_btn = (ImageButton) activity.findViewById(R.id.clearbtnhex);
         ImageButton delete_btn = (ImageButton) activity.findViewById(R.id.delbtnhex);
 
-        giveDisplayColor(activity, theme);
+        View[] v = {plus_btn, minus_btn, multiply_btn, divide_btn, blank_space, A, B, C, D, E, F, clear_btn, delete_btn};
 
         hex_pad.setBackgroundColor(display_color);
-        plus_btn.setBackgroundColor(op_color);
-        minus_btn.setBackgroundColor(op_color);
-        multiply_btn.setBackgroundColor(op_color);
-        divide_btn.setBackgroundColor(op_color);
-        clear_btn.setBackgroundColor(op_color);
-        delete_btn.setBackgroundColor(op_color);
-        blank_space.setBackgroundColor(op_color);
-        A.setBackgroundColor(op_color);
-        B.setBackgroundColor(op_color);
-        C.setBackgroundColor(op_color);
-        D.setBackgroundColor(op_color);
-        E.setBackgroundColor(op_color);
-        F.setBackgroundColor(op_color);
 
-        if (theme == DEFAULT_THEME_DARK) {
-            clear_btn.setImageResource(R.drawable.clear_white);
-            delete_btn.setImageResource(R.drawable.delete_white);
-        } else if (theme == DEFAULT_THEME_LIGHT) {
-            clear_btn.setImageResource(R.drawable.clear_blue);
-            delete_btn.setImageResource(R.drawable.delete_blue);
-        }
+        giveDisplayColor(activity, theme);
+        setOpColor(v);
+        setBtnImage(clear_btn, delete_btn);
+
+    }
+
+    private static boolean isDarkTheme() {
+        int theme = MainActivity.theme;
+        if (theme == LookHandler.DEFAULT_THEME_DARK)
+            return true;
+        return false;
     }
 
     public static void EnableButtons(Activity activity, View[] buttons, String pad) {
         int theme = MainActivity.theme;
         int color = 0, hex_color = 0, mode_color = 0;
 
-        if (theme == LookHandler.DEFAULT_THEME_DARK) {
+        if (isDarkTheme()) {
             color = activity.getResources().getColor(R.color.grey_theme_normal);
             hex_color = activity.getResources().getColor(R.color.grey_theme_hex);
-            mode_color = activity.getResources().getColor(R.color.default_dark_mode_enable);
-        } else if (theme == LookHandler.DEFAULT_THEME_LIGHT) {
+        } else {
             color = activity.getResources().getColor(R.color.white);
             hex_color = activity.getResources().getColor(R.color.default_light_op);
+        }
+
+
+        if (theme == LookHandler.DEFAULT_THEME_DARK) {
+            mode_color = activity.getResources().getColor(R.color.default_dark_mode_enable);
+        } else if (theme == LookHandler.DEFAULT_THEME_LIGHT) {
             mode_color = activity.getResources().getColor(R.color.default_light_mode_enable);
+        } else if (theme == LookHandler.CRIMSON_RED) {
+            mode_color = activity.getResources().getColor(R.color.crimson_red_mode_enable);
         }
 
         for (int i = 0; i < Math.min(MainActivity.mode, 10); i++) {
@@ -170,12 +181,18 @@ public class LookHandler {
         int color = 0, mode_color = 0;
         int endlimit;
 
-        if (theme == LookHandler.DEFAULT_THEME_DARK) {
+        if (isDarkTheme()) {
             color = activity.getResources().getColor(R.color.default_dark_disable);
+        } else {
+            color = activity.getResources().getColor(R.color.default_light_disable);
+        }
+
+        if (theme == LookHandler.DEFAULT_THEME_DARK) {
             mode_color = activity.getResources().getColor(R.color.default_dark_mode_disable);
         } else if (theme == LookHandler.DEFAULT_THEME_LIGHT) {
-            color = activity.getResources().getColor(R.color.default_light_disable);
             mode_color = activity.getResources().getColor(R.color.default_light_mode_disable);
+        } else if (theme == LookHandler.CRIMSON_RED) {
+            mode_color = activity.getResources().getColor(R.color.crimson_red_mode_disable);
         }
 
         if (pad.equals("hex")) {

@@ -9,7 +9,7 @@ import android.widget.ListView;
 /**
  * Created by I310588 on 4/17/2015.
  */
-public class History extends Activity{
+public class History extends Activity {
 
     ListView history_entries;
 
@@ -21,8 +21,7 @@ public class History extends Activity{
         (new Utility((Activity) context)).historyWrite();
     }
 
-    public static void addHistoryEntry(String expr, Context context)
-    {
+    public static void addHistoryEntry(String expr, Context context) {
         MainActivity.history.add(0, new HistoryRow(expr, MainActivity.entryText));
         removeHistoryEntries(context);
     }

@@ -14,7 +14,8 @@ public class ScrollTabListener implements ActionBar.TabListener {
     private final int BASIC_MODE = 0;
     Activity activity;
     private ViewPager viewPager;
-    public ScrollTabListener(Activity activity){
+
+    public ScrollTabListener(Activity activity) {
         this.activity = activity;
         viewPager = (ViewPager) this.activity.findViewById(R.id.pad);
     }

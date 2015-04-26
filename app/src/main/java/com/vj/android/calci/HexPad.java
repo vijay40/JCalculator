@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 /**
  * Created by I310588 on 3/22/2015.
  */
-public class HexPad extends Fragment implements View.OnClickListener{
+public class HexPad extends Fragment implements View.OnClickListener {
 
     static View[] modes = new View[4];
     private final int BINARY_MODE = 0;
@@ -100,8 +100,7 @@ public class HexPad extends Fragment implements View.OnClickListener{
         utility.setDisplayText(MainActivity.entryText);
     }
 
-    public void handleMode()
-    {
+    public void handleMode() {
         LookHandler.DisableButtons(activity, buttons, "hex");
         LookHandler.EnableButtons(activity, buttons, "hex");
     }

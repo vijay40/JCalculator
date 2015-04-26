@@ -21,10 +21,20 @@
         <item name="android:buttonStyle">@style/Theme.Calculator.ButtonStyle.Light</item>
     </style>
 
+    <!-- Crimson Red Theme -->
+    <style name="Theme.Calculator.Cred" parent="android:Theme.Holo">
+        <item name="android:buttonStyle">@style/Theme.Calculator.ButtonStyle.Cred</item>
+    </style>
+
     <!--Light theme for Buttons -->
     <style name="Theme.Calculator.ButtonStyle.Light" parent="Theme.Calculator.ButtonStyle">
         <item name="android:background">@color/white</item>
         <item name="android:textColor">@color/light_theme_text_color</item>
+    </style>
+
+    <!-- Crimson red theme for Buttons -->
+    <style name="Theme.Calculator.ButtonStyle.Cred" parent="Theme.Calculator.ButtonStyle.Light">
+        <item name="android:textColor">@color/crimson_red_theme</item>
     </style>
 
     <!--Delete and Clear button Style-->
