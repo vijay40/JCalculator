@@ -27,4 +27,7 @@
     <color name="cerise_pink_theme">#E1007A</color>
     <color name="cerise_pink_mode_disable">#950051</color>
     <color name="cerise_pink_mode_enable">#490027</color>
+    <color name="palatinate_purple_theme">#7A2979</color>
+    <color name="palatinate_purple_mode_disable">#3f153f</color>
+    <color name="palatinate_purple_mode_enable">#130613</color>
 </resources>

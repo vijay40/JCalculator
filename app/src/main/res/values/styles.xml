@@ -36,6 +36,11 @@
         <item name="android:buttonStyle">@style/Theme.Calculator.ButtonStyle.Cpink</item>
     </style>
 
+    <!-- Palatinate Purple Theme -->
+    <style name="Theme.Calculator.Ppurple" parent="android:Theme.Holo">
+        <item name="android:buttonStyle">@style/Theme.Calculator.ButtonStyle.Ppurple</item>
+    </style>
+
     <!--Light theme for Buttons -->
     <style name="Theme.Calculator.ButtonStyle.Light" parent="Theme.Calculator.ButtonStyle">
         <item name="android:background">@color/white</item>
@@ -55,6 +60,11 @@
     <!-- Cerise Pink theme for Buttons -->
     <style name="Theme.Calculator.ButtonStyle.Cpink" parent="Theme.Calculator.ButtonStyle.Light">
         <item name="android:textColor">@color/cerise_pink_theme</item>
+    </style>
+
+    <!-- Palatinate Purple theme for Buttons -->
+    <style name="Theme.Calculator.ButtonStyle.Ppurple" parent="Theme.Calculator.ButtonStyle.Light">
+        <item name="android:textColor">@color/palatinate_purple_theme</item>
     </style>
 
     <!--Delete and Clear button Style-->

@@ -16,6 +16,7 @@ public class LookHandler {
     public static final int CRIMSON_RED = 2;
     public static final int CELADON_GREEN = 3;
     public static final int CERISE_PINK = 4;
+    public static final int PALATINATE_PURPLE = 5;
     private static int display_color;
     private static int op_color;
     Activity activity;
@@ -36,6 +37,8 @@ public class LookHandler {
             activity.setTheme(R.style.Theme_Calculator_Cgreen);
         } else if (theme == CERISE_PINK) {
             activity.setTheme(R.style.Theme_Calculator_Cpink);
+        } else if (theme == PALATINATE_PURPLE) {
+            activity.setTheme(R.style.Theme_Calculator_Ppurple);
         }
     }
 
@@ -57,6 +60,8 @@ public class LookHandler {
             display_color = activity.getResources().getColor(R.color.celadon_green_theme);
         } else if (theme == CERISE_PINK) {
             display_color = activity.getResources().getColor(R.color.cerise_pink_theme);
+        } else if (theme == PALATINATE_PURPLE) {
+            display_color = activity.getResources().getColor(R.color.palatinate_purple_theme);
         }
 
     }
@@ -84,6 +89,9 @@ public class LookHandler {
         } else if (theme == CERISE_PINK) {
             clear_btn.setImageResource(R.drawable.clear_pink);
             delete_btn.setImageResource(R.drawable.delete_pink);
+        } else if (theme == PALATINATE_PURPLE) {
+            clear_btn.setImageResource(R.drawable.clear_purple);
+            delete_btn.setImageResource(R.drawable.delete_purple);
         }
     }
 
@@ -105,6 +113,8 @@ public class LookHandler {
             mode_color = activity.getResources().getColor(R.color.celadon_green_mode_enable);
         } else if (theme == LookHandler.CERISE_PINK) {
             mode_color = activity.getResources().getColor(R.color.cerise_pink_mode_enable);
+        } else if (theme == LookHandler.PALATINATE_PURPLE) {
+            mode_color = activity.getResources().getColor(R.color.palatinate_purple_mode_enable);
         }
         return mode_color;
     }
@@ -122,6 +132,8 @@ public class LookHandler {
             mode_color = activity.getResources().getColor(R.color.celadon_green_mode_disable);
         } else if (theme == LookHandler.CERISE_PINK) {
             mode_color = activity.getResources().getColor(R.color.cerise_pink_mode_disable);
+        } else if (theme == LookHandler.PALATINATE_PURPLE) {
+            mode_color = activity.getResources().getColor(R.color.palatinate_purple_mode_disable);
         }
         return mode_color;
     }
