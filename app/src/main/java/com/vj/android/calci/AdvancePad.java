@@ -21,6 +21,6 @@ public class AdvancePad extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        LookHandler.setThemeForAdvance(getActivity(), MainActivity.theme);
+        LookHandler.setThemeForAdvance(getActivity());
     }
 }

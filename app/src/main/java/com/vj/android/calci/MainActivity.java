@@ -94,7 +94,7 @@ public class MainActivity extends FragmentActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        LookHandler.setTheme(this, theme);
+        LookHandler.setTheme(this);
 
 //     reading result from file
         utility.historyRead();

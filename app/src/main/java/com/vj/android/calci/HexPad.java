@@ -56,7 +56,7 @@ public class HexPad extends Fragment implements View.OnClickListener {
         for (int i = 0; i < 4; i++)
             modes[i].setOnClickListener(this);
 
-        LookHandler.setThemeForHex(getActivity(), MainActivity.theme);
+        LookHandler.setThemeForHex(getActivity());
 
         buttons[0] = activity.findViewById(R.id.hexzerobtn);
         buttons[1] = activity.findViewById(R.id.hexonebtn);

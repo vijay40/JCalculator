@@ -26,6 +26,11 @@
         <item name="android:buttonStyle">@style/Theme.Calculator.ButtonStyle.Cred</item>
     </style>
 
+    <!-- Celadon Green Theme -->
+    <style name="Theme.Calculator.Cgreen" parent="android:Theme.Holo">
+        <item name="android:buttonStyle">@style/Theme.Calculator.ButtonStyle.Cgreen</item>
+    </style>
+
     <!--Light theme for Buttons -->
     <style name="Theme.Calculator.ButtonStyle.Light" parent="Theme.Calculator.ButtonStyle">
         <item name="android:background">@color/white</item>
@@ -35,6 +40,11 @@
     <!-- Crimson red theme for Buttons -->
     <style name="Theme.Calculator.ButtonStyle.Cred" parent="Theme.Calculator.ButtonStyle.Light">
         <item name="android:textColor">@color/crimson_red_theme</item>
+    </style>
+
+    <!-- Celadon green theme for Buttons -->
+    <style name="Theme.Calculator.ButtonStyle.Cgreen" parent="Theme.Calculator.ButtonStyle.Light">
+        <item name="android:textColor">@color/celadon_green_theme</item>
     </style>
 
     <!--Delete and Clear button Style-->

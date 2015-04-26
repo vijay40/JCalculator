@@ -32,7 +32,7 @@ public class BasicPad extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        LookHandler.setThemeForBasic(getActivity(), MainActivity.theme);
+        LookHandler.setThemeForBasic(getActivity());
 
         buttons[0] = activity.findViewById(R.id.zerobtn);
         buttons[1] = activity.findViewById(R.id.onebtn);

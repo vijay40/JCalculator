@@ -58,12 +58,14 @@
         <item>Default Light</item>
         <item>Default Dark</item>
         <item>Crimson Red</item>
+        <item>Celadon Green</item>
     </string-array>
 
     <string-array name="theme_values">
         <item>0</item>
         <item>1</item>
         <item>2</item>
+        <item>3</item>
     </string-array>
 
     <string name="about">About</string>
