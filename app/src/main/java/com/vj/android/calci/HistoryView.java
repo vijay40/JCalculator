@@ -2,7 +2,6 @@ package com.vj.android.calci;
 
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,21 +23,20 @@ public class HistoryView extends BaseAdapter {
         @Override
         public void onClick(View v) {
             final int position = (int) v.getTag();
-            addToEntryText(MainActivity.history.get(position).expression);
+            addToEntryText(MainActivity.history.get(position).getExpr());
         }
     };
     private View.OnClickListener mResClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             final int position = (int) v.getTag();
-            addToEntryText(MainActivity.history.get(position).result);
+            addToEntryText(MainActivity.history.get(position).getResult());
         }
     };
     private View.OnClickListener mTrashClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             final int position = (int) v.getTag();
-            Log.e("Vijay", "Trash " + position + " clicked");
             MainActivity.history.remove(position);
             notifyDataSetChanged();
             utility.historyWrite();
@@ -74,8 +72,8 @@ public class HistoryView extends BaseAdapter {
         ImageView trash = (ImageView) row.findViewById(R.id.trash);
 
         HistoryRow temp = MainActivity.history.get(position);
-        expr.setText(temp.expression);
-        result.setText(temp.result);
+        expr.setText(temp.getExpr());
+        result.setText(temp.getResult());
 
         expr.setOnClickListener(mExprClickListener);
         result.setOnClickListener(mResClickListener);

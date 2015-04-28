@@ -21,7 +21,20 @@ public class History extends Activity {
         (new Utility((Activity) context)).historyWrite();
     }
 
+    //   If the history entry is already present then remove it
+    private static void checkPreviousHistory(String expr, String res) {
+        for (int i = 0; i < MainActivity.history.size(); i++) {
+            if (MainActivity.history.get(i).getExpr().equals(expr) && MainActivity.history.get(i).getResult().equals(res)) {
+                MainActivity.history.remove(i);
+                return;
+            }
+        }
+    }
+
     public static void addHistoryEntry(String expr, Context context) {
+        if (expr.equals(MainActivity.entryText))
+            return;
+        checkPreviousHistory(expr, MainActivity.entryText);
         MainActivity.history.add(0, new HistoryRow(expr, MainActivity.entryText));
         removeHistoryEntries(context);
     }
