@@ -30,8 +30,6 @@ public class MainActivity extends FragmentActivity {
     public static String entryText = "";
     public static int lastBtnHit = -1;
     public static int max_history;
-    public static int theme;
-    public static int mode;
     public static ArrayList<HistoryRow> history;
     private final int REQUEST_EXIT = 1;
     TextView entry;
@@ -49,8 +47,8 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
 
         pref = PreferenceManager.getDefaultSharedPreferences(this);
-        theme = Integer.parseInt(pref.getString("theme", "0"));
-        LookHandler.onActivityCreatedSetTheme(this, theme);
+        Global.theme = Integer.parseInt(pref.getString("theme", "0"));
+        LookHandler.onActivityCreatedSetTheme(this, Global.theme);
 
         setContentView(R.layout.activity_main);
 
@@ -86,9 +84,9 @@ public class MainActivity extends FragmentActivity {
 
 //        default calculation mode
         if (savedInstanceState != null)
-            mode = savedInstanceState.getInt("mode");
+            Global.mode = savedInstanceState.getInt("mode");
         else
-            mode = 10;
+            Global.mode = 10;
 
         history = new ArrayList<HistoryRow>();
         max_history = pref.getInt("max_history", 25);
@@ -157,14 +155,14 @@ public class MainActivity extends FragmentActivity {
 
         outState.putString("entryText", entryText);
         outState.putInt("lastBtn", lastBtnHit);
-        outState.putInt("mode", mode);
+        outState.putInt("mode", Global.mode);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
 
-        mode = savedInstanceState.getInt("mode");
+        Global.mode = savedInstanceState.getInt("mode");
 
         entryText = savedInstanceState.getString("entryText");
         lastBtnHit = savedInstanceState.getInt("lastBtn");
@@ -212,11 +210,11 @@ public class MainActivity extends FragmentActivity {
     //    method to display the result in the current mode of calculator
     public void DisplayResult(String expression) {
         double res;
-        if (mode == 16) {
+        if (Global.mode == 16) {
             expression = Utility.convertToRadix(expression, 16, 10);
-        } else if (mode == 8) {
+        } else if (Global.mode == 8) {
             expression = Utility.convertToRadix(expression, 8, 10);
-        } else if (mode == 2) {
+        } else if (Global.mode == 2) {
             expression = Utility.convertToRadix(expression, 2, 10);
         }
 
@@ -236,24 +234,24 @@ public class MainActivity extends FragmentActivity {
             utility.setDisplayText(Double.toString(res));
             entryText = "";
             return;
-        } else if (mode == 10 && utility.isDouble(res)) {
+        } else if (Global.mode == 10 && utility.isDouble(res)) {
             res = Math.round(res * prec) / prec;
             entryText = Double.toString(res);
 
             History.addHistoryEntry(expression, this);
-        } else if (mode == 10) {
+        } else if (Global.mode == 10) {
             entryText = Long.toString((long) res);
 
             History.addHistoryEntry(expression, this);
-        } else if (mode == 16) {
+        } else if (Global.mode == 16) {
             entryText = Utility.convertToRadix(Double.toString(res), 10, 16);
 
             History.addHistoryEntry(expression, this);
-        } else if (mode == 8) {
+        } else if (Global.mode == 8) {
             entryText = Utility.convertToRadix(Double.toString(res), 10, 8);
 
             History.addHistoryEntry(expression, this);
-        } else if (mode == 2) {
+        } else if (Global.mode == 2) {
             entryText = Utility.convertToRadix(Double.toString(res), 10, 2);
 
             History.addHistoryEntry(expression, this);

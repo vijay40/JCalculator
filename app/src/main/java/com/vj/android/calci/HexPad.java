@@ -23,11 +23,11 @@ public class HexPad extends Fragment implements View.OnClickListener {
     View[] buttons = new View[16];
 
     public static int ModeToIdx() {
-        if (MainActivity.mode == 2)
+        if (Global.mode == 2)
             return 0;
-        else if (MainActivity.mode == 8)
+        else if (Global.mode == 8)
             return 1;
-        else if (MainActivity.mode == 10)
+        else if (Global.mode == 10)
             return 2;
         else
             return 3;
@@ -83,7 +83,7 @@ public class HexPad extends Fragment implements View.OnClickListener {
 
 //      setting default mode to decimal
         if (savedInstanceState != null) {
-            MainActivity.mode = savedInstanceState.getInt("mode");
+            Global.mode = savedInstanceState.getInt("mode");
         }
         handleMode(activity, buttons);
     }
@@ -91,7 +91,7 @@ public class HexPad extends Fragment implements View.OnClickListener {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt("mode", MainActivity.mode);
+        outState.putInt("mode", Global.mode);
     }
 
     @Override
@@ -99,17 +99,17 @@ public class HexPad extends Fragment implements View.OnClickListener {
         int id = v.getId();
         Utility utility = new Utility(getActivity());
         if (id == R.id.hex_mode) {
-            MainActivity.entryText = Utility.convertToRadix(MainActivity.entryText, MainActivity.mode, 16);
-            MainActivity.mode = 16;
+            MainActivity.entryText = Utility.convertToRadix(MainActivity.entryText, Global.mode, 16);
+            Global.mode = 16;
         } else if (id == R.id.dec_mode) {
-            MainActivity.entryText = Utility.convertToRadix(MainActivity.entryText, MainActivity.mode, 10);
-            MainActivity.mode = 10;
+            MainActivity.entryText = Utility.convertToRadix(MainActivity.entryText, Global.mode, 10);
+            Global.mode = 10;
         } else if (id == R.id.octal_mode) {
-            MainActivity.entryText = Utility.convertToRadix(MainActivity.entryText, MainActivity.mode, 8);
-            MainActivity.mode = 8;
+            MainActivity.entryText = Utility.convertToRadix(MainActivity.entryText, Global.mode, 8);
+            Global.mode = 8;
         } else if (id == R.id.bin_mode) {
-            MainActivity.entryText = Utility.convertToRadix(MainActivity.entryText, MainActivity.mode, 2);
-            MainActivity.mode = 2;
+            MainActivity.entryText = Utility.convertToRadix(MainActivity.entryText, Global.mode, 2);
+            Global.mode = 2;
         }
         handleMode(activity, buttons);
         utility.setDisplayText(MainActivity.entryText);
