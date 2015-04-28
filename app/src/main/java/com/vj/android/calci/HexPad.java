@@ -33,6 +33,11 @@ public class HexPad extends Fragment implements View.OnClickListener {
             return 3;
     }
 
+    public static void handleMode(Activity activity, View[] buttons) {
+        LookHandler.DisableButtons(activity, buttons, "hex");
+        LookHandler.EnableButtons(activity, buttons, "hex");
+    }
+
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -48,6 +53,8 @@ public class HexPad extends Fragment implements View.OnClickListener {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        LookHandler.setThemeForHex(getActivity());
+
         modes[HEX_MODE] = activity.findViewById(R.id.hex_mode);
         modes[DECIMAL_MODE] = activity.findViewById(R.id.dec_mode);
         modes[OCTAL_MODE] = activity.findViewById(R.id.octal_mode);
@@ -56,7 +63,6 @@ public class HexPad extends Fragment implements View.OnClickListener {
         for (int i = 0; i < 4; i++)
             modes[i].setOnClickListener(this);
 
-        LookHandler.setThemeForHex(getActivity());
 
         buttons[0] = activity.findViewById(R.id.hexzerobtn);
         buttons[1] = activity.findViewById(R.id.hexonebtn);
@@ -76,7 +82,16 @@ public class HexPad extends Fragment implements View.OnClickListener {
         buttons[15] = activity.findViewById(R.id.hexF);
 
 //      setting default mode to decimal
-        handleMode();
+        if (savedInstanceState != null) {
+            MainActivity.mode = savedInstanceState.getInt("mode");
+        }
+        handleMode(activity, buttons);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("mode", MainActivity.mode);
     }
 
     @Override
@@ -96,12 +111,7 @@ public class HexPad extends Fragment implements View.OnClickListener {
             MainActivity.entryText = Utility.convertToRadix(MainActivity.entryText, MainActivity.mode, 2);
             MainActivity.mode = 2;
         }
-        handleMode();
+        handleMode(activity, buttons);
         utility.setDisplayText(MainActivity.entryText);
-    }
-
-    public void handleMode() {
-        LookHandler.DisableButtons(activity, buttons, "hex");
-        LookHandler.EnableButtons(activity, buttons, "hex");
     }
 }

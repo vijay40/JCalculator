@@ -85,7 +85,10 @@ public class MainActivity extends FragmentActivity {
 //        });
 
 //        default calculation mode
-        mode = 10;
+        if (savedInstanceState != null)
+            mode = savedInstanceState.getInt("mode");
+        else
+            mode = 10;
 
         history = new ArrayList<HistoryRow>();
         max_history = pref.getInt("max_history", 25);
@@ -142,26 +145,31 @@ public class MainActivity extends FragmentActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_EXIT) {
-            this.finish();
-            this.startActivity(new Intent(this, this.getClass()));
+            this.recreate();
+//            this.finish();
+//            this.startActivity(new Intent(this, this.getClass()));
         }
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+
         outState.putString("entryText", entryText);
         outState.putInt("lastBtn", lastBtnHit);
+        outState.putInt("mode", mode);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
+
+        mode = savedInstanceState.getInt("mode");
+
         entryText = savedInstanceState.getString("entryText");
         lastBtnHit = savedInstanceState.getInt("lastBtn");
         TextView entry = (TextView) findViewById(R.id.entry);
         entry.setText(entryText);
-
     }
 
     //    Method to facilitate testing not to be used in actual app
