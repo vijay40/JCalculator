@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Calculator</string>
+    <string name="app_name">JCalculator</string>
     <string name="action_settings">Settings</string>
     <!-- Button Names -->
     <string name="one">1</string>
@@ -73,7 +73,8 @@
     </string-array>
 
     <string name="about">About</string>
-    <string name="copyright">Copyright info</string>
+    <string name="calc_about">JCalculator v 1.0.00</string>
+    <string name="copyright">Inspired from the calculator by The CyanogenMod Project</string>
     <string name="actions">Actions</string>
     <string name="return_basic">Return to basic</string>
     <string name="return_basic_summary">Automatically return from Advance mode</string>

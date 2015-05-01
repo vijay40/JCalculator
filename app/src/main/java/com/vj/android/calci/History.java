@@ -11,6 +11,7 @@ import android.widget.ListView;
  */
 public class History extends Activity {
 
+    static HistoryView historyView;
     ListView history_entries;
 
     public static void removeHistoryEntries(Context context) {
@@ -46,7 +47,7 @@ public class History extends Activity {
         setContentView(R.layout.history);
 
         history_entries = (ListView) findViewById(R.id.listView);
-        history_entries.setAdapter(new HistoryView(this));
+        historyView = new HistoryView(this);
+        history_entries.setAdapter(historyView);
     }
-
 }

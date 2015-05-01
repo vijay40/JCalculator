@@ -35,7 +35,7 @@
         <Preference
             android:key="about"
             android:summary="@string/copyright"
-            android:title="@string/app_name" />
+            android:title="@string/calc_about" />
     </PreferenceCategory>
 
 </PreferenceScreen>
