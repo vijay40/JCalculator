@@ -3,7 +3,6 @@
     android:id="@+id/hex_pad"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/default_dark"
     android:orientation="vertical">
 
     <LinearLayout
@@ -280,35 +279,35 @@
             android:layout_height="match_parent"
             android:layout_margin="@dimen/btn_margin"
             android:layout_weight="1"
-            android:textSize="@dimen/mode_btn_text_size"
-            android:text="@string/bin" />
+            android:text="@string/bin"
+            android:textSize="@dimen/mode_btn_text_size" />
 
         <Button
             android:id="@+id/octal_mode"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="@dimen/btn_margin"
-            android:textSize="@dimen/mode_btn_text_size"
             android:layout_weight="1"
-            android:text="@string/octal" />
+            android:text="@string/octal"
+            android:textSize="@dimen/mode_btn_text_size" />
 
         <Button
             android:id="@+id/dec_mode"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:textSize="@dimen/mode_btn_text_size"
             android:layout_margin="@dimen/btn_margin"
             android:layout_weight="1"
-            android:text="@string/dec" />
+            android:text="@string/dec"
+            android:textSize="@dimen/mode_btn_text_size" />
 
         <Button
             android:id="@+id/hex_mode"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:textSize="@dimen/mode_btn_text_size"
             android:layout_margin="@dimen/btn_margin"
             android:layout_weight="1"
-            android:text="@string/hex" />
+            android:text="@string/hex"
+            android:textSize="@dimen/mode_btn_text_size" />
 
     </LinearLayout>
 

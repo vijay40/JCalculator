@@ -139,7 +139,6 @@ public class LookHandler {
     }
 
     public static void setThemeForBasic(Activity activity) {
-        LinearLayout basic_pad = (LinearLayout) activity.findViewById(R.id.basic_pad);
         View plus_btn = activity.findViewById(R.id.plusbtn);
         View minus_btn = activity.findViewById(R.id.minusbtn);
         View multiply_btn = activity.findViewById(R.id.multiplybtn);
@@ -149,21 +148,16 @@ public class LookHandler {
 
         View[] v = {plus_btn, minus_btn, multiply_btn, divide_btn, clear_btn, delete_btn};
 
-        basic_pad.setBackgroundColor(display_color);
-
         giveDisplayColor(activity);
         setOpColor(v);
         setBtnImage(clear_btn, delete_btn);
     }
 
     public static void setThemeForAdvance(Activity activity) {
-        LinearLayout advance_pad = (LinearLayout) activity.findViewById(R.id.advance_pad);
         ImageButton clear_btn = (ImageButton) activity.findViewById(R.id.clearbtnadv);
         ImageButton delete_btn = (ImageButton) activity.findViewById(R.id.delbtnadv);
 
         View[] v = {clear_btn, delete_btn};
-
-        advance_pad.setBackgroundColor(display_color);
 
         giveDisplayColor(activity);
         setOpColor(v);
@@ -171,7 +165,6 @@ public class LookHandler {
     }
 
     public static void setThemeForHex(Activity activity) {
-        LinearLayout hex_pad = (LinearLayout) activity.findViewById(R.id.hex_pad);
         View plus_btn = activity.findViewById(R.id.plusbtnhex);
         View minus_btn = activity.findViewById(R.id.minusbtnhex);
         View multiply_btn = activity.findViewById(R.id.multiplybtnhex);
@@ -188,8 +181,6 @@ public class LookHandler {
 
         View[] v = {plus_btn, minus_btn, multiply_btn, divide_btn, blank_space, A, B, C, D, E, F, clear_btn, delete_btn};
 
-        hex_pad.setBackgroundColor(display_color);
-
         giveDisplayColor(activity);
         setOpColor(v);
         setBtnImage(clear_btn, delete_btn);
@@ -197,9 +188,7 @@ public class LookHandler {
 
     private static boolean isDarkTheme() {
         int theme = Global.theme;
-        if (theme == LookHandler.DEFAULT_THEME_DARK)
-            return true;
-        return false;
+        return theme == LookHandler.DEFAULT_THEME_DARK;
     }
 
     public static void EnableButtons(Activity activity, View[] buttons, String pad) {
