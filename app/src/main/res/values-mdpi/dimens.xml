@@ -2,5 +2,5 @@
     <dimen name="font_size">30sp</dimen>
     <dimen name="display_height">180dp</dimen>
     <dimen name="btn_text_size">20sp</dimen>
-    <dimen name="mode_btn_text_size">15sp</dimen>
+    <dimen name="mode_btn_text_size">12sp</dimen>
 </resources>
