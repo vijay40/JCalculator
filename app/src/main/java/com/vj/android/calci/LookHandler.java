@@ -42,12 +42,17 @@ public class LookHandler {
         }
     }
 
+    private static boolean isDarkTheme() {
+        int theme = Global.theme;
+        return theme == LookHandler.DEFAULT_THEME_DARK;
+    }
+
     private static void giveDisplayColor(Activity activity) {
         int theme = Global.theme;
         if (isDarkTheme()) {
-            op_color = activity.getResources().getColor(R.color.grey_theme_hex);
+            op_color = R.drawable.default_dark_op_btn_default_holo_light;
         } else {
-            op_color = activity.getResources().getColor(R.color.default_light_op);
+            op_color = R.drawable.default_light_op_btn_default_holo_light;
         }
 
         if (theme == DEFAULT_THEME_DARK) {
@@ -96,8 +101,9 @@ public class LookHandler {
     }
 
     public static void setOpColor(View[] v) {
-        for (int i = 0; i < v.length; i++)
-            v[i].setBackgroundColor(op_color);
+        for (int i = 0; i < v.length; i++) {
+            v[i].setBackgroundResource(op_color);
+        }
     }
 
     public static int giveEnableModeColor(Activity activity) {
@@ -146,7 +152,7 @@ public class LookHandler {
         ImageButton clear_btn = (ImageButton) activity.findViewById(R.id.clearbtn);
         ImageButton delete_btn = (ImageButton) activity.findViewById(R.id.delbtn);
 
-        View[] v = {plus_btn, minus_btn, multiply_btn, divide_btn, clear_btn, delete_btn};
+        View[] v = {plus_btn, minus_btn, multiply_btn, divide_btn};
 
         giveDisplayColor(activity);
         setOpColor(v);
@@ -157,10 +163,7 @@ public class LookHandler {
         ImageButton clear_btn = (ImageButton) activity.findViewById(R.id.clearbtnadv);
         ImageButton delete_btn = (ImageButton) activity.findViewById(R.id.delbtnadv);
 
-        View[] v = {clear_btn, delete_btn};
-
         giveDisplayColor(activity);
-        setOpColor(v);
         setBtnImage(clear_btn, delete_btn);
     }
 
@@ -179,58 +182,34 @@ public class LookHandler {
         ImageButton clear_btn = (ImageButton) activity.findViewById(R.id.clearbtnhex);
         ImageButton delete_btn = (ImageButton) activity.findViewById(R.id.delbtnhex);
 
-        View[] v = {plus_btn, minus_btn, multiply_btn, divide_btn, blank_space, A, B, C, D, E, F, clear_btn, delete_btn};
+        View[] v = {plus_btn, minus_btn, multiply_btn, divide_btn, blank_space, A, B, C, D, E, F};
 
         giveDisplayColor(activity);
         setOpColor(v);
         setBtnImage(clear_btn, delete_btn);
     }
 
-    private static boolean isDarkTheme() {
-        int theme = Global.theme;
-        return theme == LookHandler.DEFAULT_THEME_DARK;
-    }
-
     public static void EnableButtons(Activity activity, View[] buttons, String pad) {
         int theme = Global.theme;
-        int color = 0, hex_color = 0, mode_color = 0;
-
-        if (isDarkTheme()) {
-            color = activity.getResources().getColor(R.color.grey_theme_normal);
-            hex_color = activity.getResources().getColor(R.color.grey_theme_hex);
-        } else {
-            color = activity.getResources().getColor(R.color.white);
-            hex_color = activity.getResources().getColor(R.color.default_light_op);
-        }
-
-        mode_color = giveEnableModeColor(activity);
+        int mode_color = giveEnableModeColor(activity);
 
         for (int i = 0; i < Math.min(Global.mode, 10); i++) {
-            buttons[i].setClickable(true);
-            buttons[i].setBackgroundColor(color);
+            buttons[i].setEnabled(true);
         }
 
         if (pad.equals("hex")) {
             for (int i = 10; i < Global.mode; i++) {
-                buttons[i].setClickable(true);
-                buttons[i].setBackgroundColor(hex_color);
+                buttons[i].setEnabled(true);
             }
+
             HexPad.modes[HexPad.ModeToIdx()].setBackgroundColor(mode_color);
         }
     }
 
     public static void DisableButtons(Activity activity, View[] buttons, String pad) {
         int theme = Global.theme;
-        int color = 0, mode_color = 0;
+        int mode_color = giveDisableModeColor(activity);
         int endlimit;
-
-        if (isDarkTheme()) {
-            color = activity.getResources().getColor(R.color.default_dark_disable);
-        } else {
-            color = activity.getResources().getColor(R.color.default_light_disable);
-        }
-
-        mode_color = giveDisableModeColor(activity);
 
         if (pad.equals("hex")) {
             endlimit = 16;
@@ -245,8 +224,7 @@ public class LookHandler {
             endlimit = 10;
 
         for (int i = Global.mode; i < endlimit; i++) {
-            buttons[i].setClickable(false);
-            buttons[i].setBackgroundColor(color);
+            buttons[i].setEnabled(false);
         }
     }
 

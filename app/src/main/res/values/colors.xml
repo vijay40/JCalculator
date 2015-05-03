@@ -30,4 +30,6 @@
     <color name="palatinate_purple_theme">#7A2979</color>
     <color name="palatinate_purple_mode_disable">#3f153f</color>
     <color name="palatinate_purple_mode_enable">#130613</color>
+    <color name="light_disable_text_color">#bdbdbd</color>
+    <color name="dark_disable_text_color">#7e7e7e</color>
 </resources>

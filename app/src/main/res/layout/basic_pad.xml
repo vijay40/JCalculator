@@ -15,7 +15,7 @@
             android:id="@+id/sevenbtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/btn_margin"
+            android:layout_margin="1dp"
             android:layout_weight="1"
             android:onClick="btnClick"
             android:text="@string/seven" />
@@ -25,7 +25,7 @@
             android:id="@+id/eightbtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/btn_margin"
+            android:layout_margin="1dp"
             android:layout_weight="1"
             android:onClick="btnClick"
             android:text="@string/eight" />
@@ -35,7 +35,7 @@
             android:id="@+id/ninebtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/btn_margin"
+            android:layout_margin="1dp"
             android:layout_weight="1"
             android:onClick="btnClick"
             android:text="@string/nine" />
@@ -45,7 +45,7 @@
             android:id="@+id/delbtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/btn_margin"
+            android:layout_margin="1dp"
             android:layout_weight="1"
             android:onClick="btnClick"
             android:src="@drawable/delete_white" />
@@ -55,7 +55,7 @@
             android:id="@+id/clearbtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/btn_margin"
+            android:layout_margin="1dp"
             android:layout_weight="1"
             android:onClick="btnClick"
             android:src="@drawable/clear_white" />
@@ -71,7 +71,7 @@
             android:id="@+id/fourbtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/btn_margin"
+            android:layout_margin="1dp"
             android:layout_weight="1"
             android:onClick="btnClick"
             android:text="@string/four" />
@@ -80,7 +80,7 @@
             android:id="@+id/fivebtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/btn_margin"
+            android:layout_margin="1dp"
             android:layout_weight="1"
             android:onClick="btnClick"
             android:text="@string/five" />
@@ -89,7 +89,7 @@
             android:id="@+id/sixbtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/btn_margin"
+            android:layout_margin="1dp"
             android:layout_weight="1"
             android:onClick="btnClick"
             android:text="@string/six" />
@@ -98,7 +98,7 @@
             android:id="@+id/minusbtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/btn_margin"
+            android:layout_margin="1dp"
             android:layout_weight="1"
             android:onClick="btnClick"
             android:text="@string/minus" />
@@ -108,7 +108,7 @@
             android:id="@+id/plusbtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/btn_margin"
+            android:layout_margin="1dp"
             android:layout_weight="1"
             android:onClick="btnClick"
             android:text="@string/plus" />
@@ -124,7 +124,7 @@
             android:id="@+id/onebtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/btn_margin"
+            android:layout_margin="1dp"
             android:layout_weight="1"
             android:onClick="btnClick"
             android:text="@string/one" />
@@ -133,7 +133,7 @@
             android:id="@+id/twobtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/btn_margin"
+            android:layout_margin="1dp"
             android:layout_weight="1"
             android:onClick="btnClick"
             android:text="@string/two" />
@@ -142,7 +142,7 @@
             android:id="@+id/threebtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/btn_margin"
+            android:layout_margin="1dp"
             android:layout_weight="1"
             android:onClick="btnClick"
             android:text="@string/three" />
@@ -151,7 +151,7 @@
             android:id="@+id/multiplybtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/btn_margin"
+            android:layout_margin="1dp"
             android:layout_weight="1"
             android:onClick="btnClick"
             android:text="@string/asterisk" />
@@ -160,7 +160,7 @@
             android:id="@+id/dividebtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/btn_margin"
+            android:layout_margin="1dp"
             android:layout_weight="1"
             android:onClick="btnClick"
             android:text="@string/divide" />
@@ -176,7 +176,7 @@
             android:id="@+id/decimalbtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/btn_margin"
+            android:layout_margin="1dp"
             android:layout_weight="1"
             android:onClick="btnClick"
             android:text="@string/decimal" />
@@ -185,7 +185,7 @@
             android:id="@+id/zerobtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/btn_margin"
+            android:layout_margin="1dp"
             android:layout_weight="1"
             android:onClick="btnClick"
             android:text="@string/zero" />
@@ -194,7 +194,7 @@
             android:id="@+id/left_paran"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/btn_margin"
+            android:layout_margin="1dp"
             android:layout_weight="1"
             android:onClick="btnClick"
             android:text="@string/left_paran" />
@@ -203,7 +203,7 @@
             android:id="@+id/right_paran"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/btn_margin"
+            android:layout_margin="1dp"
             android:layout_weight="1"
             android:onClick="btnClick"
             android:text="@string/right_paran" />
@@ -212,7 +212,7 @@
             android:id="@+id/equalbtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/btn_margin"
+            android:layout_margin="1dp"
             android:layout_weight="1"
             android:onClick="btnClick"
             android:text="@string/equal"/>

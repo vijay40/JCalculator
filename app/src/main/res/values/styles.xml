@@ -3,88 +3,81 @@
     <!-- Base application theme. -->
     <style name="Theme.Calculator" parent="android:Theme.Holo">
         <item name="android:buttonStyle">@style/Theme.Calculator.ButtonStyle</item>
-    </style>
-    
-    <!-- Button Style -->
-    <style name="Theme.Calculator.ButtonStyle" parent="@android:style/Widget.Button">
-        <item name="android:textSize">@dimen/btn_text_size</item>
-        <item name="android:fontFamily">sans-serif</item>
-        <item name="android:layout_marginLeft">0dp</item>
-        <item name="android:textColor">@color/dark_theme_text_color</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:gravity">center</item>
-        <item name="android:background">@color/grey_theme_normal</item>
+        <item name="android:imageButtonStyle">@style/Theme.Calculator.ButtonStyle.ImageButton</item>
     </style>
 
     <!--Light Theme -->
     <style name="Theme.Calculator.Light" parent="android:Theme.Holo">
         <item name="android:buttonStyle">@style/Theme.Calculator.ButtonStyle.Light</item>
+        <item name="android:imageButtonStyle">
+            @style/Theme.Calculator.ButtonStyle.ImageButton.Light
+        </item>
     </style>
 
     <!-- Crimson Red Theme -->
-    <style name="Theme.Calculator.Cred" parent="android:Theme.Holo">
+    <style name="Theme.Calculator.Cred" parent="Theme.Calculator.Light">
         <item name="android:buttonStyle">@style/Theme.Calculator.ButtonStyle.Cred</item>
     </style>
 
     <!-- Celadon Green Theme -->
-    <style name="Theme.Calculator.Cgreen" parent="android:Theme.Holo">
+    <style name="Theme.Calculator.Cgreen" parent="Theme.Calculator.Light">
         <item name="android:buttonStyle">@style/Theme.Calculator.ButtonStyle.Cgreen</item>
     </style>
 
     <!-- Cerise Pink Theme -->
-    <style name="Theme.Calculator.Cpink" parent="android:Theme.Holo">
+    <style name="Theme.Calculator.Cpink" parent="Theme.Calculator.Light">
         <item name="android:buttonStyle">@style/Theme.Calculator.ButtonStyle.Cpink</item>
     </style>
 
     <!-- Palatinate Purple Theme -->
-    <style name="Theme.Calculator.Ppurple" parent="android:Theme.Holo">
+    <style name="Theme.Calculator.Ppurple" parent="Theme.Calculator.Light">
         <item name="android:buttonStyle">@style/Theme.Calculator.ButtonStyle.Ppurple</item>
+    </style>
+
+    <!-- Button Style -->
+    <style name="Theme.Calculator.ButtonStyle" parent="@android:style/Widget.Button">
+        <item name="android:textSize">@dimen/btn_text_size</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@drawable/default_dark_text</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/default_dark_btn_default_holo_light</item>
     </style>
 
     <!--Light theme for Buttons -->
     <style name="Theme.Calculator.ButtonStyle.Light" parent="Theme.Calculator.ButtonStyle">
-        <item name="android:background">@color/white</item>
-        <item name="android:textColor">@color/light_theme_text_color</item>
+        <item name="android:background">@drawable/default_light_btn_default_holo_light</item>
+        <item name="android:textColor">@drawable/default_light_text</item>
     </style>
 
     <!-- Crimson red theme for Buttons -->
     <style name="Theme.Calculator.ButtonStyle.Cred" parent="Theme.Calculator.ButtonStyle.Light">
-        <item name="android:textColor">@color/crimson_red_theme</item>
+        <item name="android:textColor">@drawable/crimson_red_text</item>
     </style>
 
     <!-- Celadon green theme for Buttons -->
     <style name="Theme.Calculator.ButtonStyle.Cgreen" parent="Theme.Calculator.ButtonStyle.Light">
-        <item name="android:textColor">@color/celadon_green_theme</item>
+        <item name="android:textColor">@drawable/celadon_green_text</item>
     </style>
 
     <!-- Cerise Pink theme for Buttons -->
     <style name="Theme.Calculator.ButtonStyle.Cpink" parent="Theme.Calculator.ButtonStyle.Light">
-        <item name="android:textColor">@color/cerise_pink_theme</item>
+        <item name="android:textColor">@drawable/cerise_pink_text</item>
     </style>
 
     <!-- Palatinate Purple theme for Buttons -->
     <style name="Theme.Calculator.ButtonStyle.Ppurple" parent="Theme.Calculator.ButtonStyle.Light">
-        <item name="android:textColor">@color/palatinate_purple_theme</item>
+        <item name="android:textColor">@drawable/palatinate_purple_text</item>
     </style>
 
     <!--Delete and Clear button Style-->
-    <style name="Theme.Calculator.ButtonStyle.ImageButton" parent="Theme.Calculator.ButtonStyle">
-        <item name="android:background">@color/grey_theme_hex</item>
+    <style name="Theme.Calculator.ButtonStyle.ImageButton" parent="android:Widget.ImageButton">
+        <item name="android:background">@drawable/default_dark_op_btn_default_holo_light</item>
     </style>
 
-    <style name="Theme.Calculator.ButtonStyle.Operator" parent="Theme.Calculator.ButtonStyle">
-        <item name="android:background">@color/grey_theme_hex</item>
-    </style>
-
-    <!-- Hex button style -->
-    <style name="Theme.Calculator.ButtonStyle.Hex" parent="Theme.Calculator.ButtonStyle">
-        <item name="android:background">@color/grey_theme_hex</item>
-    </style>
-
-    <!-- Empty Space Style -->
-    <style name="Theme.Calculator.Empty" parent="Theme.Calculator.ButtonStyle">
-        <item name="android:layout_weight">4</item>
-        <item name="android:background">@color/grey_theme_hex</item>
+    <!--Delete and Clear button Light theme Style-->
+    <style name="Theme.Calculator.ButtonStyle.ImageButton.Light" parent="android:Widget.ImageButton">
+        <item name="android:background">@drawable/default_light_op_btn_default_holo_light</item>
     </style>
 
     <!-- Display Style -->
