@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 public class HexPad extends Fragment implements View.OnClickListener {
 
@@ -17,6 +18,7 @@ public class HexPad extends Fragment implements View.OnClickListener {
     private final int HEX_MODE = 3;
     private Activity activity;
     private View[] buttons = new View[16];
+    private ImageButton deletebtn;
 
     public static int ModeToIdx() {
         if (Global.mode == 2)
@@ -48,6 +50,15 @@ public class HexPad extends Fragment implements View.OnClickListener {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        deletebtn = (ImageButton) activity.findViewById(R.id.delbtnhex);
+        deletebtn.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                ((MainActivity) getActivity()).performClear();
+                return true;
+            }
+        });
 
         LookHandler.setThemeForHex(getActivity());
 

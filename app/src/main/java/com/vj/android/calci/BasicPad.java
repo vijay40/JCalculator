@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 
 /**
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
  * Contains functionality of Basic pad fragment
  */
 public class BasicPad extends Fragment {
+    ImageButton deletebtn;
     private Activity activity;
     private View[] buttons = new View[10];
 
@@ -47,5 +49,15 @@ public class BasicPad extends Fragment {
 
         LookHandler.DisableButtons(activity, buttons, "basic");
         LookHandler.EnableButtons(activity, buttons, "basic");
+
+        deletebtn = (ImageButton) activity.findViewById(R.id.delbtn);
+        deletebtn.setOnLongClickListener(new View.OnLongClickListener() {
+
+            @Override
+            public boolean onLongClick(View v) {
+                ((MainActivity) getActivity()).performClear();
+                return true;
+            }
+        });
     }
 }

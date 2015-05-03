@@ -279,7 +279,7 @@ public class MainActivity extends FragmentActivity {
     }
 
     //  Method to handle clear function
-    private void performClear() {
+    public void performClear() {
         entryText = "";
         utility.setDisplayText(entryText);
     }
