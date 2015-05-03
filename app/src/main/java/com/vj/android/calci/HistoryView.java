@@ -5,17 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ListView;
 
+class HistoryView extends BaseAdapter {
 
-/**
- * Created by I310588 on 4/24/2015.
- */
-public class HistoryView extends BaseAdapter {
-
-    protected ListView history;
-    Context context;
-    Utility utility;
+    private Context context;
 
     HistoryView(Context c) {
         context = c;
@@ -39,7 +32,7 @@ public class HistoryView extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View row = convertView;
-        ViewHolder viewHolder = null;
+        ViewHolder viewHolder;
         HistoryRow temp = MainActivity.history.get(position);
 
         if (row == null) {

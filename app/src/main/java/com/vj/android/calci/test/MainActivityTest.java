@@ -9,10 +9,6 @@ import com.vj.android.calci.Utility;
 
 import junit.framework.TestCase;
 
-
-/**
- * Created by I310588 on 2/12/2015.
- */
 public class MainActivityTest extends TestCase {
 
     public static void runAssertEqual(String message, String actualOutput, String expectedOutput) {
@@ -28,17 +24,17 @@ public class MainActivityTest extends TestCase {
         String actualOutput;
         String expectedOutput;
 
-        message = "testing completion of paranthesis";
+        message = "testing completion of parenthesis";
         actualOutput = m.formatExpr("2+(1");
         expectedOutput = "2+(1)";
         runAssertEqual(message, actualOutput, expectedOutput);
 
-        message = "testing change of x & ÷ and completion of paranthesis";
+        message = "testing change of x & ÷ and completion of parenthesis";
         actualOutput = m.formatExpr("7x(9-4÷3÷");
         expectedOutput = "7*(9-4/3)";
         runAssertEqual(message, actualOutput, expectedOutput);
 
-        message = "testing number( changes to number*( and completion of paranthesis";
+        message = "testing number( changes to number*( and completion of parenthesis";
         actualOutput = m.formatExpr("4+3(5");
         expectedOutput = "4+3*(5)";
         runAssertEqual(message, actualOutput, expectedOutput);
@@ -93,7 +89,7 @@ public class MainActivityTest extends TestCase {
         expectedOutput = "cos(3)";
         runAssertEqual(message, actualOutput, expectedOutput);
 
-        message = "testing sin & paranthesis formatting";
+        message = "testing sin & parenthesis formatting";
         actualOutput = m.formatExpr("2(sin(3");
         expectedOutput = "2*(sin(3))";
         runAssertEqual(message, actualOutput, expectedOutput);

@@ -3,11 +3,8 @@ package com.vj.android.calci;
 import android.app.Activity;
 import android.support.v4.view.ViewPager;
 
-/**
- * Created by I310588 on 3/22/2015.
- */
-public class ViewPageListener implements ViewPager.OnPageChangeListener {
-    Activity activity;
+class ViewPageListener implements ViewPager.OnPageChangeListener {
+    private Activity activity;
 
     public ViewPageListener(Activity activity) {
         this.activity = activity;

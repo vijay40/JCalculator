@@ -14,8 +14,8 @@ import android.view.ViewGroup;
  * Contains functionality of Basic pad fragment
  */
 public class BasicPad extends Fragment {
-    Activity activity;
-    View[] buttons = new View[10];
+    private Activity activity;
+    private View[] buttons = new View[10];
 
     @Override
     public void onAttach(Activity activity) {

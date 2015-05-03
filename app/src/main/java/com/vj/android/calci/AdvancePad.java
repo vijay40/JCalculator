@@ -7,10 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-
-/**
- * Created by I310588 on 3/22/2015.
- */
 public class AdvancePad extends Fragment {
 
     @Override

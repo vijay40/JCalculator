@@ -7,14 +7,14 @@ package com.vj.android.calci;
  */
 public class ExpressionHandler {
 
-    Utility utility;
+    private Utility utility;
 
     public ExpressionHandler() {
         utility = new Utility();
     }
 
     //  handle sin formatting
-    public String handleTrig(String expr, String func) {
+    private String handleTrig(String expr, String func) {
         int lastindex = 0, previndex;
         String lastchar;
         while (lastindex != -1) {
@@ -33,7 +33,7 @@ public class ExpressionHandler {
         return expr;
     }
 
-    public int handleTrailing(String expr) {
+    private int handleTrailing(String expr) {
         int len = expr.length();
 
 //        handle trailing operators and open brackets
@@ -49,12 +49,9 @@ public class ExpressionHandler {
         if (expr.isEmpty())
             return "";
 
-        int len = expr.length();
         String current, last, next;
         String res = "";
-
-
-        len = handleTrailing(expr);
+        int len = handleTrailing(expr);
 
 //      handle invalid number of paranthesis
         int leftpara = 0;

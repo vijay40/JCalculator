@@ -20,8 +20,6 @@
     <string name="minus">-</string>
     <string name="asterisk">x</string>
     <string name="divide">\u00f7</string>
-    <string name="delete">Del</string>
-    <string name="clear">C</string>
     <string name="left_paran">(</string>
     <string name="right_paran">)</string>
     <string name="log_10">log</string>

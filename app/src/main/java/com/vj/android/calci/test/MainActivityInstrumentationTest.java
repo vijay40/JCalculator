@@ -6,12 +6,9 @@ import android.test.suitebuilder.annotation.MediumTest;
 
 import com.vj.android.calci.MainActivity;
 
-/**
- * Created by I310588 on 4/19/2015.
- */
 public class MainActivityInstrumentationTest extends ActivityInstrumentationTestCase2<MainActivity> {
 
-    MainActivity activity;
+    private MainActivity activity;
 
     public MainActivityInstrumentationTest() {
         super(MainActivity.class);

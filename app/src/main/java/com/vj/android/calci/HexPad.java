@@ -8,10 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-
-/**
- * Created by I310588 on 3/22/2015.
- */
 public class HexPad extends Fragment implements View.OnClickListener {
 
     static View[] modes = new View[4];
@@ -19,8 +15,8 @@ public class HexPad extends Fragment implements View.OnClickListener {
     private final int OCTAL_MODE = 1;
     private final int DECIMAL_MODE = 2;
     private final int HEX_MODE = 3;
-    Activity activity;
-    View[] buttons = new View[16];
+    private Activity activity;
+    private View[] buttons = new View[16];
 
     public static int ModeToIdx() {
         if (Global.mode == 2)
@@ -33,7 +29,7 @@ public class HexPad extends Fragment implements View.OnClickListener {
             return 3;
     }
 
-    public static void handleMode(Activity activity, View[] buttons) {
+    private static void handleMode(Activity activity, View[] buttons) {
         LookHandler.DisableButtons(activity, buttons, "hex");
         LookHandler.EnableButtons(activity, buttons, "hex");
     }

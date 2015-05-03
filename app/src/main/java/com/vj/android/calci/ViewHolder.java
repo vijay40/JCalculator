@@ -6,15 +6,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-/**
- * Created by I310588 on 5/1/2015.
- */
-public class ViewHolder {
+class ViewHolder {
     TextView expr;
     TextView result;
     ImageView trash;
-    Utility utility;
-    Context context;
+    private Utility utility;
+    private Context context;
     private View.OnClickListener mExprClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -52,7 +49,7 @@ public class ViewHolder {
         this.context = context;
     }
 
-    public void addToEntryText(String expr) {
+    private void addToEntryText(String expr) {
 
         if (MainActivity.lastBtnHit == R.id.equalbtn)
             MainActivity.entryText = expr;

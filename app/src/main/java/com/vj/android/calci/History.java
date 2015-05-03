@@ -5,14 +5,10 @@ import android.content.Context;
 import android.os.Bundle;
 import android.widget.ListView;
 
-
-/**
- * Created by I310588 on 4/17/2015.
- */
 public class History extends Activity {
 
     static HistoryView historyView;
-    ListView history_entries;
+    private ListView history_entries;
 
     public static void removeHistoryEntries(Context context) {
         int maxHistory = MainActivity.max_history;

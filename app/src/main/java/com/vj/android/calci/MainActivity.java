@@ -32,9 +32,9 @@ public class MainActivity extends FragmentActivity {
     public static int max_history;
     public static ArrayList<HistoryRow> history;
     private final int REQUEST_EXIT = 1;
-    TextView entry;
-    Utility utility;
-    SharedPreferences pref;
+    private TextView entry;
+    private Utility utility;
+    private SharedPreferences pref;
     private double prec = 1000000000.0;
     private ExpressionHandler exprhandler;
     private TabView tabViewAdapter;
@@ -183,7 +183,7 @@ public class MainActivity extends FragmentActivity {
 
     //  Method to perform calculation
     //  expression is always in decimal here
-    public double evaluate(String expression) {
+    private double evaluate(String expression) {
 
         String expr;
         expr = exprhandler.formatExpr(expression);
@@ -208,7 +208,7 @@ public class MainActivity extends FragmentActivity {
     }
 
     //    method to display the result in the current mode of calculator
-    public void DisplayResult(String expression) {
+    private void DisplayResult(String expression) {
         double res;
         if (Global.mode == 16) {
             expression = Utility.convertToRadix(expression, 16, 10);
@@ -263,7 +263,7 @@ public class MainActivity extends FragmentActivity {
     }
 
     //  Method to perform short press of delete button
-    public void performDelete() {
+    private void performDelete() {
         int len = entryText.length();
         if (len > 0) {
             if (len <= 2)
@@ -279,7 +279,7 @@ public class MainActivity extends FragmentActivity {
     }
 
     //  Method to handle clear function
-    public void performClear() {
+    private void performClear() {
         entryText = "";
         utility.setDisplayText(entryText);
     }
@@ -331,7 +331,7 @@ public class MainActivity extends FragmentActivity {
     }
 
     //  Method to handle decimal button Click
-    public void decimalClick() {
+    private void decimalClick() {
         if (!utility.hasDecimal(entryText)) {
             entryText += ".";
             utility.setDisplayText(entryText);
@@ -339,7 +339,7 @@ public class MainActivity extends FragmentActivity {
     }
 
     //  Method to handle click of a digit
-    public void digitClick(String dig) {
+    private void digitClick(String dig) {
         if (lastBtnHit == R.id.equalbtn) {
             entryText = "";
         }
@@ -373,7 +373,7 @@ public class MainActivity extends FragmentActivity {
     }
 
     //  Method to handle click of zero button
-    public void zeroClick() {
+    private void zeroClick() {
         if (lastBtnHit == R.id.equalbtn)
             entryText = "";
         if (utility.hasDecimal(entryText)) {
@@ -405,14 +405,14 @@ public class MainActivity extends FragmentActivity {
         }
     }
 
-    //  Method to handle click of left paranthesis
-    public void leftParanClick() {
+    //  Method to handle click of left parenthesis
+    private void leftParanClick() {
         entryText += "(";
         utility.setDisplayText(entryText);
     }
 
-    //  Method to handle click of right paranthesis
-    public void rightParanClick() {
+    //  Method to handle click of right parenthesis
+    private void rightParanClick() {
         int leftparan = 0, len;
         len = entryText.length();
         for (int i = 0; i < len; i++) {
@@ -428,7 +428,7 @@ public class MainActivity extends FragmentActivity {
         }
     }
 
-    public void trignoClick(String function) {
+    private void trignoClick(String function) {
         if (lastBtnHit == R.id.equalbtn)
             entryText = "";
         if (utility.isLastExpo(entryText))
@@ -444,7 +444,7 @@ public class MainActivity extends FragmentActivity {
         }
     }
 
-    public void logClick(String log) {
+    private void logClick(String log) {
         if (lastBtnHit == R.id.equalbtn)
             entryText = "";
         if (utility.isLastExpo(entryText))
@@ -453,14 +453,14 @@ public class MainActivity extends FragmentActivity {
         utility.setDisplayText(entryText);
     }
 
-    public void PIclick() {
+    private void PIclick() {
         if (utility.isLastExpo(entryText))
             return;
         entryText += "π";
         utility.setDisplayText(entryText);
     }
 
-    public void percentClick() {
+    private void percentClick() {
         if (entryText.length() == 0 || utility.isLastExpo(entryText))
             return;
         else if (utility.isOperator(entryText.substring(entryText.length() - 1)))
@@ -469,7 +469,7 @@ public class MainActivity extends FragmentActivity {
         utility.setDisplayText(entryText);
     }
 
-    public void factorialClick() {
+    private void factorialClick() {
         if (entryText.length() == 0 || utility.isLastExpo(entryText))
             return;
         else if (utility.isOperator(entryText.substring(entryText.length() - 1)))
@@ -478,26 +478,26 @@ public class MainActivity extends FragmentActivity {
         utility.setDisplayText(entryText);
     }
 
-    public void sqrtClick() {
+    private void sqrtClick() {
         entryText += "√";
         utility.setDisplayText(entryText);
     }
 
-    public void powerClick() {
+    private void powerClick() {
         if (utility.isLastOperand(entryText)) {
             entryText += "^";
             utility.setDisplayText(entryText);
         }
     }
 
-    public void hexClick(String btn) {
+    private void hexClick(String btn) {
         if (lastBtnHit == R.id.equalbtn)
             entryText = "";
         entryText += btn;
         utility.setDisplayText(entryText);
     }
 
-    public boolean onAdvancePanel() {
+    private boolean onAdvancePanel() {
         return this.getActionBar().getSelectedNavigationIndex() == 1;
     }
 

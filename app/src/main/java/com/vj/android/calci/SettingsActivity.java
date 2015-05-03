@@ -7,14 +7,10 @@ import android.preference.ListPreference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 
-
-/**
- * Created by I310588 on 4/4/2015.
- */
 public class SettingsActivity extends Activity {
 
-    public static String theme;
-    static SharedPreferences pref;
+    private static String theme;
+    private static SharedPreferences pref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

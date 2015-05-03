@@ -6,25 +6,16 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 
-/**
- * Created by I310588 on 4/5/2015.
- */
-public class LookHandler {
+class LookHandler {
 
-    public static final int DEFAULT_THEME_LIGHT = 0;
-    public static final int DEFAULT_THEME_DARK = 1;
-    public static final int CRIMSON_RED = 2;
-    public static final int CELADON_GREEN = 3;
-    public static final int CERISE_PINK = 4;
-    public static final int PALATINATE_PURPLE = 5;
+    private static final int DEFAULT_THEME_LIGHT = 0;
+    private static final int DEFAULT_THEME_DARK = 1;
+    private static final int CRIMSON_RED = 2;
+    private static final int CELADON_GREEN = 3;
+    private static final int CERISE_PINK = 4;
+    private static final int PALATINATE_PURPLE = 5;
     private static int display_color;
     private static int op_color;
-    Activity activity;
-
-
-    public LookHandler(Activity activity) {
-        this.activity = activity;
-    }
 
     public static void onActivityCreatedSetTheme(Activity activity, int theme) {
         if (theme == DEFAULT_THEME_DARK) {
@@ -77,7 +68,7 @@ public class LookHandler {
         main_app.setBackgroundColor(display_color);
     }
 
-    public static void setBtnImage(ImageButton clear_btn, ImageButton delete_btn) {
+    private static void setBtnImage(ImageButton clear_btn, ImageButton delete_btn) {
         int theme = Global.theme;
         if (theme == DEFAULT_THEME_DARK) {
             clear_btn.setImageResource(R.drawable.clear_white);
@@ -100,13 +91,13 @@ public class LookHandler {
         }
     }
 
-    public static void setOpColor(View[] v) {
-        for (int i = 0; i < v.length; i++) {
-            v[i].setBackgroundResource(op_color);
+    private static void setOpColor(View[] v) {
+        for (View view : v) {
+            view.setBackgroundResource(op_color);
         }
     }
 
-    public static int giveEnableModeColor(Activity activity) {
+    private static int giveEnableModeColor(Activity activity) {
         int theme = Global.theme;
         int mode_color = 0;
         if (theme == LookHandler.DEFAULT_THEME_DARK) {
@@ -125,7 +116,7 @@ public class LookHandler {
         return mode_color;
     }
 
-    public static int giveDisableModeColor(Activity activity) {
+    private static int giveDisableModeColor(Activity activity) {
         int theme = Global.theme;
         int mode_color = 0;
         if (theme == LookHandler.DEFAULT_THEME_DARK) {
@@ -190,7 +181,6 @@ public class LookHandler {
     }
 
     public static void EnableButtons(Activity activity, View[] buttons, String pad) {
-        int theme = Global.theme;
         int mode_color = giveEnableModeColor(activity);
 
         for (int i = 0; i < Math.min(Global.mode, 10); i++) {
@@ -207,17 +197,15 @@ public class LookHandler {
     }
 
     public static void DisableButtons(Activity activity, View[] buttons, String pad) {
-        int theme = Global.theme;
+//        int theme = Global.theme;
         int mode_color = giveDisableModeColor(activity);
         int endlimit;
 
         if (pad.equals("hex")) {
             endlimit = 16;
+            int currentMode = HexPad.ModeToIdx();
             for (int i = 0; i < 4; i++) {
-                int currentMode = HexPad.ModeToIdx();
-                if (i == currentMode)
-                    continue;
-                else
+                if (i != currentMode)
                     HexPad.modes[i].setBackgroundColor(mode_color);
             }
         } else

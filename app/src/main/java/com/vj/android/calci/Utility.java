@@ -30,7 +30,7 @@ import java.util.regex.Pattern;
  */
 public class Utility {
     private static int PRECISION = 9;
-    Activity activity;
+    private Activity activity;
     private double precision = 0.000000001;
 
     // used for utility functions called by classes who didn't extend activity
@@ -44,7 +44,7 @@ public class Utility {
     }
 
     //  Method to change the base of a number
-    public static String changeBase(String originalNumber, int originalBase, int base) throws SyntaxException {
+    private static String changeBase(String originalNumber, int originalBase, int base) throws SyntaxException {
         Symbols symbol = new Symbols();
         String[] parts = originalNumber.split(Pattern.quote("."));
         if (parts.length == 0) {
@@ -81,7 +81,7 @@ public class Utility {
             parts[1] = parts[1].substring(0, 13);
         }
 
-        double decimal = 0;
+        double decimal;
         if (originalBase != 10) {
             String decimalFraction = Long.toString(Long.parseLong(parts[1], originalBase)) + "/" + originalBase + "^" + parts[1].length();
             decimal = symbol.eval(decimalFraction);
@@ -91,7 +91,7 @@ public class Utility {
         if (decimal == 0) return wholeNumber.toUpperCase(Locale.US);
 
         String decimalNumber = "";
-        for (int i = 0, id = 0; decimal != 0 && i <= PRECISION; i++) {
+        for (int i = 0, id; decimal != 0 && i <= PRECISION; i++) {
             decimal *= base;
             id = (int) Math.floor(decimal);
             decimal -= id;
@@ -102,7 +102,7 @@ public class Utility {
 
     public static String convertToRadix(String expr, int originalRadix, int radix) {
         String res = "", num = "", ch;
-        long n;
+//        long n;
         for (int i = 0; i < expr.length(); i++) {
             ch = expr.substring(i, i + 1);
             if ("0123456789.ABCDEF".contains(ch)) {
@@ -112,7 +112,7 @@ public class Utility {
                     try {
                         res += changeBase(num, originalRadix, radix);
                     } catch (Exception e) {
-                        System.out.println(e);
+                        Log.e("radix exception", e.toString());
                     }
                 }
                 res += ch;
@@ -123,7 +123,7 @@ public class Utility {
             try {
                 res += changeBase(num, originalRadix, radix);
             } catch (Exception e) {
-                System.out.println(e);
+                Log.e("radix exception", e.toString());
             }
         }
         return res;
@@ -133,9 +133,7 @@ public class Utility {
     public boolean isDouble(double num) {
         long i = (long) num;
 
-        if (Math.abs(num - (double) i) < precision)
-            return false;
-        return true;
+        return Math.abs(num - (double) i) >= precision;
     }
 
     public boolean returnToBasic() {
@@ -167,16 +165,12 @@ public class Utility {
 
     //    determine whether last operations is exponential or not
     public boolean isLastExpo(String expr) {
-        if (expr.length() > 0 && "e".contains(expr.substring(expr.length() - 1)))
-            return true;
-        return false;
+        return expr.length() > 0 && "e".contains(expr.substring(expr.length() - 1));
     }
 
     //  Method to determine whether character is operator or not
     public boolean isOperator(String ch) {
-        if ("+-x÷".contains(ch))
-            return true;
-        return false;
+        return "+-x÷".contains(ch);
     }
 
     //    determine whether the last character is a number or pi or '%' or '!'
@@ -192,16 +186,16 @@ public class Utility {
 
     //    determine whether last char is operator or not
     public boolean isLastOperator(String expr) {
-        if (expr.length() > 0 && isOperator(expr.substring(expr.length() - 1)))
-            return true;
-        return false;
+        return expr.length() > 0 && isOperator(expr.substring(expr.length() - 1));
     }
 
-    public boolean isDigit(String ch) {
-        if ("0123456789".contains(ch))
-            return true;
-        return false;
-    }
+// --Commented out by Inspection START (5/3/2015 11:18 AM):
+//    public boolean isDigit(String ch) {
+//        if ("0123456789".contains(ch))
+//            return true;
+//        return false;
+//    }
+// --Commented out by Inspection STOP (5/3/2015 11:18 AM)
 
     //  Method to find whether current number contains a decimal point or not
     public boolean hasDecimal(String entryText) {
@@ -241,17 +235,19 @@ public class Utility {
             oos.writeObject(MainActivity.history);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            Log.e("Vijay", e.toString());
+            Log.e("JCALC", e.toString());
         } catch (IOException e) {
             e.printStackTrace();
-            Log.e("Vijay", e.toString());
+            Log.e("JCALC", e.toString());
         } finally {
             try {
-                fos.close();
-                oos.close();
+                if (fos != null)
+                    fos.close();
+                if (oos != null)
+                    oos.close();
             } catch (IOException e) {
                 e.printStackTrace();
-                Log.e("Vijay", e.toString());
+                Log.e("JCALC", e.toString());
             }
 
         }
@@ -260,7 +256,6 @@ public class Utility {
     public void historyRead() {
         FileInputStream fin = null;
         ObjectInputStream ois;
-        // todo change the tag of logs from vijay to something other
 
         try {
             fin = activity.openFileInput("result");
@@ -268,23 +263,23 @@ public class Utility {
             MainActivity.history = (ArrayList<HistoryRow>) ois.readObject();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            Log.e("Vijay", e.toString());
+            Log.e("JCALC", e.toString());
         } catch (StreamCorruptedException e) {
             e.printStackTrace();
-            Log.e("Vijay", e.toString());
+            Log.e("JCALC", e.toString());
         } catch (IOException e) {
             e.printStackTrace();
-            Log.e("Vijay", e.toString());
+            Log.e("JCALC", e.toString());
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-            Log.e("Vijay", e.toString());
+            Log.e("JCALC", e.toString());
         } finally {
             try {
                 if (fin != null)
                     fin.close();
             } catch (IOException e) {
                 e.printStackTrace();
-                Log.e("Vijay", e.toString());
+                Log.e("JCALC", e.toString());
             }
         }
     }

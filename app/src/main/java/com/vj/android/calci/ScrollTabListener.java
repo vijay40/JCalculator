@@ -5,14 +5,10 @@ import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 
-
-/**
- * Created by I310588 on 3/22/2015.
- */
-public class ScrollTabListener implements ActionBar.TabListener {
+class ScrollTabListener implements ActionBar.TabListener {
 
     private final int BASIC_MODE = 0;
-    Activity activity;
+    private Activity activity;
     private ViewPager viewPager;
 
     public ScrollTabListener(Activity activity) {
