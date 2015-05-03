@@ -437,9 +437,9 @@ public class MainActivity extends FragmentActivity {
         utility.setDisplayText(entryText);
     }
 
-    private void expoClick() {
+    private void SFunctionClick(String func) {
         if (utility.isLastOperand(entryText)) {
-            entryText += "e";
+            entryText += func;
             utility.setDisplayText(entryText);
         }
     }
@@ -453,28 +453,13 @@ public class MainActivity extends FragmentActivity {
         utility.setDisplayText(entryText);
     }
 
-    private void PIclick() {
-        if (utility.isLastExpo(entryText))
-            return;
-        entryText += "π";
-        utility.setDisplayText(entryText);
-    }
 
-    private void percentClick() {
+    private void functionClick(String func) {
         if (entryText.length() == 0 || utility.isLastExpo(entryText))
             return;
         else if (utility.isOperator(entryText.substring(entryText.length() - 1)))
             return;
-        entryText += "%";
-        utility.setDisplayText(entryText);
-    }
-
-    private void factorialClick() {
-        if (entryText.length() == 0 || utility.isLastExpo(entryText))
-            return;
-        else if (utility.isOperator(entryText.substring(entryText.length() - 1)))
-            return;
-        entryText += "!";
+        entryText += func;
         utility.setDisplayText(entryText);
     }
 
@@ -483,11 +468,11 @@ public class MainActivity extends FragmentActivity {
         utility.setDisplayText(entryText);
     }
 
-    private void powerClick() {
-        if (utility.isLastOperand(entryText)) {
-            entryText += "^";
-            utility.setDisplayText(entryText);
-        }
+    private void PIclick() {
+        if (utility.isLastExpo(entryText))
+            return;
+        entryText += "π";
+        utility.setDisplayText(entryText);
     }
 
     private void hexClick(String btn) {
@@ -514,122 +499,41 @@ public class MainActivity extends FragmentActivity {
             btnText = btn.getText().toString();
         }
 
-        switch (btnId) {
-            case R.id.clearbtn:
-                performClear();
-                break;
-            case R.id.clearbtnadv:
-                performClear();
-                break;
-            case R.id.clearbtnhex:
-                performClear();
-                break;
-            case R.id.delbtn:
-                performDelete();
-                break;
-            case R.id.delbtnadv:
-                performDelete();
-                break;
-            case R.id.delbtnhex:
-                performDelete();
-                break;
-            case R.id.plusbtn:
-                opClick(btnText);
-                break;
-            case R.id.minusbtn:
-                opClick(btnText);
-                break;
-            case R.id.multiplybtn:
-                opClick(btnText);
-                break;
-            case R.id.dividebtn:
-                opClick(btnText);
-                break;
-            case R.id.plusbtnhex:
-                opClick(btnText);
-                break;
-            case R.id.minusbtnhex:
-                opClick(btnText);
-                break;
-            case R.id.multiplybtnhex:
-                opClick(btnText);
-                break;
-            case R.id.dividebtnhex:
-                opClick(btnText);
-                break;
-            case R.id.decimalbtn:
-                decimalClick();
-                break;
-            case R.id.left_paran:
-                leftParanClick();
-                break;
-            case R.id.right_paran:
-                rightParanClick();
-                break;
-            case R.id.equalbtn:
-                DisplayResult(entryText);
-                break;
-            case R.id.zerobtn:
-                zeroClick();
-                break;
-            case R.id.sin:
-                trignoClick("sin");
-                break;
-            case R.id.cos:
-                trignoClick("cos");
-                break;
-            case R.id.tan:
-                trignoClick("tan");
-                break;
-            case R.id.exponential:
-                expoClick();
-                break;
-            case R.id.logn:
-                logClick("ln");
-                break;
-            case R.id.log:
-                logClick("log");
-                break;
-            case R.id.pi:
-                PIclick();
-                break;
-            case R.id.percentage:
-                percentClick();
-                break;
-            case R.id.factorial:
-                factorialClick();
-                break;
-            case R.id.sqrt:
-                sqrtClick();
-                break;
-            case R.id.power:
-                powerClick();
-                break;
-            case R.id.hexA:
-                hexClick("A");
-                break;
-            case R.id.hexB:
-                hexClick("B");
-                break;
-            case R.id.hexC:
-                hexClick("C");
-                break;
-            case R.id.hexD:
-                hexClick("D");
-                break;
-            case R.id.hexE:
-                hexClick("E");
-                break;
-            case R.id.hexF:
-                hexClick("F");
-                break;
-            case R.id.hexequalbtn:
-                DisplayResult(entryText);
-                btnId = R.id.equalbtn;
-                break;
-            default:
-                digitClick(btnText);
-        }
+        if (btnId == R.id.clearbtn || btnId == R.id.clearbtnadv || btnId == R.id.clearbtnhex)
+            performClear();
+        else if (btnId == R.id.delbtn || btnId == R.id.delbtnadv || btnId == R.id.delbtnhex)
+            performDelete();
+        else if (btnId == R.id.plusbtn || btnId == R.id.plusbtnhex || btnId == R.id.minusbtn || btnId == R.id.minusbtnhex || btnId == R.id.multiplybtn || btnId == R.id.multiplybtnhex || btnId == R.id.dividebtn || btnId == R.id.dividebtnhex)
+            opClick(btnText);
+        else if (btnId == R.id.sin || btnId == R.id.cos || btnId == R.id.tan)
+            trignoClick(btnText);
+        else if (btnId == R.id.hexA || btnId == R.id.hexB || btnId == R.id.hexC || btnId == R.id.hexD || btnId == R.id.hexE || btnId == R.id.hexF)
+            hexClick(btnText);
+        else if (btnId == R.id.log || btnId == R.id.logn)
+            logClick(btnText);
+        else if (btnId == R.id.decimalbtn)
+            decimalClick();
+        else if (btnId == R.id.left_paran)
+            leftParanClick();
+        else if (btnId == R.id.right_paran)
+            rightParanClick();
+        else if (btnId == R.id.zerobtn)
+            zeroClick();
+        else if (btnId == R.id.pi)
+            PIclick();
+        else if (btnId == R.id.factorial || btnId == R.id.percentage)
+            functionClick(btnText);
+        else if (btnId == R.id.exponential || btnId == R.id.power)
+            SFunctionClick(btnText);
+        else if (btnId == R.id.sqrt)
+            sqrtClick();
+        else if (btnId == R.id.equalbtn || btnId == R.id.hexequalbtn) {
+            DisplayResult(entryText);
+            btnId = R.id.equalbtn;
+        } else
+            digitClick(btnText);
+
+
         lastBtnHit = btnId;
 
         utility.vibrate();

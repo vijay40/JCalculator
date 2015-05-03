@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--<color name="light_theme_text_color">#ff33b5e5</color>-->
     <color name="dark_theme_text_color">#fff</color>
     <color name="white">#fff</color>
     <color name="red">#f00</color>
-    <!--<color name="btn_pressed">#f2f7f9</color>-->
     <color name="transparent">#00000000</color>
-    <!--<color name="operator">#E8EDDF</color>-->
     <color name="default_dark">#000</color>
-    <!--<color name="grey_theme_normal">#636363</color>-->
-    <!--<color name="grey_theme_hex">#434343</color>-->
-    <!--<color name="default_dark_disable">#9998A5</color>-->
     <color name="default_dark_mode_enable">#070707</color>
     <color name="default_dark_mode_disable">#12130F</color>
     <color name="default_light">#ff33b5e5</color>
-    <!--<color name="default_light_op">#fff7f9f9</color>-->
     <color name="default_light_mode_disable">#433F6B</color>
     <color name="default_light_mode_enable">#13262F</color>
     <color name="crimson_red_theme">#e84e40</color>
