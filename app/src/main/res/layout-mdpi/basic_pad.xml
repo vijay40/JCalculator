@@ -1,0 +1,221 @@
+<!-- Layout for Buttons -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/basic_pad"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <!-- 7 Button -->
+        <Button
+            android:id="@+id/sevenbtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/seven" />
+
+        <!-- 8 Button -->
+        <Button
+            android:id="@+id/eightbtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/eight" />
+
+        <!-- 9 Button -->
+        <Button
+            android:id="@+id/ninebtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/nine" />
+
+        <!-- Delete Button -->
+        <ImageButton
+            android:id="@+id/delbtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:src="@drawable/delete_white" />
+
+        <!-- Clear Button -->
+        <ImageButton
+            android:id="@+id/clearbtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:src="@drawable/clear_white" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+        <!-- 4 Button -->
+        <Button
+            android:id="@+id/fourbtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/four" />
+        <!-- 5 Button -->
+        <Button
+            android:id="@+id/fivebtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/five" />
+        <!-- 6 Button -->
+        <Button
+            android:id="@+id/sixbtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/six" />
+        <!-- Minus Button -->
+        <Button
+            android:id="@+id/minusbtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/minus" />
+
+        <!-- Plus Button -->
+        <Button
+            android:id="@+id/plusbtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/plus" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+        <!-- 1 Button -->
+        <Button
+            android:id="@+id/onebtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/one" />
+        <!-- 2 Button -->
+        <Button
+            android:id="@+id/twobtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/two" />
+        <!-- 3 Button -->
+        <Button
+            android:id="@+id/threebtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/three" />
+        <!-- Multiply Button -->
+        <Button
+            android:id="@+id/multiplybtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/asterisk" />
+        <!-- Divide Button -->
+        <Button
+            android:id="@+id/dividebtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/divide" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+        <!-- decimal Button -->
+        <Button
+            android:id="@+id/decimalbtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/decimal" />
+        <!-- 0 Button -->
+        <Button
+            android:id="@+id/zerobtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/zero" />
+        <!-- left paranthesis Button -->
+        <Button
+            android:id="@+id/left_paran"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/left_paran" />
+        <!-- 0 Button -->
+        <Button
+            android:id="@+id/right_paran"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/right_paran" />
+        <!-- Equal Button -->
+        <Button
+            android:id="@+id/equalbtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/equal" />
+    </LinearLayout>
+</LinearLayout>
+

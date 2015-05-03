@@ -1,0 +1,315 @@
+<!-- Layout for Buttons -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/hex_pad"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <!-- empty space Button -->
+        <Button
+            android:id="@+id/blank_space"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="4" />
+
+
+        <ImageButton
+            android:id="@+id/delbtnhex"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:src="@drawable/delete_white" />
+        <!-- Delete Button -->
+
+        <!-- Clear Button -->
+        <ImageButton
+            android:id="@+id/clearbtnhex"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:src="@drawable/clear_white" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/hexA"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/hexA" />
+
+        <Button
+            android:id="@+id/hexB"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/hexB" />
+
+        <Button
+            android:id="@+id/hexC"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/hexC" />
+
+        <Button
+            android:id="@+id/hexD"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/hexD" />
+
+        <Button
+            android:id="@+id/hexE"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/hexE" />
+
+        <Button
+            android:id="@+id/hexF"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/hexF" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <!-- 9 Button -->
+        <Button
+            android:id="@+id/hexninebtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/nine" />
+
+        <!-- 8 Button -->
+        <Button
+            android:id="@+id/hexeightbtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/eight" />
+
+        <!-- 7 Button -->
+        <Button
+            android:id="@+id/hexsevenbtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/seven" />
+
+
+        <!-- Minus Button -->
+        <Button
+            android:id="@+id/minusbtnhex"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/minus" />
+
+        <!-- Plus Button -->
+        <Button
+            android:id="@+id/plusbtnhex"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/plus" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <!-- 6 Button -->
+        <Button
+            android:id="@+id/hexsixbtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/six" />
+
+        <!-- 5 Button -->
+        <Button
+            android:id="@+id/hexfivebtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/five" />
+
+        <!-- 4 Button -->
+        <Button
+            android:id="@+id/hexfourbtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/four" />
+
+        <!-- Multiply Button -->
+        <Button
+            android:id="@+id/multiplybtnhex"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/asterisk" />
+        <!-- Divide Button -->
+        <Button
+            android:id="@+id/dividebtnhex"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/divide" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <!-- 3 Button -->
+        <Button
+            android:id="@+id/hexthreebtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/three" />
+
+        <!-- 2 Button -->
+        <Button
+            android:id="@+id/hextwobtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/two" />
+
+        <!-- 1 Button -->
+        <Button
+            android:id="@+id/hexonebtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/one" />
+
+        <!-- 0 Button -->
+        <Button
+            android:id="@+id/hexzerobtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/zero" />
+        <!-- Equal Button -->
+        <Button
+            android:id="@+id/hexequalbtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/equal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/bin_mode"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/btn_margin"
+            android:layout_weight="1"
+            android:text="@string/bin"
+            android:textSize="@dimen/mode_btn_text_size" />
+
+        <Button
+            android:id="@+id/octal_mode"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/btn_margin"
+            android:layout_weight="1"
+            android:text="@string/octal"
+            android:textSize="@dimen/mode_btn_text_size" />
+
+        <Button
+            android:id="@+id/dec_mode"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/btn_margin"
+            android:layout_weight="1"
+            android:text="@string/dec"
+            android:textSize="@dimen/mode_btn_text_size" />
+
+        <Button
+            android:id="@+id/hex_mode"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/btn_margin"
+            android:layout_weight="1"
+            android:text="@string/hex"
+            android:textSize="@dimen/mode_btn_text_size" />
+
+    </LinearLayout>
+
+</LinearLayout>
+

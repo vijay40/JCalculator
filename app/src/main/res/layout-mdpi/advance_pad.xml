@@ -1,0 +1,183 @@
+<!-- Layout for Buttons -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/advance_pad"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <!-- sin Button -->
+        <Button
+            android:id="@+id/sin"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/sin" />
+
+        <!-- cos Button -->
+        <Button
+            android:id="@+id/cos"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/cos" />
+
+        <!-- tan Button -->
+        <Button
+            android:id="@+id/tan"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/tan" />
+
+        <!-- Delete Button -->
+        <ImageButton
+            android:id="@+id/delbtnadv"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:src="@drawable/delete_white" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+        <!-- natural log Button -->
+        <Button
+            android:id="@+id/logn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/logn" />
+        <!-- log 10 Button -->
+        <Button
+            android:id="@+id/log"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/log_10" />
+        <!-- pi Button -->
+        <Button
+            android:id="@+id/pi"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/pi" />
+        <!-- clear Button -->
+        <ImageButton
+            android:id="@+id/clearbtnadv"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:src="@drawable/clear_white" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+        <!-- percentage Button -->
+        <Button
+            android:id="@+id/percentage"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/percentage" />
+        <!-- factorial Button -->
+        <Button
+            android:id="@+id/factorial"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/factorial" />
+        <!-- power Button -->
+        <Button
+            android:id="@+id/power"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/power" />
+        <!-- exponential Button -->
+        <Button
+            android:id="@+id/exponential"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/exponential" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+        <!-- sqrt Button -->
+        <Button
+            android:id="@+id/sqrt"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/sqrt" />
+        <!-- left paranthesis Button -->
+        <Button
+            android:id="@+id/left_paran"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/left_paran" />
+        <!-- right parathesis Button -->
+        <Button
+            android:id="@+id/right_paran"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/right_paran" />
+        <!-- Equal Button -->
+        <Button
+            android:id="@+id/equalbtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/equal" />
+    </LinearLayout>
+</LinearLayout>
+
