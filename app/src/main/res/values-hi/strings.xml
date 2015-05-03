@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">JCalculator</string>
+    <string name="vibrate">क्लिक पर कंपन</string>
+    <string name="about">बारे में</string>
+    <string name="action_settings">सेटिंग</string>
+    <string name="actions">प्रक्रिया</string>
+    <string name="copyright">CyanogenMod कैलकुलेटर से प्रेरित होकर</string>
+    <string name="error">गणना में त्रुटि</string>
+    <string name="history">इतिहास</string>
+    <string name="return_basic">Basic के लिए लौटें</string>
+    <string name="return_basic_summary">स्वचालित रूप से Advance मोड से लौटने</string>
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">JCalculator</string>
+    <string name="return_basic_summary">Автоматически вернуться из Advance режиме</string>
+    <string name="vibrate">Вибрация Нажмите</string>
+    <string name="return_basic">Вернуться к Basic</string>
+    <string name="history">история</string>
+    <string name="error">Ошибка в расчете</string>
+    <string name="copyright">Вдохновленный из калькулятора по CyanogenMod проекта</string>
+    <string name="actions">действия</string>
+    <string name="action_settings">настройки</string>
+    <string name="about">о</string>
+</resources>

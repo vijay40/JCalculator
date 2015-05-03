@@ -4,47 +4,47 @@
     <string name="app_name">JCalculator</string>
     <string name="action_settings">Settings</string>
     <!-- Button Names -->
-    <string name="one">1</string>
-    <string name="two">2</string>
-    <string name="three">3</string>
-    <string name="four">4</string>
-    <string name="five">5</string>
-    <string name="six">6</string>
-    <string name="seven">7</string>
-    <string name="eight">8</string>
-    <string name="nine">9</string>
-    <string name="zero">0</string>
-    <string name="decimal">.</string>
-    <string name="equal">=</string>
-    <string name="plus">+</string>
-    <string name="minus">-</string>
-    <string name="asterisk">x</string>
-    <string name="divide">\u00f7</string>
-    <string name="left_paran">(</string>
-    <string name="right_paran">)</string>
-    <string name="log_10">log</string>
-    <string name="logn">ln</string>
-    <string name="exponential">e</string>
-    <string name="factorial">!</string>
-    <string name="percentage">%</string>
-    <string name="power">^</string>
-    <string name="sqrt">\u221A</string>
-    <string name="pi">\u03C0</string>
-    <string name="sin">sin</string>
-    <string name="cos">cos</string>
-    <string name="tan">tan</string>
+    <string name="one" translatable="false">1</string>
+    <string name="two" translatable="false">2</string>
+    <string name="three" translatable="false">3</string>
+    <string name="four" translatable="false">4</string>
+    <string name="five" translatable="false">5</string>
+    <string name="six" translatable="false">6</string>
+    <string name="seven" translatable="false">7</string>
+    <string name="eight" translatable="false">8</string>
+    <string name="nine" translatable="false">9</string>
+    <string name="zero" translatable="false">0</string>
+    <string name="decimal" translatable="false">.</string>
+    <string name="equal" translatable="false">=</string>
+    <string name="plus" translatable="false">+</string>
+    <string name="minus" translatable="false">-</string>
+    <string name="asterisk" translatable="false">x</string>
+    <string name="divide" translatable="false">\u00f7</string>
+    <string name="left_paran" translatable="false">(</string>
+    <string name="right_paran" translatable="false">)</string>
+    <string name="log_10" translatable="false">log</string>
+    <string name="logn" translatable="false">ln</string>
+    <string name="exponential" translatable="false">e</string>
+    <string name="factorial" translatable="false">!</string>
+    <string name="percentage" translatable="false">%</string>
+    <string name="power" translatable="false">^</string>
+    <string name="sqrt" translatable="false">\u221A</string>
+    <string name="pi" translatable="false">\u03C0</string>
+    <string name="sin" translatable="false">sin</string>
+    <string name="cos" translatable="false">cos</string>
+    <string name="tan" translatable="false">tan</string>
     <string name="error">Error in Calculation</string>
     <string name="history">History</string>
-    <string name="hexA">A</string>
-    <string name="hexB">B</string>
-    <string name="hexC">C</string>
-    <string name="hexD">D</string>
-    <string name="hexE">E</string>
-    <string name="hexF">F</string>
-    <string name="hex">Hex</string>
-    <string name="dec">Decimal</string>
-    <string name="octal">Octal</string>
-    <string name="bin">Binary</string>
+    <string name="hexA" translatable="false">A</string>
+    <string name="hexB" translatable="false">B</string>
+    <string name="hexC" translatable="false">C</string>
+    <string name="hexD" translatable="false">D</string>
+    <string name="hexE" translatable="false">E</string>
+    <string name="hexF" translatable="false">F</string>
+    <string name="hex" translatable="false">Hex</string>
+    <string name="dec" translatable="false">Decimal</string>
+    <string name="octal" translatable="false">Octal</string>
+    <string name="bin" translatable="false">Binary</string>
 
     <string-array name="modes">
         <item>Basic</item>
@@ -71,7 +71,7 @@
     </string-array>
 
     <string name="about">About</string>
-    <string name="calc_about">JCalculator v 1.0.00</string>
+    <string name="calc_about" translatable="false">JCalculator v 1.0.00</string>
     <string name="copyright">Inspired from the calculator by The CyanogenMod Project</string>
     <string name="actions">Actions</string>
     <string name="return_basic">Return to basic</string>

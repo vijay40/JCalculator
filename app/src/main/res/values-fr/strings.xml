@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">JCalculator</string>
+    <string name="history">Histoire</string>
+    <string name="actions">Actes</string>
+    <string name="copyright">Inspiré de la calculatrice par le projet de CyanogenMod</string>
+    <string name="about">environ</string>
+    <string name="action_settings">Paramètres</string>
+    <string name="error">Erreur de calcul</string>
+    <string name="return_basic">Retour à base</string>
+    <string name="return_basic_summary">Revenir automatiquement du mode Advance</string>
+    <string name="vibrate">Vibrer à clic</string>
+</resources>
