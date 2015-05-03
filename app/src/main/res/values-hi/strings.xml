@@ -10,4 +10,30 @@
     <string name="history">इतिहास</string>
     <string name="return_basic">Basic के लिए लौटें</string>
     <string name="return_basic_summary">स्वचालित रूप से Advance मोड से लौटने</string>
+
+    <string-array name="themes">
+        <item>डिफ़ॉल्ट प्रकाश</item>
+        <item>डिफ़ॉल्ट डार्क</item>
+        <item>क्रिमसन लाल</item>
+        <item>सरपत हरा</item>
+        <item>सेरीस गुलाबी</item>
+        <item>पलातिनेट बैंगनी</item>
+    </string-array>
+
+    <string-array name="modes">
+        <item>Basic</item>
+        <item>Advance</item>
+        <item>Hex</item>
+    </string-array>
+
+    <string-array name="theme_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
+
 </resources>

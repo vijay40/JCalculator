@@ -10,4 +10,30 @@
     <string name="return_basic">Retour à base</string>
     <string name="return_basic_summary">Revenir automatiquement du mode Advance</string>
     <string name="vibrate">Vibrer à clic</string>
+
+    <string-array name="themes">
+        <item>Par défaut lumière</item>
+        <item>Par défaut foncé</item>
+        <item>Crimson Rouge</item>
+        <item>Celadon Vert</item>
+        <item>Cerise Rose</item>
+        <item>Palatinate Pourpre</item>
+    </string-array>
+
+    <string-array name="modes">
+        <item>Basic</item>
+        <item>Advance</item>
+        <item>Hex</item>
+    </string-array>
+
+    <string-array name="theme_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
+
 </resources>
