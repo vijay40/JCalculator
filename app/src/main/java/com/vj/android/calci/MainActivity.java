@@ -70,18 +70,6 @@ public class MainActivity extends FragmentActivity {
 
         viewPager.setOnPageChangeListener(new ViewPageListener(this));
 
-//        TODO enable long click on delete button
-//      Setting delete button to respond to long click
-//        Button delbtn = (Button) findViewById(R.id.delbtn);
-//        final TextView entry = (TextView) findViewById(R.id.entry);
-//        delbtn.setOnLongClickListener(new View.OnLongClickListener() {
-//            @Override
-//            public boolean onLongClick(View v) {
-//                performClear();
-//                return true;
-//            }
-//        });
-
 //        default calculation mode
         if (savedInstanceState != null)
             Global.mode = savedInstanceState.getInt("mode");
@@ -305,7 +293,7 @@ public class MainActivity extends FragmentActivity {
                     entryText = entryText.substring(0, entryText.length() - 1);
                 } else
                     entryText = entryText.substring(0, entryText.length() - 1) + op;
-            } else if (utility.isLastOperand(entryText)) {
+            } else if (Utility.isLastOperand(entryText)) {
                 entryText += op;
             }
 
@@ -315,13 +303,13 @@ public class MainActivity extends FragmentActivity {
                 if (op.equals(entryText.substring(entryText.length() - 1)))
                     return;
                 else {
-                    if (entryText.length() > 1 && utility.isLastOperand(entryText.substring(0, entryText.length() - 1)))
+                    if (entryText.length() > 1 && Utility.isLastOperand(entryText.substring(0, entryText.length() - 1)))
                         entryText = entryText.substring(0, entryText.length() - 1) + op;
                     else
                         return;
                 }
             } else {
-                if (utility.isLastOperand(entryText))
+                if (Utility.isLastOperand(entryText))
                     entryText += op;
                 else
                     return;
@@ -431,23 +419,28 @@ public class MainActivity extends FragmentActivity {
     private void trignoClick(String function) {
         if (lastBtnHit == R.id.equalbtn)
             entryText = "";
-        if (utility.isLastExpo(entryText))
+        if (Utility.isLastExpo(entryText))
             return;
         entryText += function + "(";
         utility.setDisplayText(entryText);
     }
 
-    private void SFunctionClick(String func) {
-        if (utility.isLastOperand(entryText)) {
-            entryText += func;
+    private void power() {
+        if (Utility.isLastOperand(entryText)) {
+            entryText += "^";
             utility.setDisplayText(entryText);
         }
+    }
+
+    private void exponential() {
+        entryText += "e";
+        utility.setDisplayText(entryText);
     }
 
     private void logClick(String log) {
         if (lastBtnHit == R.id.equalbtn)
             entryText = "";
-        if (utility.isLastExpo(entryText))
+        if (Utility.isLastExpo(entryText))
             return;
         entryText += log + "(";
         utility.setDisplayText(entryText);
@@ -455,7 +448,7 @@ public class MainActivity extends FragmentActivity {
 
 
     private void functionClick(String func) {
-        if (entryText.length() == 0 || utility.isLastExpo(entryText))
+        if (entryText.length() == 0 || Utility.isLastExpo(entryText))
             return;
         else if (utility.isOperator(entryText.substring(entryText.length() - 1)))
             return;
@@ -469,7 +462,7 @@ public class MainActivity extends FragmentActivity {
     }
 
     private void PIclick() {
-        if (utility.isLastExpo(entryText))
+        if (Utility.isLastExpo(entryText))
             return;
         entryText += "π";
         utility.setDisplayText(entryText);
@@ -523,8 +516,10 @@ public class MainActivity extends FragmentActivity {
             PIclick();
         else if (btnId == R.id.factorial || btnId == R.id.percentage)
             functionClick(btnText);
-        else if (btnId == R.id.exponential || btnId == R.id.power)
-            SFunctionClick(btnText);
+        else if (btnId == R.id.exponential)
+            exponential();
+        else if (btnId == R.id.power)
+            power();
         else if (btnId == R.id.sqrt)
             sqrtClick();
         else if (btnId == R.id.equalbtn || btnId == R.id.hexequalbtn) {

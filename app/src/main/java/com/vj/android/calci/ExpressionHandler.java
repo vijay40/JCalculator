@@ -37,10 +37,20 @@ public class ExpressionHandler {
         int len = expr.length();
 
 //        handle trailing operators and open brackets
-        while (len > 0 && (utility.isOperator(expr.substring(len - 1, len)) || "(e^√".contains(expr.substring(len - 1, len))))
+        while (len > 0 && (utility.isOperator(expr.substring(len - 1, len)) || "(^√".contains(expr.substring(len - 1, len))))
             len--;
 
         return len;
+    }
+
+    private String handleExponential(String expr) {
+        for (int i = 0; i < expr.length(); i++) {
+            if (Utility.isLastExpo(expr.substring(0, i + 1)) && Utility.isLastOperand(expr.substring(0, i))) {
+                expr = expr.substring(0, i) + "*" + expr.substring(i);
+            }
+        }
+
+        return expr;
     }
 
 
@@ -102,6 +112,8 @@ public class ExpressionHandler {
         res = handleTrig(res, "sin");
         res = handleTrig(res, "cos");
         res = handleTrig(res, "tan");
+
+        res = handleExponential(res);
 
         return res;
     }

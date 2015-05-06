@@ -129,6 +129,22 @@ public class Utility {
         return res;
     }
 
+    //    determine whether last operations is exponential or not
+    public static boolean isLastExpo(String expr) {
+        return expr.length() > 0 && "e".contains(expr.substring(expr.length() - 1));
+    }
+
+    //    determine whether the last character is a number or pi or '%' or '!'
+    //    this helps in determining that operators which require two operands are applicable or not.
+    public static boolean isLastOperand(String expr) {
+        if (expr.length() > 0) {
+            String lastchar = expr.substring(expr.length() - 1);
+            if ("0123456789.%!πeABCDEF)".contains(lastchar))
+                return true;
+        }
+        return false;
+    }
+
     //    Method to determine wheather number is a double or not
     public boolean isDouble(double num) {
         long i = (long) num;
@@ -163,25 +179,9 @@ public class Utility {
         }
     }
 
-    //    determine whether last operations is exponential or not
-    public boolean isLastExpo(String expr) {
-        return expr.length() > 0 && "e".contains(expr.substring(expr.length() - 1));
-    }
-
     //  Method to determine whether character is operator or not
     public boolean isOperator(String ch) {
         return "+-x÷".contains(ch);
-    }
-
-    //    determine whether the last character is a number or pi or '%' or '!'
-    //    this helps in determining that operators which require two operands are applicable or not.
-    public boolean isLastOperand(String expr) {
-        if (expr.length() > 0) {
-            String lastchar = expr.substring(expr.length() - 1);
-            if ("0123456789.%!πABCDEF)".contains(lastchar))
-                return true;
-        }
-        return false;
     }
 
     //    determine whether last char is operator or not
