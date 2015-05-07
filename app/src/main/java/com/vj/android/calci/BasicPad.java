@@ -50,14 +50,17 @@ public class BasicPad extends Fragment {
         LookHandler.DisableButtons(activity, buttons, "basic");
         LookHandler.EnableButtons(activity, buttons, "basic");
 
-        deletebtn = (ImageButton) activity.findViewById(R.id.delbtn);
-        deletebtn.setOnLongClickListener(new View.OnLongClickListener() {
-
-            @Override
-            public boolean onLongClick(View v) {
-                ((MainActivity) getActivity()).performClear();
-                return true;
-            }
-        });
+//        deletebtn = (ImageButton) activity.findViewById(R.id.delbtn);
+//        if(deletebtn != null)
+//        {
+//            deletebtn.setOnLongClickListener(new View.OnLongClickListener() {
+//
+//                @Override
+//                public boolean onLongClick(View v) {
+//                    ((MainActivity) getActivity()).performClear();
+//                    return true;
+//                }
+//            });
+//        }
     }
 }

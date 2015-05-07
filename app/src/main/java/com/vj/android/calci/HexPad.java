@@ -51,14 +51,17 @@ public class HexPad extends Fragment implements View.OnClickListener {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        deletebtn = (ImageButton) activity.findViewById(R.id.delbtnhex);
-        deletebtn.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                ((MainActivity) getActivity()).performClear();
-                return true;
-            }
-        });
+//        deletebtn = (ImageButton) activity.findViewById(R.id.delbtnhex);
+//        if(deletebtn != null)
+//        {
+//            deletebtn.setOnLongClickListener(new View.OnLongClickListener() {
+//                @Override
+//                public boolean onLongClick(View v) {
+//                    ((MainActivity) getActivity()).performClear();
+//                    return true;
+//                }
+//            });
+//        }
 
         LookHandler.setThemeForHex(getActivity());
 

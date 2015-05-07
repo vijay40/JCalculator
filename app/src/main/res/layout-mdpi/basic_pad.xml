@@ -40,25 +40,35 @@
             android:onClick="btnClick"
             android:text="@string/nine" />
 
-        <!-- Delete Button -->
-        <ImageButton
-            android:id="@+id/delbtn"
+        <!-- Divide Button -->
+        <Button
+            android:id="@+id/dividebtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="0.4dp"
             android:layout_weight="1"
             android:onClick="btnClick"
-            android:src="@drawable/delete_white" />
+            android:text="@string/divide" />
 
-        <!-- Clear Button -->
-        <ImageButton
-            android:id="@+id/clearbtn"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_margin="0.4dp"
-            android:layout_weight="1"
-            android:onClick="btnClick"
-            android:src="@drawable/clear_white" />
+        <!--&lt;!&ndash; Delete Button &ndash;&gt;-->
+        <!--<ImageButton-->
+        <!--android:id="@+id/delbtn"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_margin="0.4dp"-->
+        <!--android:layout_weight="1"-->
+        <!--android:onClick="btnClick"-->
+        <!--android:src="@drawable/delete_white" />-->
+
+        <!--&lt;!&ndash; Clear Button &ndash;&gt;-->
+        <!--<ImageButton-->
+        <!--android:id="@+id/clearbtn"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_margin="0.4dp"-->
+        <!--android:layout_weight="1"-->
+        <!--android:onClick="btnClick"-->
+        <!--android:src="@drawable/clear_white" />-->
 
     </LinearLayout>
 
@@ -84,6 +94,7 @@
             android:layout_weight="1"
             android:onClick="btnClick"
             android:text="@string/five" />
+
         <!-- 6 Button -->
         <Button
             android:id="@+id/sixbtn"
@@ -93,25 +104,16 @@
             android:layout_weight="1"
             android:onClick="btnClick"
             android:text="@string/six" />
-        <!-- Minus Button -->
-        <Button
-            android:id="@+id/minusbtn"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_margin="0.4dp"
-            android:layout_weight="1"
-            android:onClick="btnClick"
-            android:text="@string/minus" />
 
-        <!-- Plus Button -->
+        <!-- Multiply Button -->
         <Button
-            android:id="@+id/plusbtn"
+            android:id="@+id/multiplybtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="0.4dp"
             android:layout_weight="1"
             android:onClick="btnClick"
-            android:text="@string/plus" />
+            android:text="@string/asterisk" />
 
     </LinearLayout>
 
@@ -146,24 +148,17 @@
             android:layout_weight="1"
             android:onClick="btnClick"
             android:text="@string/three" />
-        <!-- Multiply Button -->
+
+        <!-- Minus Button -->
         <Button
-            android:id="@+id/multiplybtn"
+            android:id="@+id/minusbtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="0.4dp"
             android:layout_weight="1"
             android:onClick="btnClick"
-            android:text="@string/asterisk" />
-        <!-- Divide Button -->
-        <Button
-            android:id="@+id/dividebtn"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_margin="0.4dp"
-            android:layout_weight="1"
-            android:onClick="btnClick"
-            android:text="@string/divide" />
+            android:text="@string/minus" />
+
 
     </LinearLayout>
 
@@ -189,24 +184,26 @@
             android:layout_weight="1"
             android:onClick="btnClick"
             android:text="@string/zero" />
-        <!-- left paranthesis Button -->
-        <Button
-            android:id="@+id/left_paran"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_margin="0.4dp"
-            android:layout_weight="1"
-            android:onClick="btnClick"
-            android:text="@string/left_paran" />
-        <!-- 0 Button -->
-        <Button
-            android:id="@+id/right_paran"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_margin="0.4dp"
-            android:layout_weight="1"
-            android:onClick="btnClick"
-            android:text="@string/right_paran" />
+
+        <!--&lt;!&ndash; left paranthesis Button &ndash;&gt;-->
+        <!--<Button-->
+        <!--android:id="@+id/left_paran"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_margin="0.4dp"-->
+        <!--android:layout_weight="1"-->
+        <!--android:onClick="btnClick"-->
+        <!--android:text="@string/left_paran" />-->
+        <!--&lt;!&ndash; 0 Button &ndash;&gt;-->
+        <!--<Button-->
+        <!--android:id="@+id/right_paran"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_margin="0.4dp"-->
+        <!--android:layout_weight="1"-->
+        <!--android:onClick="btnClick"-->
+        <!--android:text="@string/right_paran" />-->
+
         <!-- Equal Button -->
         <Button
             android:id="@+id/equalbtn"
@@ -216,6 +213,17 @@
             android:layout_weight="1"
             android:onClick="btnClick"
             android:text="@string/equal" />
+
+        <!-- Plus Button -->
+        <Button
+            android:id="@+id/plusbtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/plus" />
+
     </LinearLayout>
 </LinearLayout>
 

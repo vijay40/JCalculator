@@ -5,41 +5,41 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="0dp"-->
+    <!--android:layout_weight="1">-->
 
-        <!-- empty space Button -->
-        <Button
-            android:id="@+id/blank_space"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_margin="0.4dp"
-            android:layout_weight="4" />
+    <!--&lt;!&ndash; empty space Button &ndash;&gt;-->
+    <!--<Button-->
+    <!--android:id="@+id/blank_space"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_margin="0.4dp"-->
+    <!--android:layout_weight="4" />-->
 
 
-        <ImageButton
-            android:id="@+id/delbtnhex"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_margin="0.4dp"
-            android:layout_weight="1"
-            android:onClick="btnClick"
-            android:src="@drawable/delete_white" />
-        <!-- Delete Button -->
+    <!--<ImageButton-->
+    <!--android:id="@+id/delbtnhex"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_margin="0.4dp"-->
+    <!--android:layout_weight="1"-->
+    <!--android:onClick="btnClick"-->
+    <!--android:src="@drawable/delete_white" />-->
+    <!--&lt;!&ndash; Delete Button &ndash;&gt;-->
 
-        <!-- Clear Button -->
-        <ImageButton
-            android:id="@+id/clearbtnhex"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_margin="0.4dp"
-            android:layout_weight="1"
-            android:onClick="btnClick"
-            android:src="@drawable/clear_white" />
+    <!--&lt;!&ndash; Clear Button &ndash;&gt;-->
+    <!--<ImageButton-->
+    <!--android:id="@+id/clearbtnhex"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_margin="0.4dp"-->
+    <!--android:layout_weight="1"-->
+    <!--android:onClick="btnClick"-->
+    <!--android:src="@drawable/clear_white" />-->
 
-    </LinearLayout>
+    <!--</LinearLayout>-->
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -66,34 +66,39 @@ class LookHandler {
         LinearLayout main_app = (LinearLayout) activity.findViewById(R.id.main_app);
         giveDisplayColor(activity);
         main_app.setBackgroundColor(display_color);
+        ImageButton deleteButton = (ImageButton) activity.findViewById(R.id.delbtn);
+        setBtnImage(deleteButton);
     }
 
-    private static void setBtnImage(ImageButton clear_btn, ImageButton delete_btn) {
+    private static void setBtnImage(ImageButton delete_btn) {
+        if (delete_btn == null)
+            return;
         int theme = Global.theme;
         if (theme == DEFAULT_THEME_DARK) {
-            clear_btn.setImageResource(R.drawable.clear_white);
+//            clear_btn.setImageResource(R.drawable.clear_white);
             delete_btn.setImageResource(R.drawable.delete_white);
         } else if (theme == DEFAULT_THEME_LIGHT) {
-            clear_btn.setImageResource(R.drawable.clear_blue);
+//            clear_btn.setImageResource(R.drawable.clear_blue);
             delete_btn.setImageResource(R.drawable.delete_blue);
         } else if (theme == CRIMSON_RED) {
-            clear_btn.setImageResource(R.drawable.clear_red);
+//            clear_btn.setImageResource(R.drawable.clear_red);
             delete_btn.setImageResource(R.drawable.delete_red);
         } else if (theme == CELADON_GREEN) {
-            clear_btn.setImageResource(R.drawable.clear_green);
+//            clear_btn.setImageResource(R.drawable.clear_green);
             delete_btn.setImageResource(R.drawable.delete_green);
         } else if (theme == CERISE_PINK) {
-            clear_btn.setImageResource(R.drawable.clear_pink);
+//            clear_btn.setImageResource(R.drawable.clear_pink);
             delete_btn.setImageResource(R.drawable.delete_pink);
         } else if (theme == PALATINATE_PURPLE) {
-            clear_btn.setImageResource(R.drawable.clear_purple);
+//            clear_btn.setImageResource(R.drawable.clear_purple);
             delete_btn.setImageResource(R.drawable.delete_purple);
         }
     }
 
     private static void setOpColor(View[] v) {
         for (View view : v) {
-            view.setBackgroundResource(op_color);
+            if (view != null)
+                view.setBackgroundResource(op_color);
         }
     }
 
@@ -140,22 +145,23 @@ class LookHandler {
         View minus_btn = activity.findViewById(R.id.minusbtn);
         View multiply_btn = activity.findViewById(R.id.multiplybtn);
         View divide_btn = activity.findViewById(R.id.dividebtn);
-        ImageButton clear_btn = (ImageButton) activity.findViewById(R.id.clearbtn);
-        ImageButton delete_btn = (ImageButton) activity.findViewById(R.id.delbtn);
+//        ImageButton clear_btn = (ImageButton) activity.findViewById(R.id.clearbtn);
+//        ImageButton clear_btn = null;
+//        ImageButton delete_btn = (ImageButton) activity.findViewById(R.id.delbtn);
 
         View[] v = {plus_btn, minus_btn, multiply_btn, divide_btn};
 
         giveDisplayColor(activity);
         setOpColor(v);
-        setBtnImage(clear_btn, delete_btn);
+//        setBtnImage(delete_btn);
     }
 
     public static void setThemeForAdvance(Activity activity) {
-        ImageButton clear_btn = (ImageButton) activity.findViewById(R.id.clearbtnadv);
-        ImageButton delete_btn = (ImageButton) activity.findViewById(R.id.delbtnadv);
+//        ImageButton clear_btn = (ImageButton) activity.findViewById(R.id.clearbtnadv);
+//        ImageButton delete_btn = (ImageButton) activity.findViewById(R.id.delbtnadv);
 
         giveDisplayColor(activity);
-        setBtnImage(clear_btn, delete_btn);
+//        setBtnImage(delete_btn);
     }
 
     public static void setThemeForHex(Activity activity) {
@@ -163,21 +169,21 @@ class LookHandler {
         View minus_btn = activity.findViewById(R.id.minusbtnhex);
         View multiply_btn = activity.findViewById(R.id.multiplybtnhex);
         View divide_btn = activity.findViewById(R.id.dividebtnhex);
-        View blank_space = activity.findViewById(R.id.blank_space);
+//        View blank_space = activity.findViewById(R.id.blank_space);
         View A = activity.findViewById(R.id.hexA);
         View B = activity.findViewById(R.id.hexB);
         View C = activity.findViewById(R.id.hexC);
         View D = activity.findViewById(R.id.hexD);
         View E = activity.findViewById(R.id.hexE);
         View F = activity.findViewById(R.id.hexF);
-        ImageButton clear_btn = (ImageButton) activity.findViewById(R.id.clearbtnhex);
-        ImageButton delete_btn = (ImageButton) activity.findViewById(R.id.delbtnhex);
+//        ImageButton clear_btn = (ImageButton) activity.findViewById(R.id.clearbtnhex);
+//        ImageButton delete_btn = (ImageButton) activity.findViewById(R.id.delbtnhex);
 
-        View[] v = {plus_btn, minus_btn, multiply_btn, divide_btn, blank_space, A, B, C, D, E, F};
+        View[] v = {plus_btn, minus_btn, multiply_btn, divide_btn, A, B, C, D, E, F};
 
         giveDisplayColor(activity);
         setOpColor(v);
-        setBtnImage(clear_btn, delete_btn);
+//        setBtnImage(delete_btn);
     }
 
     public static void EnableButtons(Activity activity, View[] buttons, String pad) {

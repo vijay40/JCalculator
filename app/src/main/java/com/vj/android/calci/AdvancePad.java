@@ -20,13 +20,16 @@ public class AdvancePad extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         LookHandler.setThemeForAdvance(getActivity());
-        deletebtn = (ImageButton) getActivity().findViewById(R.id.delbtnadv);
-        deletebtn.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                ((MainActivity) getActivity()).performClear();
-                return true;
-            }
-        });
+//        deletebtn = (ImageButton) getActivity().findViewById(R.id.delbtnadv);
+//        if(deletebtn != null)
+//        {
+//            deletebtn.setOnLongClickListener(new View.OnLongClickListener() {
+//                @Override
+//                public boolean onLongClick(View v) {
+//                    ((MainActivity) getActivity()).performClear();
+//                    return true;
+//                }
+//            });
+//        }
     }
 }

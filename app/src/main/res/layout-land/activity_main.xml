@@ -13,14 +13,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:minHeight="55dp"
-            android:orientation="vertical">
+            android:minHeight="60dp">
 
             <HorizontalScrollView
                 android:id="@+id/display_pad"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
                 android:scrollbars="none">
 
                 <TextView
@@ -28,33 +27,22 @@
                     style="@style/Theme.Calculator.Display" />
             </HorizontalScrollView>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1">
-
-                <ImageButton
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_margin="1dp"
-                    android:layout_weight="3" />
-
-                <ImageButton
-                    android:id="@+id/delbtn"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_margin="1dp"
-                    android:layout_weight="1"
-                    android:onClick="btnClick"
-                    android:src="@drawable/delete_blue" />
-            </LinearLayout>
+            <ImageButton
+                android:id="@+id/delbtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="0.5dp"
+                android:layout_weight="1"
+                android:onClick="btnClick"
+                android:src="@drawable/delete_blue" />
 
         </LinearLayout>
     </RelativeLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="45">
+        android:layout_weight="40">
 
         <android.support.v4.view.ViewPager
             android:id="@+id/pad"

@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,6 +42,7 @@ public class MainActivity extends FragmentActivity {
     private ActionBar actionBar;
     private ViewPager viewPager;
     private String[] modes;
+    private ImageButton deleteButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +80,17 @@ public class MainActivity extends FragmentActivity {
 
         history = new ArrayList<HistoryRow>();
         max_history = pref.getInt("max_history", 25);
+
+        deleteButton = (ImageButton) findViewById(R.id.delbtn);
+        if (deleteButton != null) {
+            deleteButton.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    performClear();
+                    return true;
+                }
+            });
+        }
     }
 
     @Override
@@ -485,16 +498,16 @@ public class MainActivity extends FragmentActivity {
 
         String btnText;
 
-        if (btnId == R.id.clearbtn || btnId == R.id.delbtn || btnId == R.id.clearbtnadv || btnId == R.id.delbtnadv || btnId == R.id.delbtnhex || btnId == R.id.clearbtnhex) {
+        if (btnId == R.id.delbtn) {
             btnText = null;
         } else {
             Button btn = (Button) view;
             btnText = btn.getText().toString();
         }
 
-        if (btnId == R.id.clearbtn || btnId == R.id.clearbtnadv || btnId == R.id.clearbtnhex)
-            performClear();
-        else if (btnId == R.id.delbtn || btnId == R.id.delbtnadv || btnId == R.id.delbtnhex)
+//        if (btnId == R.id.clearbtnhex)
+//            performClear();
+        if (btnId == R.id.delbtn)
             performDelete();
         else if (btnId == R.id.plusbtn || btnId == R.id.plusbtnhex || btnId == R.id.minusbtn || btnId == R.id.minusbtnhex || btnId == R.id.multiplybtn || btnId == R.id.multiplybtnhex || btnId == R.id.dividebtn || btnId == R.id.dividebtnhex)
             opClick(btnText);
