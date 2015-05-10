@@ -122,6 +122,6 @@ public class HexPad extends Fragment implements View.OnClickListener {
             Global.mode = 2;
         }
         handleMode(activity, buttons);
-        utility.setDisplayText(MainActivity.entryText);
+        utility.setDisplayText(MainActivity.entryText, MainActivity.entryText.length());
     }
 }

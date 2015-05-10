@@ -22,9 +22,13 @@
                 android:layout_weight="5"
                 android:scrollbars="none">
 
-                <TextView
+                <com.vj.android.calci.DisplayPad
                     android:id="@+id/entry"
                     style="@style/Theme.Calculator.Display" />
+
+                <!--<TextView-->
+                <!--android:id="@+id/entry"-->
+                <!--style="@style/Theme.Calculator.Display" />-->
             </HorizontalScrollView>
 
             <ImageButton

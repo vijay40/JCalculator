@@ -7,8 +7,8 @@ import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.HorizontalScrollView;
-import android.widget.TextView;
 
 import org.javia.arity.Symbols;
 import org.javia.arity.SyntaxException;
@@ -145,6 +145,10 @@ public class Utility {
         return false;
     }
 
+    public static void EditEntryText(String text, int position) {
+        MainActivity.entryText = MainActivity.entryText.substring(0, position) + text + MainActivity.entryText.substring(position);
+    }
+
     //    Method to determine wheather number is a double or not
     public boolean isDouble(double num) {
         long i = (long) num;
@@ -184,11 +188,6 @@ public class Utility {
         return "+-x÷".contains(ch);
     }
 
-    //    determine whether last char is operator or not
-    public boolean isLastOperator(String expr) {
-        return expr.length() > 0 && isOperator(expr.substring(expr.length() - 1));
-    }
-
 // --Commented out by Inspection START (5/3/2015 11:18 AM):
 //    public boolean isDigit(String ch) {
 //        if ("0123456789".contains(ch))
@@ -197,11 +196,17 @@ public class Utility {
 //    }
 // --Commented out by Inspection STOP (5/3/2015 11:18 AM)
 
+    //    determine whether last char is operator or not
+    public boolean isLastOperator(String expr) {
+        return expr.length() > 0 && isOperator(expr.substring(expr.length() - 1));
+    }
+
     //  Method to find whether current number contains a decimal point or not
-    public boolean hasDecimal(String entryText) {
+    public boolean hasDecimal(String entryText, int position) {
         boolean dec = false;
 
-        int len = entryText.length();
+//        int len = entryText.length();
+        int len = position;
         for (int i = len - 1; i >= 0; i--) {
             String lastchar = entryText.substring(i, i + 1);
             if (isOperator(lastchar))
@@ -214,9 +219,9 @@ public class Utility {
         return dec;
     }
 
-    public void setDisplayText(String text) {
+    public void setDisplayText(String text, int position) {
         final HorizontalScrollView display_pad = (HorizontalScrollView) this.activity.findViewById(R.id.display_pad);
-        TextView entry = (TextView) this.activity.findViewById(R.id.entry);
+        EditText entry = (EditText) this.activity.findViewById(R.id.entry);
         entry.setText(text);
         display_pad.post(new Runnable() {
             @Override
@@ -224,6 +229,7 @@ public class Utility {
                 display_pad.fullScroll(View.FOCUS_RIGHT);
             }
         });
+        entry.setSelection(position);
     }
 
     public void historyWrite() {

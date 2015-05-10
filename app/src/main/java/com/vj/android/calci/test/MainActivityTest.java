@@ -128,21 +128,31 @@ public class MainActivityTest extends TestCase {
         boolean actualOutput;
         Utility u = new Utility();
         MainActivity m = new MainActivity();
+        String entryText;
+        int len;
 
         m.setEntryText("");
-        actualOutput = u.hasDecimal(m.getEntryText());
+        entryText = m.getEntryText();
+        len = entryText.length();
+        actualOutput = u.hasDecimal(entryText, len);
         assertEquals(false, actualOutput);
 
         m.setEntryText("2.0");
-        actualOutput = u.hasDecimal(m.getEntryText());
+        entryText = m.getEntryText();
+        len = entryText.length();
+        actualOutput = u.hasDecimal(entryText, len);
         assertEquals(true, actualOutput);
 
         m.setEntryText("235/.3");
-        actualOutput = u.hasDecimal(m.getEntryText());
+        entryText = m.getEntryText();
+        len = entryText.length();
+        actualOutput = u.hasDecimal(entryText, len);
         assertEquals(true, actualOutput);
 
         m.setEntryText("321x324+789");
-        actualOutput = u.hasDecimal(m.getEntryText());
+        entryText = m.getEntryText();
+        len = entryText.length();
+        actualOutput = u.hasDecimal(entryText, len);
         assertEquals(false, actualOutput);
 
     }

@@ -44,6 +44,7 @@ public class MainActivity extends FragmentActivity {
     private ViewPager viewPager;
     private String[] modes;
     private ImageButton deleteButton;
+    private int position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,7 +107,7 @@ public class MainActivity extends FragmentActivity {
 //     reading result from file
         utility.historyRead();
 
-        utility.setDisplayText(entryText);
+        utility.setDisplayText(entryText, entryText.length());
     }
 
     @Override
@@ -202,7 +203,8 @@ public class MainActivity extends FragmentActivity {
             return res;
         } catch (Exception ee) {
             entryText = "";
-            utility.setDisplayText(entryText);
+            position = 0;
+            utility.setDisplayText(entryText, 0);
             Toast errorToast = new Toast(this);
             errorToast.setDuration(Toast.LENGTH_SHORT);
             LayoutInflater lin = getLayoutInflater();
@@ -229,130 +231,155 @@ public class MainActivity extends FragmentActivity {
         if (Double.isInfinite(res)) {
             if (res > 0) {
                 entryText = "";
-                utility.setDisplayText(Character.toString('\u221e'));
+                position = 0;
+                utility.setDisplayText(Character.toString('\u221e'), 1);
                 return;
             } else {
                 entryText = "";
-                utility.setDisplayText("-" + Character.toString('\u221e'));
+                position = 0;
+                utility.setDisplayText("-" + Character.toString('\u221e'), 2);
                 return;
             }
         } else if (Double.isNaN(res)) {
-            utility.setDisplayText(Double.toString(res));
+            utility.setDisplayText(Double.toString(res), 3);
             entryText = "";
+            position = 0;
             return;
         } else if (Global.mode == 10 && utility.isDouble(res)) {
             res = Math.round(res * prec) / prec;
             entryText = Double.toString(res);
-
+            position = entryText.length();
             History.addHistoryEntry(expression, this);
         } else if (Global.mode == 10) {
             entryText = Long.toString((long) res);
-
+            position = entryText.length();
             History.addHistoryEntry(expression, this);
         } else if (Global.mode == 16) {
             entryText = Utility.convertToRadix(Double.toString(res), 10, 16);
-
+            position = entryText.length();
             History.addHistoryEntry(expression, this);
         } else if (Global.mode == 8) {
             entryText = Utility.convertToRadix(Double.toString(res), 10, 8);
-
+            position = entryText.length();
             History.addHistoryEntry(expression, this);
         } else if (Global.mode == 2) {
             entryText = Utility.convertToRadix(Double.toString(res), 10, 2);
-
+            position = entryText.length();
             History.addHistoryEntry(expression, this);
         }
 
-        utility.setDisplayText(entryText);
+        utility.setDisplayText(entryText, entryText.length());
         Animation anim_fadein = AnimationUtils.loadAnimation(this, R.anim.fade_in);
         entry.startAnimation(anim_fadein);
     }
 
     //  Method to perform short press of delete button
     private void performDelete() {
-        int len = entryText.length();
+        int len = position;
+        int newposition = 0;
         if (len > 0) {
-            if (len <= 2)
-                entryText = entryText.substring(0, len - 1);
+            if (len <= 2) {
+                entryText = entryText.substring(0, len - 1) + entryText.substring(position);
+                newposition = len - 1;
+            }
             else if (len == 3) {
-                entryText = entryText.substring(0, len - utility.numCharDelete(entryText));
+                newposition = len - utility.numCharDelete(entryText.substring(0, position));
+                entryText = entryText.substring(0, newposition) + entryText.substring(position);
             } else {
-                int delchar = utility.numCharDelete(entryText.substring(len - 4));
-                entryText = entryText.substring(0, len - delchar);
+                int delchar = utility.numCharDelete(entryText.substring(len - 4, position));
+                newposition = len - delchar;
+                entryText = entryText.substring(0, newposition) + entryText.substring(position);
             }
         }
-        utility.setDisplayText(entryText);
+        utility.setDisplayText(entryText, newposition);
     }
 
     //  Method to handle clear function
     public void performClear() {
         entryText = "";
-        utility.setDisplayText(entryText);
+        position = 0;
+        utility.setDisplayText(entryText, 0);
     }
 
     //  Method to handle click of operator button
     public void opClick(String op) {
+        String tempEntryText = entryText.substring(0, position);
+        int newposition = position;
+
         if (op.equals("-")) {
-            if (utility.isLastOperator(entryText)) {
-                if (op.equals(entryText.substring(entryText.length() - 1)))
+            if (utility.isLastOperator(tempEntryText)) {
+                if (op.equals(tempEntryText.substring(tempEntryText.length() - 1)))
                     return;
-                else if ("+".equals(entryText.substring(entryText.length() - 1)))
-                    entryText = entryText.substring(0, entryText.length() - 1) + op;
-                else
-                    entryText += op;
+                else if ("+".equals(tempEntryText.substring(tempEntryText.length() - 1))) {
+                    tempEntryText = tempEntryText.substring(0, tempEntryText.length() - 1) + op;
+                }
+                else {
+                    tempEntryText += op;
+                    newposition++;
+                }
             } else {
-                entryText += op;
+                tempEntryText += op;
+                newposition++;
             }
         } else if (op.equals("+")) {
-            if (utility.isLastOperator(entryText)) {
-                if (op.equals(entryText.substring(entryText.length() - 1)))
+            if (utility.isLastOperator(tempEntryText)) {
+                if (op.equals(tempEntryText.substring(tempEntryText.length() - 1)))
                     return;
-                else if ("-".equals(entryText.substring(entryText.length() - 1))) {
-                    entryText = entryText.substring(0, entryText.length() - 1);
+                else if ("-".equals(tempEntryText.substring(tempEntryText.length() - 1))) {
+                    tempEntryText = tempEntryText.substring(0, tempEntryText.length() - 1);
+                    newposition--;
                 } else
-                    entryText = entryText.substring(0, entryText.length() - 1) + op;
-            } else if (Utility.isLastOperand(entryText)) {
-                entryText += op;
+                    tempEntryText = tempEntryText.substring(0, tempEntryText.length() - 1) + op;
+            } else if (Utility.isLastOperand(tempEntryText)) {
+                tempEntryText += op;
+                newposition++;
             }
 
         } else    // it should be 'x' or '÷'
         {
-            if (utility.isLastOperator(entryText)) {
-                if (op.equals(entryText.substring(entryText.length() - 1)))
+            if (utility.isLastOperator(tempEntryText)) {
+                if (op.equals(tempEntryText.substring(tempEntryText.length() - 1)))
                     return;
                 else {
-                    if (entryText.length() > 1 && Utility.isLastOperand(entryText.substring(0, entryText.length() - 1)))
-                        entryText = entryText.substring(0, entryText.length() - 1) + op;
+                    if (tempEntryText.length() > 1 && Utility.isLastOperand(tempEntryText.substring(0, tempEntryText.length() - 1)))
+                        tempEntryText = tempEntryText.substring(0, tempEntryText.length() - 1) + op;
                     else
                         return;
                 }
             } else {
-                if (Utility.isLastOperand(entryText))
-                    entryText += op;
+                if (Utility.isLastOperand(tempEntryText)) {
+                    tempEntryText += op;
+                    newposition++;
+                }
                 else
                     return;
             }
         }
-        utility.setDisplayText(entryText);
+        entryText = tempEntryText + entryText.substring(position);
+        utility.setDisplayText(entryText, newposition);
     }
 
     //  Method to handle decimal button Click
     private void decimalClick() {
-        if (!utility.hasDecimal(entryText)) {
-            entryText += ".";
-            utility.setDisplayText(entryText);
+        if (!utility.hasDecimal(entryText, position)) {
+            Utility.EditEntryText(".", position);
+            utility.setDisplayText(entryText, position + 1);
         }
     }
 
     //  Method to handle click of a digit
     private void digitClick(String dig) {
+        int newposition = 0;
         if (lastBtnHit == R.id.equalbtn) {
             entryText = "";
+            position = 0;
         }
-        if (utility.hasDecimal(entryText)) {
-            entryText += dig;
+        if (utility.hasDecimal(entryText, position)) {
+//            entryText += dig;
+            Utility.EditEntryText(dig, position);
+            newposition = position + 1;
         } else {
-            int idx = entryText.length() - 1;
+            int idx = entryText.substring(0, position).length() - 1;
             while (idx >= 0) {
                 String lastchar = entryText.substring(idx, idx + 1);
                 if (utility.isOperator(lastchar)) {
@@ -362,31 +389,43 @@ public class MainActivity extends FragmentActivity {
                 }
             }
             if (idx >= 0) {
-                String snumber = entryText.substring(idx + 1, entryText.length());
+//                String snumber = entryText.substring(idx + 1, entryText.length());
+                String snumber = entryText.substring(idx + 1, position);
                 if (snumber.length() == 1 && snumber.equals("0")) {
-                    entryText = entryText.substring(0, entryText.length() - 1) + dig;
+                    entryText = entryText.substring(0, position - 1) + dig + entryText.substring(position);
+                    newposition = position;
                 } else {
-                    entryText += dig;
+//                    entryText += dig;
+                    Utility.EditEntryText(dig, position);
+                    newposition = position + 1;
                 }
             } else {
-                if (entryText.length() == 1 && entryText.equals("0"))
-                    entryText = dig;
-                else
-                    entryText += dig;
+                if (entryText.substring(0, position).length() == 1 && entryText.substring(0, position).equals("0")) {
+                    entryText = dig + entryText.substring(position);
+                    newposition = position;
+                } else {
+//                    entryText += dig;
+                    Utility.EditEntryText(dig, position);
+                    newposition = position + 1;
+                }
             }
         }
-        utility.setDisplayText(entryText);
+        utility.setDisplayText(entryText, newposition);
     }
 
     //  Method to handle click of zero button
     private void zeroClick() {
-        if (lastBtnHit == R.id.equalbtn)
+        int position = entry.getSelectionStart();
+        if (lastBtnHit == R.id.equalbtn) {
             entryText = "";
-        if (utility.hasDecimal(entryText)) {
-            entryText += "0";
-            utility.setDisplayText(entryText);
+            position = 0;
+        }
+        if (utility.hasDecimal(entryText, position)) {
+//            entryText += "0";
+            Utility.EditEntryText("0", position);
+            utility.setDisplayText(entryText, position + 1);
         } else {
-            int idx = entryText.length() - 1;
+            int idx = entryText.substring(0, position).length() - 1;
             while (idx >= 0) {
                 String lastchar = entryText.substring(idx, idx + 1);
                 if (utility.isOperator(lastchar))
@@ -395,32 +434,35 @@ public class MainActivity extends FragmentActivity {
                     idx--;
             }
             if (idx >= 0) {
-                String snumber = entryText.substring(idx + 1, entryText.length());
+                String snumber = entryText.substring(idx + 1, position);
                 if (snumber.length() == 1 && snumber.equals("0")) {
                     return;
                 } else {
-                    entryText += "0";
-                    utility.setDisplayText(entryText);
+//                    entryText += "0";
+                    Utility.EditEntryText("0", position);
+                    utility.setDisplayText(entryText, position + 1);
                 }
             } else {
-                if (entryText.length() == 1 && entryText.equals("0"))
+                if (entryText.substring(0, position).length() == 1 && entryText.substring(0, position).equals("0"))
                     return;
-                entryText += "0";
-                utility.setDisplayText(entryText);
+//                entryText += "0";
+                Utility.EditEntryText("0", position);
+                utility.setDisplayText(entryText, position + 1);
             }
         }
     }
 
     //  Method to handle click of left parenthesis
     private void leftParanClick() {
-        entryText += "(";
-        utility.setDisplayText(entryText);
+//        entryText += "(";
+        Utility.EditEntryText("(", position);
+        utility.setDisplayText(entryText, position + 1);
     }
 
     //  Method to handle click of right parenthesis
     private void rightParanClick() {
         int leftparan = 0, len;
-        len = entryText.length();
+        len = position;
         for (int i = 0; i < len; i++) {
             if (entryText.substring(i, i + 1).equals("("))
                 leftparan++;
@@ -429,73 +471,83 @@ public class MainActivity extends FragmentActivity {
         }
 
         if (leftparan > 0 && !entryText.substring(len - 1, len).equals("(")) {
-            entryText += ")";
-            utility.setDisplayText(entryText);
+//            entryText += ")";
+            Utility.EditEntryText(")", position);
+            utility.setDisplayText(entryText, position + 1);
         }
     }
 
     private void trignoClick(String function) {
-        if (lastBtnHit == R.id.equalbtn)
+        if (lastBtnHit == R.id.equalbtn) {
             entryText = "";
-        if (Utility.isLastExpo(entryText))
-            return;
-        entryText += function + "(";
-        utility.setDisplayText(entryText);
+            position = 0;
+        }
+//        entryText += function + "(";
+        Utility.EditEntryText(function + "(", position);
+        utility.setDisplayText(entryText, position + function.length() + 1);
     }
 
     private void power() {
-        if (Utility.isLastOperand(entryText)) {
-            entryText += "^";
-            utility.setDisplayText(entryText);
+        if (Utility.isLastOperand(entryText.substring(0, position))) {
+//            entryText += "^";
+            Utility.EditEntryText("^", position);
+            utility.setDisplayText(entryText, position + 1);
         }
     }
 
     private void exponential() {
-        entryText += "e";
-        utility.setDisplayText(entryText);
+//        entryText += "e";
+        Utility.EditEntryText("e", position);
+        utility.setDisplayText(entryText, position + 1);
     }
 
     private void logClick(String log) {
-        if (lastBtnHit == R.id.equalbtn)
+        if (lastBtnHit == R.id.equalbtn) {
             entryText = "";
-        if (Utility.isLastExpo(entryText))
-            return;
-        entryText += log + "(";
-        utility.setDisplayText(entryText);
+            position = 0;
+        }
+//        entryText += log + "(";
+        Utility.EditEntryText(log + "(", position);
+        utility.setDisplayText(entryText, position + log.length() + 1);
     }
 
 
     private void functionClick(String func) {
-        if (entryText.length() == 0 || Utility.isLastExpo(entryText))
+        if (entryText.substring(0, position).length() == 0)
             return;
-        else if (utility.isOperator(entryText.substring(entryText.length() - 1)))
+        else if (utility.isOperator(entryText.substring(position - 1, position)))
             return;
-        entryText += func;
-        utility.setDisplayText(entryText);
+//        entryText += func;
+        Utility.EditEntryText(func, position);
+        utility.setDisplayText(entryText, position + func.length());
     }
 
     private void sqrtClick() {
-        entryText += "√";
-        utility.setDisplayText(entryText);
+//        entryText += "√";
+        Utility.EditEntryText("√", position);
+        utility.setDisplayText(entryText, position + 1);
     }
 
     private void cubeRootClick() {
-        entryText += "∛(";
-        utility.setDisplayText(entryText);
+//        entryText += "∛(";
+        Utility.EditEntryText("∛(", position);
+        utility.setDisplayText(entryText, position + 2);
     }
 
     private void PIclick() {
-        if (Utility.isLastExpo(entryText))
-            return;
-        entryText += "π";
-        utility.setDisplayText(entryText);
+//        entryText += "π";
+        Utility.EditEntryText("π", position);
+        utility.setDisplayText(entryText, position + 1);
     }
 
     private void hexClick(String btn) {
-        if (lastBtnHit == R.id.equalbtn)
+        if (lastBtnHit == R.id.equalbtn) {
             entryText = "";
-        entryText += btn;
-        utility.setDisplayText(entryText);
+            position = 0;
+        }
+//        entryText += btn;
+        Utility.EditEntryText(btn, position);
+        utility.setDisplayText(entryText, position + 1);
     }
 
     private boolean onAdvancePanel() {
@@ -504,6 +556,7 @@ public class MainActivity extends FragmentActivity {
 
     //  Method to handle clicks of button
     public void btnClick(View view) {
+        position = entry.getSelectionStart();
         int btnId = view.getId();
 
         String btnText;
