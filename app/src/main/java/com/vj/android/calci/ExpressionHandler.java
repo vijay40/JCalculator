@@ -72,6 +72,8 @@ public class ExpressionHandler {
                 res += "*";
             else if (current.charAt(0) == '\u00f7')
                 res += "/";
+            else if (current.charAt(0) == '\u221B')
+                res += "cbrt";
             else if (current.equals("(")) {
                 leftpara++;
                 res += current;

@@ -159,6 +159,17 @@
             android:layout_weight="1"
             android:onClick="btnClick"
             android:text="@string/sqrt" />
+
+        <!-- Cube Root Button -->
+        <Button
+            android:id="@+id/cube_root"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0.4dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/cbrt" />
+
         <!-- left paranthesis Button -->
         <Button
             android:id="@+id/left_paran"
@@ -168,6 +179,7 @@
             android:layout_weight="1"
             android:onClick="btnClick"
             android:text="@string/left_paran" />
+
         <!-- right parathesis Button -->
         <Button
             android:id="@+id/right_paran"
@@ -177,13 +189,14 @@
             android:layout_weight="1"
             android:onClick="btnClick"
             android:text="@string/right_paran" />
+
         <!-- Equal Button -->
         <Button
             android:id="@+id/equalbtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="1dp"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:onClick="btnClick"
             android:text="@string/equal" />
     </LinearLayout>

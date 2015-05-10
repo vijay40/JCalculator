@@ -40,6 +40,33 @@
             android:onClick="btnClick"
             android:text="@string/tan" />
 
+        <!-- sqrt Button -->
+        <Button
+            android:id="@+id/sqrt"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="1dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/sqrt" />
+
+        <!--&lt;!&ndash; Delete Button &ndash;&gt;-->
+        <!--<ImageButton-->
+        <!--android:id="@+id/delbtnadv"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_margin="1dp"-->
+        <!--android:layout_weight="1"-->
+        <!--android:onClick="btnClick"-->
+        <!--android:src="@drawable/delete_white" />-->
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
         <!-- natural log Button -->
         <Button
             android:id="@+id/logn"
@@ -60,49 +87,6 @@
             android:onClick="btnClick"
             android:text="@string/log_10" />
 
-        <!--&lt;!&ndash; Delete Button &ndash;&gt;-->
-        <!--<ImageButton-->
-        <!--android:id="@+id/delbtnadv"-->
-        <!--android:layout_width="0dp"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:layout_margin="1dp"-->
-        <!--android:layout_weight="1"-->
-        <!--android:onClick="btnClick"-->
-        <!--android:src="@drawable/delete_white" />-->
-
-    </LinearLayout>
-
-    <!--<LinearLayout-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:layout_weight="1">-->
-
-    <!--&lt;!&ndash;&lt;!&ndash; clear Button &ndash;&gt;&ndash;&gt;-->
-    <!--&lt;!&ndash;<ImageButton&ndash;&gt;-->
-    <!--&lt;!&ndash;android:id="@+id/clearbtnadv"&ndash;&gt;-->
-    <!--&lt;!&ndash;android:layout_width="0dp"&ndash;&gt;-->
-    <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
-    <!--&lt;!&ndash;android:layout_margin="1dp"&ndash;&gt;-->
-    <!--&lt;!&ndash;android:layout_weight="1"&ndash;&gt;-->
-    <!--&lt;!&ndash;android:onClick="btnClick"&ndash;&gt;-->
-    <!--&lt;!&ndash;android:src="@drawable/clear_white" />&ndash;&gt;-->
-
-    <!--</LinearLayout>-->
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
-
-        <!-- sqrt Button -->
-        <Button
-            android:id="@+id/sqrt"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_margin="1dp"
-            android:layout_weight="1"
-            android:onClick="btnClick"
-            android:text="@string/sqrt" />
 
         <!-- percentage Button -->
         <Button
@@ -113,15 +97,24 @@
             android:layout_weight="1"
             android:onClick="btnClick"
             android:text="@string/percentage" />
-        <!-- factorial Button -->
+
+        <!-- Cube Root Button -->
         <Button
-            android:id="@+id/factorial"
+            android:id="@+id/cube_root"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="1dp"
+            android:layout_margin="0.4dp"
             android:layout_weight="1"
             android:onClick="btnClick"
-            android:text="@string/factorial" />
+            android:text="@string/cbrt" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
         <!-- power Button -->
         <Button
             android:id="@+id/power"
@@ -131,6 +124,7 @@
             android:layout_weight="1"
             android:onClick="btnClick"
             android:text="@string/power" />
+
         <!-- exponential Button -->
         <Button
             android:id="@+id/exponential"
@@ -141,13 +135,6 @@
             android:onClick="btnClick"
             android:text="@string/exponential" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
-
         <!-- pi Button -->
         <Button
             android:id="@+id/pi"
@@ -157,6 +144,23 @@
             android:layout_weight="1"
             android:onClick="btnClick"
             android:text="@string/pi" />
+
+        <!-- factorial Button -->
+        <Button
+            android:id="@+id/factorial"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="1dp"
+            android:layout_weight="1"
+            android:onClick="btnClick"
+            android:text="@string/factorial" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
 
         <!-- left paranthesis Button -->
         <Button

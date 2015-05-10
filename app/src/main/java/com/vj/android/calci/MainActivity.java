@@ -3,6 +3,7 @@ package com.vj.android.calci;
 import android.app.ActionBar;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
@@ -91,6 +92,10 @@ public class MainActivity extends FragmentActivity {
                 }
             });
         }
+
+//        setting font of display pad
+        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/DejaVuSansMono-Bold.ttf");
+        entry.setTypeface(tf);
     }
 
     @Override
@@ -474,6 +479,11 @@ public class MainActivity extends FragmentActivity {
         utility.setDisplayText(entryText);
     }
 
+    private void cubeRootClick() {
+        entryText += "∛(";
+        utility.setDisplayText(entryText);
+    }
+
     private void PIclick() {
         if (Utility.isLastExpo(entryText))
             return;
@@ -535,6 +545,8 @@ public class MainActivity extends FragmentActivity {
             power();
         else if (btnId == R.id.sqrt)
             sqrtClick();
+        else if (btnId == R.id.cube_root)
+            cubeRootClick();
         else if (btnId == R.id.equalbtn || btnId == R.id.hexequalbtn) {
             DisplayResult(entryText);
             btnId = R.id.equalbtn;

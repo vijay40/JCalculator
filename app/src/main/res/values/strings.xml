@@ -29,6 +29,7 @@
     <string name="percentage" translatable="false">%</string>
     <string name="power" translatable="false">^</string>
     <string name="sqrt" translatable="false">\u221A</string>
+    <string name="cbrt" translatable="false">\u00B3\u221A</string>
     <string name="pi" translatable="false">\u03C0</string>
     <string name="sin" translatable="false">sin</string>
     <string name="cos" translatable="false">cos</string>
