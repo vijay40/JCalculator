@@ -5,8 +5,8 @@
     android:orientation="vertical">
 
     <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_weight="100">
 
         <!-- Layout for textview -->
@@ -25,7 +25,10 @@
 
                 <com.vj.android.calci.DisplayPad
                     android:id="@+id/entry"
-                    style="@style/Theme.Calculator.Display" />
+                    style="@style/Theme.Calculator.Display"
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="match_parent" />
 
                 <!--<TextView-->
                 <!--android:id="@+id/entry"-->

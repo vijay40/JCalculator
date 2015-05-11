@@ -22,9 +22,17 @@
                 android:layout_weight="5"
                 android:scrollbars="none">
 
+                <!--<com.vj.android.calci.DisplayPad-->
+                <!--android:id="@+id/entry"-->
+                <!--style="@style/Theme.Calculator.Display"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="match_parent" />-->
+
                 <com.vj.android.calci.DisplayPad
                     android:id="@+id/entry"
-                    style="@style/Theme.Calculator.Display" />
+                    style="@style/Theme.Calculator.Display"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
 
                 <!--<TextView-->
                 <!--android:id="@+id/entry"-->

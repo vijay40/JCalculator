@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,6 +46,7 @@ public class MainActivity extends FragmentActivity {
     private String[] modes;
     private ImageButton deleteButton;
     private int position;
+    private HorizontalScrollView display_pad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,12 +60,14 @@ public class MainActivity extends FragmentActivity {
 
 //        Initialization
         entry = (TextView) findViewById(R.id.entry);
+        display_pad = (HorizontalScrollView) findViewById(R.id.display_pad);
         utility = new Utility(this);
         exprhandler = new ExpressionHandler();
         tabViewAdapter = new TabView(getSupportFragmentManager());
         actionBar = getActionBar();
         viewPager = (ViewPager) findViewById(R.id.pad);
         modes = getResources().getStringArray(R.array.modes);
+
 
         viewPager.setAdapter(tabViewAdapter);
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
@@ -97,6 +101,9 @@ public class MainActivity extends FragmentActivity {
 //        setting font of display pad
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/DejaVuSansMono-Bold.ttf");
         entry.setTypeface(tf);
+
+//        register for context menu
+        registerForContextMenu(display_pad);
     }
 
     @Override

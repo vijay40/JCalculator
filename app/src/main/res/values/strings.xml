@@ -78,4 +78,8 @@
     <string name="return_basic">Return to basic</string>
     <string name="return_basic_summary">Automatically return from Advance mode</string>
     <string name="vibrate">Vibrate on click</string>
+    <string name="cut">Cut</string>
+    <string name="copy">Copy</string>
+    <string name="paste">Paste</string>
+    <string name="text_copied">Text copied</string>
 </resources>
