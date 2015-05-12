@@ -14,10 +14,12 @@
             android:key="vibrate"
             android:title="@string/vibrate" />
 
-        <CheckBoxPreference
+        <SwitchPreference
             android:key="unit"
             android:summaryOff="@string/radian_used"
             android:summaryOn="@string/degree_used"
+            android:switchTextOff="@string/radian"
+            android:switchTextOn="@string/degree"
             android:title="@string/unit_used" />
 
         <com.vj.android.calci.NumberPickerPreference
@@ -26,6 +28,7 @@
             android:title="History Entries" />
 
     </PreferenceCategory>
+
 
     <PreferenceCategory android:title="Theme">
 
