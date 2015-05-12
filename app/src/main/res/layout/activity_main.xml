@@ -4,16 +4,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="100">
+    <!--<RelativeLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_weight="100">-->
 
         <!-- Layout for textview -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:minHeight="55dp"
+            android:layout_weight="100"
             android:orientation="vertical">
 
             <HorizontalScrollView
@@ -27,12 +27,8 @@
                     android:id="@+id/entry"
                     style="@style/Theme.Calculator.Display"
                     android:layout_width="wrap_content"
-
                     android:layout_height="match_parent" />
 
-                <!--<TextView-->
-                <!--android:id="@+id/entry"-->
-                <!--style="@style/Theme.Calculator.Display" />-->
             </HorizontalScrollView>
 
             <LinearLayout
@@ -57,18 +53,19 @@
             </LinearLayout>
 
         </LinearLayout>
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="45">
+    <!--</RelativeLayout>-->
+    <!--<RelativeLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_weight="45">-->
 
         <android.support.v4.view.ViewPager
             android:id="@+id/pad"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_weight="45" />
 
-    </RelativeLayout>
+    <!--</RelativeLayout>-->
 
 </LinearLayout>
 

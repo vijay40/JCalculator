@@ -12,7 +12,9 @@ import android.view.ActionMode;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
 import android.widget.Toast;
 
 public class DisplayPad extends EditText {
@@ -52,6 +54,20 @@ public class DisplayPad extends EditText {
     }
 
     @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+
+        View parentScrollView = (View) getParent();
+
+        if (parentScrollView != null) {
+            if (parentScrollView instanceof HorizontalScrollView) {
+                widthMeasureSpec = parentScrollView.getMeasuredWidth();
+            }
+        }
+        setMeasuredDimension(widthMeasureSpec, heightMeasureSpec);
+    }
+
+    @Override
     protected void onCreateContextMenu(ContextMenu menu) {
         super.onCreateContextMenu(menu);
 
@@ -79,8 +95,6 @@ public class DisplayPad extends EditText {
         ClipData clip = clipboard.getPrimaryClip();
         if (clip == null || clip.getItemCount() == 0)
             menu.getItem(PASTE).setVisible(false);
-
-//        Log.e("JCalculator", "Context Menu Created");
     }
 
     private void Cut() {

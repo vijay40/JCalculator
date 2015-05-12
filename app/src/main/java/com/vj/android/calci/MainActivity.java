@@ -16,9 +16,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.javia.arity.Symbols;
@@ -35,7 +33,7 @@ public class MainActivity extends FragmentActivity {
     public static int max_history;
     public static ArrayList<HistoryRow> history;
     private final int REQUEST_EXIT = 1;
-    private TextView entry;
+    private DisplayPad entry;
     private Utility utility;
     private SharedPreferences pref;
     private double prec = 1000000000.0;
@@ -46,7 +44,6 @@ public class MainActivity extends FragmentActivity {
     private String[] modes;
     private ImageButton deleteButton;
     private int position;
-    private HorizontalScrollView display_pad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +56,7 @@ public class MainActivity extends FragmentActivity {
         setContentView(R.layout.activity_main);
 
 //        Initialization
-        entry = (TextView) findViewById(R.id.entry);
-        display_pad = (HorizontalScrollView) findViewById(R.id.display_pad);
+        entry = (DisplayPad) findViewById(R.id.entry);
         utility = new Utility(this);
         exprhandler = new ExpressionHandler();
         tabViewAdapter = new TabView(getSupportFragmentManager());
@@ -103,7 +99,7 @@ public class MainActivity extends FragmentActivity {
         entry.setTypeface(tf);
 
 //        register for context menu
-        registerForContextMenu(display_pad);
+        registerForContextMenu(entry);
     }
 
     @Override
@@ -167,9 +163,11 @@ public class MainActivity extends FragmentActivity {
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
 
+        position = entry.getSelectionStart();
         outState.putString("entryText", entryText);
         outState.putInt("lastBtn", lastBtnHit);
         outState.putInt("mode", Global.mode);
+        outState.putInt("position", position);
     }
 
     @Override
@@ -178,10 +176,12 @@ public class MainActivity extends FragmentActivity {
 
         Global.mode = savedInstanceState.getInt("mode");
 
+        position = savedInstanceState.getInt("position");
         entryText = savedInstanceState.getString("entryText");
         lastBtnHit = savedInstanceState.getInt("lastBtn");
-        TextView entry = (TextView) findViewById(R.id.entry);
+        DisplayPad entry = (DisplayPad) findViewById(R.id.entry);
         entry.setText(entryText);
+        entry.setSelection(position);
     }
 
     //    Method to facilitate testing not to be used in actual app
