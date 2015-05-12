@@ -49,6 +49,7 @@ public class MainActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+//        loading settings
         pref = PreferenceManager.getDefaultSharedPreferences(this);
         Global.theme = Integer.parseInt(pref.getString("theme", "0"));
         LookHandler.onActivityCreatedSetTheme(this, Global.theme);
@@ -154,8 +155,6 @@ public class MainActivity extends FragmentActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_EXIT) {
             this.recreate();
-//            this.finish();
-//            this.startActivity(new Intent(this, this.getClass()));
         }
     }
 
@@ -201,9 +200,16 @@ public class MainActivity extends FragmentActivity {
 
         String expr;
         expr = exprhandler.formatExpr(expression);
+
 //        handle empty expression text
         if (expr.isEmpty())
             return 0;
+
+//        check wheather using degree or not
+        if (pref.getBoolean("unit", false)) {
+            expr = exprhandler.handleDegreeCalc(expr);
+        }
+
         Symbols symbol = new Symbols();
         try {
             double res = symbol.eval(expr);

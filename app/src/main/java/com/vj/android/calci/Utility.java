@@ -152,7 +152,6 @@ public class Utility {
     //    Method to determine wheather number is a double or not
     public boolean isDouble(double num) {
         long i = (long) num;
-
         return Math.abs(num - (double) i) >= precision;
     }
 
@@ -185,7 +184,7 @@ public class Utility {
 
     //  Method to determine whether character is operator or not
     public boolean isOperator(String ch) {
-        return "+-x÷".contains(ch);
+        return "+-x÷*/".contains(ch);
     }
 
 // --Commented out by Inspection START (5/3/2015 11:18 AM):

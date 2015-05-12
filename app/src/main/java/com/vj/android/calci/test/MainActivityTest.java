@@ -69,6 +69,11 @@ public class MainActivityTest extends TestCase {
         expectedOutput = "2*3*sin(24)*32*sin(21)+32*sin(1)";
         runAssertEqual(message, actualOutput, expectedOutput);
 
+        message = "testing sin formatting with multiplication";
+        actualOutput = m.formatExpr("89xcos(5)");
+        expectedOutput = "89*cos(5)";
+        runAssertEqual(message, actualOutput, expectedOutput);
+
         message = "testing basic sin formatting";
         actualOutput = m.formatExpr("sin(3)");
         expectedOutput = "sin(3)";

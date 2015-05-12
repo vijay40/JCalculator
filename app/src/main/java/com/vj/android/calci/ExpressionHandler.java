@@ -120,4 +120,11 @@ public class ExpressionHandler {
         return res;
     }
 
+    public String handleDegreeCalc(String expr) {
+        expr = expr.replaceAll("sin", "sind");
+        expr = expr.replaceAll("cos", "cosd");
+        expr = expr.replaceAll("tan", "tand");
+        return expr;
+    }
+
 }
