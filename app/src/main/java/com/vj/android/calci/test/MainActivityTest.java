@@ -136,29 +136,29 @@ public class MainActivityTest extends TestCase {
         String entryText;
         int len;
 
-        m.setEntryText("");
-        entryText = m.getEntryText();
-        len = entryText.length();
-        actualOutput = u.hasDecimal(entryText, len);
-        assertEquals(false, actualOutput);
-
-        m.setEntryText("2.0");
-        entryText = m.getEntryText();
-        len = entryText.length();
-        actualOutput = u.hasDecimal(entryText, len);
-        assertEquals(true, actualOutput);
-
-        m.setEntryText("235/.3");
-        entryText = m.getEntryText();
-        len = entryText.length();
-        actualOutput = u.hasDecimal(entryText, len);
-        assertEquals(true, actualOutput);
-
-        m.setEntryText("321x324+789");
-        entryText = m.getEntryText();
-        len = entryText.length();
-        actualOutput = u.hasDecimal(entryText, len);
-        assertEquals(false, actualOutput);
+//        m.setEntryText("");
+//        entryText = m.getEntryText();
+//        len = entryText.length();
+//        actualOutput = u.hasDecimal(entryText, len);
+//        assertEquals(false, actualOutput);
+//
+//        m.setEntryText("2.0");
+//        entryText = m.getEntryText();
+//        len = entryText.length();
+//        actualOutput = u.hasDecimal(entryText, len);
+//        assertEquals(true, actualOutput);
+//
+//        m.setEntryText("235/.3");
+//        entryText = m.getEntryText();
+//        len = entryText.length();
+//        actualOutput = u.hasDecimal(entryText, len);
+//        assertEquals(true, actualOutput);
+//
+//        m.setEntryText("321x324+789");
+//        entryText = m.getEntryText();
+//        len = entryText.length();
+//        actualOutput = u.hasDecimal(entryText, len);
+//        assertEquals(false, actualOutput);
 
     }
 

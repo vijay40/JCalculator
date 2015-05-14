@@ -34,6 +34,15 @@
         <item>4</item>
         <item>5</item>
     </string-array>
+    <string name="unit_used">उपयोग इकाई</string>
+    <string name="text_copied">नकल की</string>
+    <string name="radian_used">radian का उपयोग करते हुए</string>
+    <string name="radian">Rad</string>
+    <string name="paste">पेस्ट</string>
+    <string name="degree_used">डिग्री का उपयोग करते हुए</string>
+    <string name="degree">डिग्री</string>
+    <string name="cut">कट</string>
+    <string name="copy">नकल</string>
 
 
 </resources>

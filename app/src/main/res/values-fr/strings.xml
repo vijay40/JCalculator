@@ -34,6 +34,15 @@
         <item>4</item>
         <item>5</item>
     </string-array>
+    <string name="copy">copie</string>
+    <string name="cut">coupe</string>
+    <string name="degree">degré</string>
+    <string name="degree_used">utilisant degré</string>
+    <string name="paste">pâte</string>
+    <string name="radian">Rad</string>
+    <string name="radian_used">utilisant radian</string>
+    <string name="text_copied">texte copié</string>
+    <string name="unit_used">utilisation de l\'unité</string>
 
 
 </resources>

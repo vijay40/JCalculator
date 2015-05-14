@@ -85,6 +85,6 @@
     <string name="unit_used">Use unit</string>
     <string name="degree">Deg</string>
     <string name="radian">Rad</string>
-    <string name="radian_used">Using Radians</string>
+    <string name="radian_used">Using Radian</string>
     <string name="degree_used">Using Degree</string>
 </resources>
