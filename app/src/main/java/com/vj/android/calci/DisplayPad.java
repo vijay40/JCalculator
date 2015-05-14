@@ -41,7 +41,7 @@ public class DisplayPad extends EditText {
 
     public void setUp() {
 //        this.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-//        remove underbar from edittext
+//        remove under bar from EditText
         if (Build.VERSION.SDK_INT < 16)
             setBackgroundDrawable(null);
         else

@@ -149,7 +149,7 @@ public class Utility {
         MainActivity.entryText = MainActivity.entryText.substring(0, position) + text + MainActivity.entryText.substring(position);
     }
 
-    //    Method to determine wheather number is a double or not
+    //    Method to determine whether number is a double or not
     public boolean isDouble(double num) {
         long i = (long) num;
         return Math.abs(num - (double) i) >= precision;

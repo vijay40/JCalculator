@@ -62,7 +62,7 @@ public class ExpressionHandler {
         String res = "";
         int len = handleTrailing(expr);
 
-//      handle invalid number of paranthesis
+//      handle invalid number of parenthesis
         int leftpara = 0;
 
         for (int i = 0; i < len; i++) {

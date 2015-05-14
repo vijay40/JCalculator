@@ -205,7 +205,7 @@ public class MainActivity extends FragmentActivity {
         if (expr.isEmpty())
             return 0;
 
-//        check wheather using degree or not
+//        check whether using degree or not
         if (pref.getBoolean("unit", false)) {
             expr = exprhandler.handleDegreeCalc(expr);
         }
