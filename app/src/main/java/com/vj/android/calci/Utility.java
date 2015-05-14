@@ -187,13 +187,6 @@ public class Utility {
         return "+-x÷*/".contains(ch);
     }
 
-// --Commented out by Inspection START (5/3/2015 11:18 AM):
-//    public boolean isDigit(String ch) {
-//        if ("0123456789".contains(ch))
-//            return true;
-//        return false;
-//    }
-// --Commented out by Inspection STOP (5/3/2015 11:18 AM)
 
     //    determine whether last char is operator or not
     public boolean isLastOperator(String expr) {
@@ -204,7 +197,6 @@ public class Utility {
     public boolean hasDecimal(String entryText, int position) {
         boolean dec = false;
 
-//        int len = entryText.length();
         int len = position;
         for (int i = len - 1; i >= 0; i--) {
             String lastchar = entryText.substring(i, i + 1);

@@ -183,16 +183,16 @@ public class MainActivity extends FragmentActivity {
         entry.setSelection(position);
     }
 
-    //    Method to facilitate testing not to be used in actual app
-    public String getEntryText() {
-        return entryText;
-    }
-
-    // TODO remove these setEntry and getEntry text function before release.
-    //    Method to facilitate testing not to be used in actual app
-    public void setEntryText(String text) {
-        entryText = text;
-    }
+//    //    Method to facilitate testing not to be used in actual app
+//    public String getEntryText() {
+//        return entryText;
+//    }
+//
+//    // TODO remove these setEntry and getEntry text function before release.
+//    //    Method to facilitate testing not to be used in actual app
+//    public void setEntryText(String text) {
+//        entryText = text;
+//    }
 
     //  Method to perform calculation
     //  expression is always in decimal here
@@ -388,7 +388,6 @@ public class MainActivity extends FragmentActivity {
             position = 0;
         }
         if (utility.hasDecimal(entryText, position)) {
-//            entryText += dig;
             Utility.EditEntryText(dig, position);
             newposition = position + 1;
         } else {
@@ -402,13 +401,11 @@ public class MainActivity extends FragmentActivity {
                 }
             }
             if (idx >= 0) {
-//                String snumber = entryText.substring(idx + 1, entryText.length());
                 String snumber = entryText.substring(idx + 1, position);
                 if (snumber.length() == 1 && snumber.equals("0")) {
                     entryText = entryText.substring(0, position - 1) + dig + entryText.substring(position);
                     newposition = position;
                 } else {
-//                    entryText += dig;
                     Utility.EditEntryText(dig, position);
                     newposition = position + 1;
                 }
@@ -417,7 +414,6 @@ public class MainActivity extends FragmentActivity {
                     entryText = dig + entryText.substring(position);
                     newposition = position;
                 } else {
-//                    entryText += dig;
                     Utility.EditEntryText(dig, position);
                     newposition = position + 1;
                 }
@@ -434,7 +430,6 @@ public class MainActivity extends FragmentActivity {
             position = 0;
         }
         if (utility.hasDecimal(entryText, position)) {
-//            entryText += "0";
             Utility.EditEntryText("0", position);
             utility.setDisplayText(entryText, position + 1);
         } else {
@@ -451,25 +446,16 @@ public class MainActivity extends FragmentActivity {
                 if (snumber.length() == 1 && snumber.equals("0")) {
                     return;
                 } else {
-//                    entryText += "0";
                     Utility.EditEntryText("0", position);
                     utility.setDisplayText(entryText, position + 1);
                 }
             } else {
                 if (entryText.substring(0, position).length() == 1 && entryText.substring(0, position).equals("0"))
                     return;
-//                entryText += "0";
                 Utility.EditEntryText("0", position);
                 utility.setDisplayText(entryText, position + 1);
             }
         }
-    }
-
-    //  Method to handle click of left parenthesis
-    private void leftParanClick() {
-//        entryText += "(";
-        Utility.EditEntryText("(", position);
-        utility.setDisplayText(entryText, position + 1);
     }
 
     //  Method to handle click of right parenthesis
@@ -484,7 +470,6 @@ public class MainActivity extends FragmentActivity {
         }
 
         if (leftparan > 0 && !entryText.substring(len - 1, len).equals("(")) {
-//            entryText += ")";
             Utility.EditEntryText(")", position);
             utility.setDisplayText(entryText, position + 1);
         }
@@ -495,23 +480,15 @@ public class MainActivity extends FragmentActivity {
             entryText = "";
             position = 0;
         }
-//        entryText += function + "(";
         Utility.EditEntryText(function + "(", position);
         utility.setDisplayText(entryText, position + function.length() + 1);
     }
 
     private void power() {
         if (Utility.isLastOperand(entryText.substring(0, position))) {
-//            entryText += "^";
             Utility.EditEntryText("^", position);
             utility.setDisplayText(entryText, position + 1);
         }
-    }
-
-    private void exponential() {
-//        entryText += "e";
-        Utility.EditEntryText("e", position);
-        utility.setDisplayText(entryText, position + 1);
     }
 
     private void logClick(String log) {
@@ -519,7 +496,6 @@ public class MainActivity extends FragmentActivity {
             entryText = "";
             position = 0;
         }
-//        entryText += log + "(";
         Utility.EditEntryText(log + "(", position);
         utility.setDisplayText(entryText, position + log.length() + 1);
     }
@@ -530,27 +506,19 @@ public class MainActivity extends FragmentActivity {
             return;
         else if (utility.isOperator(entryText.substring(position - 1, position)))
             return;
-//        entryText += func;
         Utility.EditEntryText(func, position);
         utility.setDisplayText(entryText, position + func.length());
     }
 
-    private void sqrtClick() {
-//        entryText += "√";
-        Utility.EditEntryText("√", position);
-        utility.setDisplayText(entryText, position + 1);
-    }
-
     private void cubeRootClick() {
-//        entryText += "∛(";
         Utility.EditEntryText("∛(", position);
         utility.setDisplayText(entryText, position + 2);
     }
 
-    private void PIclick() {
-//        entryText += "π";
-        Utility.EditEntryText("π", position);
-        utility.setDisplayText(entryText, position + 1);
+    private void singleFunc(String func) {
+        Utility.EditEntryText(func, position);
+        utility.setDisplayText(entryText, position + func.length());
+
     }
 
     private void hexClick(String btn) {
@@ -558,7 +526,6 @@ public class MainActivity extends FragmentActivity {
             entryText = "";
             position = 0;
         }
-//        entryText += btn;
         Utility.EditEntryText(btn, position);
         utility.setDisplayText(entryText, position + 1);
     }
@@ -581,8 +548,6 @@ public class MainActivity extends FragmentActivity {
             btnText = btn.getText().toString();
         }
 
-//        if (btnId == R.id.clearbtnhex)
-//            performClear();
         if (btnId == R.id.delbtn)
             performDelete();
         else if (btnId == R.id.plusbtn || btnId == R.id.plusbtnhex || btnId == R.id.minusbtn || btnId == R.id.minusbtnhex || btnId == R.id.multiplybtn || btnId == R.id.multiplybtnhex || btnId == R.id.dividebtn || btnId == R.id.dividebtnhex)
@@ -595,22 +560,16 @@ public class MainActivity extends FragmentActivity {
             logClick(btnText);
         else if (btnId == R.id.decimalbtn)
             decimalClick();
-        else if (btnId == R.id.left_paran)
-            leftParanClick();
         else if (btnId == R.id.right_paran)
             rightParanClick();
         else if (btnId == R.id.zerobtn)
             zeroClick();
-        else if (btnId == R.id.pi)
-            PIclick();
+        else if (btnId == R.id.pi || btnId == R.id.sqrt || btnId == R.id.exponential || btnId == R.id.left_paran)
+            singleFunc(btnText);
         else if (btnId == R.id.factorial || btnId == R.id.percentage)
             functionClick(btnText);
-        else if (btnId == R.id.exponential)
-            exponential();
         else if (btnId == R.id.power)
             power();
-        else if (btnId == R.id.sqrt)
-            sqrtClick();
         else if (btnId == R.id.cube_root)
             cubeRootClick();
         else if (btnId == R.id.equalbtn || btnId == R.id.hexequalbtn) {

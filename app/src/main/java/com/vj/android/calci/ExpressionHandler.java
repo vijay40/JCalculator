@@ -2,7 +2,6 @@ package com.vj.android.calci;
 
 
 /**
- * Created by I310588 on 3/22/2015.
  * class for handling expression formatting.
  */
 public class ExpressionHandler {
