@@ -15,10 +15,13 @@ JCalculator is made in Android Studio. Just clone the repository and export the 
 
 ### Contribution guidelines ###
 
-* Writing tests
-* Code review
-* Other guidelines
+I will be a matter of great pleasure to me if you like the app and want to contribute to it. I will accept the contributions in one of the following three forms. 
 
+* **Issue Reporting** : Please report any issue you find while using the app. Try to give as much information as possible while reporting. It will help us to solve the issue quickly. 
+
+* **Feature Request** : If you have a certain feature in mind for the app, please report it. We'll try to implement it if possible.
+
+* **Code** : If you want to implement some feature or solve an issue, its great :) . I just like you to get in touch with me first, so that I'll make sure that no two person are working on the same stuff at the same time.
 ### Who do I talk to? ###
 
 * Repo owner or admin
