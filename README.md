@@ -22,7 +22,8 @@ I will be a matter of great pleasure to me if you like the app and want to contr
 * **Feature Request** : If you have a certain feature in mind for the app, please report it. We'll try to implement it if possible.
 
 * **Code** : If you want to implement some feature or solve an issue, its great :) . I just like you to get in touch with me first, so that I'll make sure that no two person are working on the same stuff at the same time.
+
+
 ### Who do I talk to? ###
 
-* Repo owner or admin
-* Other community or team contact
+If you want to get in touch will me, feel free to mail me at jainvijay40@gmail.com. Just include the word **[JCalculator]** in the subject of your mail. It will help me to reply to you as soon as possible.
