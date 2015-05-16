@@ -26,4 +26,4 @@ I will be a matter of great pleasure to me if you like the app and want to contr
 
 ### Who do I talk to? ###
 
-If you want to get in touch will me, feel free to mail me at jainvijay40@gmail.com. Just include the word **[JCalculator]** in the subject of your mail. It will help me to reply to you as soon as possible.
+If you want to get in touch will me, feel free to mail me at _jainvijay40@gmail.com_. Just include the word **[JCalculator]** in the subject of your mail. It will help me to reply to you as soon as possible.
