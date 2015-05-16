@@ -11,12 +11,7 @@ JCalculator is a Android Calculator app inspired by the CynogenMod Calculator. I
 
 ### How do I get set up? ###
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+JCalculator is made in Android Studio. Just clone the repository and export the project in Android Studio. 
 
 ### Contribution guidelines ###
 
