@@ -1,4 +1,4 @@
-package com.vj.android.calci.test;
+package com.vj.android.calci.androidTest;
 
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.UiThreadTest;

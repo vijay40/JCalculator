@@ -1,4 +1,4 @@
-package com.vj.android.calci.test;
+package com.vj.android.calci.androidTest;
 
 import android.test.suitebuilder.annotation.MediumTest;
 import android.test.suitebuilder.annotation.SmallTest;
