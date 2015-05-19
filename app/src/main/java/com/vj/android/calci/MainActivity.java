@@ -101,6 +101,7 @@ public class MainActivity extends FragmentActivity {
 
 //        register for context menu
         registerForContextMenu(entry);
+
     }
 
     @Override

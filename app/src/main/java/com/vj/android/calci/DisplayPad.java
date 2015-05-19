@@ -12,7 +12,9 @@ import android.view.ActionMode;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.HorizontalScrollView;
 import android.widget.Toast;
@@ -39,6 +41,7 @@ public class DisplayPad extends EditText {
         setUp();
     }
 
+
     public void setUp() {
 //        this.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 //        remove under bar from EditText
@@ -51,7 +54,21 @@ public class DisplayPad extends EditText {
         setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
 
         setCustomSelectionActionModeCallback(new NoTextSelection());
+
+        setOnTouchListener(new OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                v.onTouchEvent(event);
+                InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                if (imm != null) {
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                }
+                return true;
+            }
+        });
+
     }
+
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
