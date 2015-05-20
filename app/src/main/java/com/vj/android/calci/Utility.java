@@ -165,7 +165,7 @@ public class Utility {
         boolean vib = pref.getBoolean("vibrate", false);
         if (vib) {
             Vibrator v = (Vibrator) activity.getSystemService(Context.VIBRATOR_SERVICE);
-            v.vibrate(100);
+            v.vibrate(50);
         }
     }
 

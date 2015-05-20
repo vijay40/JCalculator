@@ -2,6 +2,7 @@ package com.vj.android.calci;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -40,6 +41,11 @@ class ViewHolder {
         expr = (TextView) v.findViewById(R.id.expr);
         result = (TextView) v.findViewById(R.id.result);
         trash = (ImageView) v.findViewById(R.id.trash);
+
+//      set font for expr and result
+        Typeface tf = Typeface.createFromAsset(context.getAssets(), "fonts/DejaVuSansMono-Bold.ttf");
+        expr.setTypeface(tf);
+        result.setTypeface(tf);
 
         expr.setOnClickListener(mExprClickListener);
         result.setOnClickListener(mResClickListener);
