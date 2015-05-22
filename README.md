@@ -1,6 +1,7 @@
-# JCalculator #
+# JCalculator   
+## [Playstore link..](https://play.google.com/store/apps/details?id=com.vj.android.jcalc) 
 
-JCalculator is a Android Calculator app inspired by the CynogenMod Calculator. In addition to simple basic arithmetic functions, JCalculator provides many advance functionalities also. Below is the list of some of the features provided by JCalculator.
+JCalculator is a Android Calculator app inspired by the CynogenMod Calculator. In addition to simple basic arithmetic functions, JCalculator provides many advance functionalities also. Below is the list of some of the features provided by JCalculator. 
 
 * Able to perform Calculation Decimal, Hexadecimal, Octal and Binary format.
 * Provide many advance functionality including trigonometric, logarithmic and others.
