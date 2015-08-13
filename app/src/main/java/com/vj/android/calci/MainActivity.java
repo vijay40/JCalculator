@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -247,6 +248,7 @@ public class MainActivity extends FragmentActivity {
                 entryText = "";
                 position = 0;
                 utility.setDisplayText(Character.toString('\u221e'), 1);
+                Log.e("Jcalc", "Position : " + position);
                 return;
             } else {
                 entryText = "";
@@ -292,6 +294,12 @@ public class MainActivity extends FragmentActivity {
         int len = position;
         int newposition = 0;
         if (len > 0) {
+            // in case there is no text in the entry text just delete the text from display pad and return
+            if(entryText == "")
+            {
+                utility.setDisplayText(entryText, 0);
+                return;
+            }
             if (len <= 2) {
                 entryText = entryText.substring(0, len - 1) + entryText.substring(position);
                 newposition = len - 1;
